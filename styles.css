@@ -28,6 +28,12 @@ body {
     flex-direction: column;
   }
 }
+@media (max-width: 700px) {
+  .background {
+    background: url("assets/images/bg-small.png");
+    background-size: contain;
+  }
+}
 
 .form {
   padding-top: 168px;
@@ -51,6 +57,9 @@ body {
   line-height: 26px;
   color: #202225;
 }
+.form__title_size_restore-password {
+  width: 328px;
+}
 @media (max-width: 400px) {
   .form__title {
     width: 256px;
@@ -61,6 +70,7 @@ body {
 @media (max-width: 300px) {
   .form__title {
     width: 180px;
+    font-size: 17px;
   }
 }
 .form__input-wrapper {
@@ -143,11 +153,41 @@ body {
     gap: 24px;
   }
 }
+.form__description {
+  margin-top: -8px;
+  width: 368px;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  line-height: 19px;
+  font-style: normal;
+  font-weight: 400;
+  color: #A1ABC9;
+}
+@media (max-width: 400px) {
+  .form__description {
+    width: 256px;
+  }
+}
+@media (max-width: 300px) {
+  .form__description {
+    width: 150px;
+    font-size: 13px;
+  }
+}
 @media (max-width: 400px) {
   .form_padding {
     padding-top: 32px;
     padding-bottom: 97px;
   }
+}
+.form__back-arrow-link {
+  width: 24px;
+  height: 24px;
+  text-decoration: none;
+  margin-right: 16px;
+}
+.form__label {
+  display: flex;
 }
 
 .link-button {
@@ -211,6 +251,14 @@ body {
     width: 116px;
   }
 }
+.link-button__button_size_restore-password {
+  width: 214px;
+}
+@media (max-width: 400px) {
+  .link-button__button_size_restore-password {
+    width: 198px;
+  }
+}
 @media (max-width: 700px) {
   .link-button {
     margin-left: auto;
@@ -251,6 +299,11 @@ body {
   font-size: 15px;
   line-height: 21px;
 }
+@media (max-width: 300px) {
+  .question-link__text {
+    font-size: 13px;
+  }
+}
 .question-link__link {
   font-family: "Poppins", sans-serif;
   font-style: normal;
@@ -259,6 +312,11 @@ body {
   line-height: 19px;
   color: #7297FF;
   text-decoration-line: underline;
+}
+@media (max-width: 300px) {
+  .question-link__link {
+    font-size: 13px;
+  }
 }
 @media (max-width: 700px) {
   .question-link {
