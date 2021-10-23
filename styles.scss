@@ -35,7 +35,7 @@ body {
     }
 
     @media (max-height: 530px) {
-      min-height: 300px;
+      min-height: 320px;
     }
   }
 }
@@ -118,6 +118,8 @@ body {
     }
 
 
+
+
   }
 
 
@@ -177,6 +179,22 @@ body {
       @media (max-width: 400px) {
         top: 15px;
         left: 21px;
+      }
+    }
+
+    &_password:after, &_confirm-password:after {
+      content: "";
+      width: 22px;
+      height: 22px;
+      background: url(./assets/icons/eye.svg) no-repeat;
+      background-size: contain;
+      position: absolute;
+      top: 18px;
+      right: 26px;
+
+      @media (max-width: 400px) {
+        top: 10px;
+        right: 18px;
       }
     }
 
@@ -284,6 +302,13 @@ body {
 
   &__label {
     display: flex;
+  }
+
+  &_password {
+    @media (max-height: 400px) {
+      padding-bottom: 0;
+
+    }
   }
 }
 

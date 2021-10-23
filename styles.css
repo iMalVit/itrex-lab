@@ -33,7 +33,7 @@ body {
 }
 @media (max-height: 530px) {
   .content_password {
-    min-height: 300px;
+    min-height: 320px;
   }
 }
 
@@ -167,6 +167,22 @@ body {
     left: 21px;
   }
 }
+.form__input-wrapper_password:after, .form__input-wrapper_confirm-password:after {
+  content: "";
+  width: 22px;
+  height: 22px;
+  background: url(./assets/icons/eye.svg) no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 18px;
+  right: 26px;
+}
+@media (max-width: 400px) {
+  .form__input-wrapper_password:after, .form__input-wrapper_confirm-password:after {
+    top: 10px;
+    right: 18px;
+  }
+}
 .form__input {
   padding-left: 63px;
   padding-right: 50px;
@@ -261,6 +277,11 @@ body {
 }
 .form__label {
   display: flex;
+}
+@media (max-height: 400px) {
+  .form_password {
+    padding-bottom: 0;
+  }
 }
 
 .link-button {
