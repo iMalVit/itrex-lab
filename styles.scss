@@ -6,12 +6,14 @@ body {
   height: 100%;
   width: 560px;
   background: #F9FAFF;
+  min-height: 680px;
 
   @media (max-width: 700px) {
     margin-top: 72px;
     padding-bottom: 72px;
     width: 100%;
     border-radius: 24px 24px 0 0;
+    min-height: 600px;
   }
 }
 
@@ -21,14 +23,20 @@ body {
   background: url("assets/images/bg.png");
   background-size: cover;
   height: 100vh;
+  min-height: 680px;
 
   @media (max-width: 700px) {
     flex-direction: column;
+    min-height: 800px;
   }
 
   @media (max-width: 700px) {
     background: url("assets/images/bg-small.png");
     background-size: contain;
+  }
+
+  @media (max-width: 400px) {
+    min-height: 672px;
   }
 }
 
@@ -77,43 +85,83 @@ body {
 
 
   &__input-wrapper {
-    display: flex;
-    align-items: center;
-    padding-left: 23px;
-    padding-right: 23px;
-    box-sizing: border-box;
-    background: #FFFFFF;
-    border: 1px solid #DCE0EC;
-    border-radius: 8px;
-    width: 368px;
-    height: 56px;
+    position: relative;
+    
 
-
-    @media (max-width: 400px) {
-      width: 256px;
-      height: 40px;
-      padding-left: 15px;
-      padding-right: 15px;
+    &:before {
+      z-index: 20;
+      content: "";
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 18px;
+      left: 26px;
     }
 
-    @media (max-width: 300px) {
-      width: 180px;
+
+    &_first-name:before, &_last-name:before {
+      background-image: url("./assets/icons/name.svg");
+
+      @media (max-width: 400px) {
+        top: 10px;
+        left: 18px;
+      }
     }
+
+    &_email:before {
+      background-image: url("./assets/icons/mail.svg");
+      height: 16px;
+      top: 20px;
+
+      @media (max-width: 400px) {
+        top: 12px;
+        left: 18px;
+      }
+    }
+
+    &_password:before {
+      background-image: url("./assets/icons/password.svg");
+      left: 28px;
+      width: 16px;
+
+      @media (max-width: 400px) {
+        top: 10px;
+        left: 20px;
+      }
+    }
+
+    &_confirm-password:before {
+      background-image: url("./assets/icons/confirm-password.svg");
+      width: 16px;
+      height: 12px;
+      top: 23px;
+      left: 29px;
+
+      @media (max-width: 400px) {
+        top: 15px;
+        left: 21px;
+      }
+    }
+
   }
 
 
   &__input {
+    padding-left: 63px;
+    padding-right: 50px;
     font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 17px;
     line-height: 24px;
+    width: 368px;
+    height: 56px;
     color: #202225;
-    outline: none;
-    border: none;
+    border: 1px solid #DCE0EC;
+    border-radius: 8px;
     box-sizing: border-box;
-    margin-left: 16px;
-    width: 240px;
+    position: relative;
+
 
 
     &:focus::-webkit-input-placeholder {
@@ -127,13 +175,15 @@ body {
     }
 
     @media (max-width: 400px) {
-      margin-left: 8px;
-      width: 160px;
+      padding-left: 47px;
+      width: 256px;
+      height: 40px;
     }
 
     @media (max-width: 300px) {
       font-size: 11px;
-      width: 80px;
+      width: 180px;
+
     }
   }
 

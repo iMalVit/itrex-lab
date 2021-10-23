@@ -6,6 +6,7 @@ body {
   height: 100%;
   width: 560px;
   background: #F9FAFF;
+  min-height: 680px;
 }
 @media (max-width: 700px) {
   .content {
@@ -13,6 +14,7 @@ body {
     padding-bottom: 72px;
     width: 100%;
     border-radius: 24px 24px 0 0;
+    min-height: 600px;
   }
 }
 
@@ -22,16 +24,23 @@ body {
   background: url("assets/images/bg.png");
   background-size: cover;
   height: 100vh;
+  min-height: 680px;
 }
 @media (max-width: 700px) {
   .background {
     flex-direction: column;
+    min-height: 800px;
   }
 }
 @media (max-width: 700px) {
   .background {
     background: url("assets/images/bg-small.png");
     background-size: contain;
+  }
+}
+@media (max-width: 400px) {
+  .background {
+    min-height: 672px;
   }
 }
 
@@ -74,42 +83,76 @@ body {
   }
 }
 .form__input-wrapper {
-  display: flex;
-  align-items: center;
-  padding-left: 23px;
-  padding-right: 23px;
-  box-sizing: border-box;
-  background: #FFFFFF;
-  border: 1px solid #DCE0EC;
-  border-radius: 8px;
-  width: 368px;
-  height: 56px;
+  position: relative;
+}
+.form__input-wrapper:before {
+  z-index: 20;
+  content: "";
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 18px;
+  left: 26px;
+}
+.form__input-wrapper_first-name:before, .form__input-wrapper_last-name:before {
+  background-image: url("./assets/icons/name.svg");
 }
 @media (max-width: 400px) {
-  .form__input-wrapper {
-    width: 256px;
-    height: 40px;
-    padding-left: 15px;
-    padding-right: 15px;
+  .form__input-wrapper_first-name:before, .form__input-wrapper_last-name:before {
+    top: 10px;
+    left: 18px;
   }
 }
-@media (max-width: 300px) {
-  .form__input-wrapper {
-    width: 180px;
+.form__input-wrapper_email:before {
+  background-image: url("./assets/icons/mail.svg");
+  height: 16px;
+  top: 20px;
+}
+@media (max-width: 400px) {
+  .form__input-wrapper_email:before {
+    top: 12px;
+    left: 18px;
+  }
+}
+.form__input-wrapper_password:before {
+  background-image: url("./assets/icons/password.svg");
+  left: 28px;
+  width: 16px;
+}
+@media (max-width: 400px) {
+  .form__input-wrapper_password:before {
+    top: 10px;
+    left: 20px;
+  }
+}
+.form__input-wrapper_confirm-password:before {
+  background-image: url("./assets/icons/confirm-password.svg");
+  width: 16px;
+  height: 12px;
+  top: 23px;
+  left: 29px;
+}
+@media (max-width: 400px) {
+  .form__input-wrapper_confirm-password:before {
+    top: 15px;
+    left: 21px;
   }
 }
 .form__input {
+  padding-left: 63px;
+  padding-right: 50px;
   font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 17px;
   line-height: 24px;
+  width: 368px;
+  height: 56px;
   color: #202225;
-  outline: none;
-  border: none;
+  border: 1px solid #DCE0EC;
+  border-radius: 8px;
   box-sizing: border-box;
-  margin-left: 16px;
-  width: 240px;
+  position: relative;
 }
 .form__input:focus::-webkit-input-placeholder {
   color: transparent;
@@ -119,14 +162,15 @@ body {
 }
 @media (max-width: 400px) {
   .form__input {
-    margin-left: 8px;
-    width: 160px;
+    padding-left: 47px;
+    width: 256px;
+    height: 40px;
   }
 }
 @media (max-width: 300px) {
   .form__input {
     font-size: 11px;
-    width: 80px;
+    width: 180px;
   }
 }
 @media (max-height: 950px) {
