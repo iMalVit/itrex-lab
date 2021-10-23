@@ -11,10 +11,29 @@ body {
 @media (max-width: 700px) {
   .content {
     margin-top: 72px;
-    padding-bottom: 72px;
     width: 100%;
     border-radius: 24px 24px 0 0;
     min-height: 600px;
+  }
+}
+@media (max-height: 667px) {
+  .content_sign-in {
+    min-height: 80vh;
+  }
+}
+@media (max-height: 530px) {
+  .content_sign-in {
+    min-height: 500px;
+  }
+}
+@media (max-height: 667px) {
+  .content_password {
+    min-height: 80vh;
+  }
+}
+@media (max-height: 530px) {
+  .content_password {
+    min-height: 300px;
   }
 }
 
@@ -41,6 +60,16 @@ body {
 @media (max-width: 400px) {
   .background {
     min-height: 672px;
+  }
+}
+@media (max-height: 667px) {
+  .background_sign-in {
+    min-height: 100vh;
+  }
+}
+@media (max-height: 667px) {
+  .background_password {
+    min-height: 100vh;
   }
 }
 

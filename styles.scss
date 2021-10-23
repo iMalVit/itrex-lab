@@ -10,10 +10,33 @@ body {
 
   @media (max-width: 700px) {
     margin-top: 72px;
-    padding-bottom: 72px;
     width: 100%;
     border-radius: 24px 24px 0 0;
     min-height: 600px;
+  }
+
+  &_sign-in {
+
+
+    @media (max-height: 667px) {
+      min-height: 80vh;
+    }
+
+    @media (max-height: 530px) {
+      min-height: 500px;
+    }
+  }
+
+  &_password {
+
+
+    @media (max-height: 667px) {
+      min-height: 80vh;
+    }
+
+    @media (max-height: 530px) {
+      min-height: 300px;
+    }
   }
 }
 
@@ -24,6 +47,8 @@ body {
   background-size: cover;
   height: 100vh;
   min-height: 680px;
+
+
 
   @media (max-width: 700px) {
     flex-direction: column;
@@ -37,6 +62,18 @@ body {
 
   @media (max-width: 400px) {
     min-height: 672px;
+  }
+
+  &_sign-in {
+    @media (max-height: 667px) {
+      min-height: 100vh;
+    }
+  }
+
+  &_password {
+    @media (max-height: 667px) {
+      min-height: 100vh;
+    }
   }
 }
 
@@ -86,7 +123,7 @@ body {
 
   &__input-wrapper {
     position: relative;
-    
+
 
     &:before {
       z-index: 20;
