@@ -1,0 +1,472 @@
+body {
+  margin: 0;
+}
+
+.content {
+  height: 100%;
+  width: 560px;
+  background: #F9FAFF;
+  min-height: 680px;
+}
+@media (max-width: 700px) {
+  .content {
+    margin-top: 72px;
+    width: 100%;
+    border-radius: 24px 24px 0 0;
+    min-height: 600px;
+  }
+}
+@media (max-height: 667px) {
+  .content_sign-in {
+    min-height: 80vh;
+  }
+}
+@media (max-height: 530px) {
+  .content_sign-in {
+    min-height: 500px;
+  }
+}
+@media (max-height: 667px) {
+  .content_password {
+    min-height: 80vh;
+  }
+}
+@media (max-height: 530px) {
+  .content_password {
+    min-height: 320px;
+  }
+}
+
+.background {
+  display: flex;
+  flex-direction: row-reverse;
+  background: url("../assets/images/bg.png");
+  background-size: cover;
+  height: 100vh;
+  min-height: 680px;
+}
+@media (max-width: 700px) {
+  .background {
+    flex-direction: column;
+    min-height: 800px;
+  }
+}
+@media (max-width: 700px) {
+  .background {
+    background: url("../assets/images/bg-small.png");
+    background-size: contain;
+  }
+}
+@media (max-width: 400px) {
+  .background {
+    min-height: 672px;
+  }
+}
+@media (max-height: 667px) {
+  .background_sign-in {
+    min-height: 100vh;
+  }
+}
+@media (max-height: 667px) {
+  .background_password {
+    min-height: 100vh;
+  }
+}
+
+.form {
+  padding-top: 168px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding-bottom: 120px;
+}
+.form_padding {
+  padding-top: 264px;
+  padding-bottom: 261px;
+}
+.form__show-password-icon {
+  width: 24px;
+  height: 24px;
+  background: url(../assets/icons/visibility_off.svg) no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 18px;
+  right: 26px;
+}
+.form__show-password-icon_show {
+  background: url(../assets/icons/visibility.svg) no-repeat;
+}
+@media (max-width: 400px) {
+  .form__show-password-icon {
+    top: 8px;
+    right: 18px;
+  }
+}
+.form__password-description {
+  font-family: "Poppins", sans-serif;
+  position: absolute;
+  font-size: 13px;
+  line-height: 120%;
+  top: 60px;
+  color: #F6657F;
+}
+@media (max-width: 400px) {
+  .form__password-description {
+    font-size: 8px;
+    top: 42px;
+  }
+}
+.form__title {
+  width: 368px;
+  height: 32px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 26px;
+  color: #202225;
+}
+.form__title_size_restore-password {
+  width: 328px;
+}
+@media (max-width: 400px) {
+  .form__title {
+    width: 256px;
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+@media (max-width: 300px) {
+  .form__title {
+    width: 180px;
+    font-size: 17px;
+  }
+}
+.form__input-wrapper {
+  position: relative;
+}
+.form__input-wrapper:before {
+  z-index: 20;
+  content: "";
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 18px;
+  left: 26px;
+}
+.form__input-wrapper_first-name:before, .form__input-wrapper_last-name:before {
+  background-image: url("../assets/icons/name.svg");
+}
+@media (max-width: 400px) {
+  .form__input-wrapper_first-name:before, .form__input-wrapper_last-name:before {
+    top: 10px;
+    left: 18px;
+  }
+}
+.form__input-wrapper_email:before {
+  background-image: url("../assets/icons/mail.svg");
+  height: 16px;
+  top: 20px;
+}
+@media (max-width: 400px) {
+  .form__input-wrapper_email:before {
+    top: 12px;
+    left: 18px;
+  }
+}
+.form__input-wrapper_password:before {
+  background-image: url("../assets/icons/password.svg");
+  left: 28px;
+  width: 16px;
+}
+@media (max-width: 400px) {
+  .form__input-wrapper_password:before {
+    top: 10px;
+    left: 20px;
+  }
+}
+.form__input-wrapper_confirm-password:before {
+  background-image: url("../assets/icons/confirm-password.svg");
+  width: 16px;
+  height: 12px;
+  top: 23px;
+  left: 29px;
+}
+@media (max-width: 400px) {
+  .form__input-wrapper_confirm-password:before {
+    top: 15px;
+    left: 21px;
+  }
+}
+.form__input {
+  padding-left: 63px;
+  padding-right: 50px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 24px;
+  width: 368px;
+  height: 56px;
+  color: #202225;
+  border: 1px solid #DCE0EC;
+  border-radius: 8px;
+  box-sizing: border-box;
+  position: relative;
+}
+.form__input_valid {
+  border: solid 2px green;
+}
+.form__input_invalid {
+  border: solid 2px red;
+}
+.form__input_compared_valid {
+  border: solid 2px greenyellow;
+}
+.form__input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+.form__input::-webkit-input-placeholder {
+  color: #A1ABC9;
+}
+@media (max-width: 400px) {
+  .form__input {
+    padding-left: 47px;
+    width: 256px;
+    height: 40px;
+  }
+}
+@media (max-width: 300px) {
+  .form__input {
+    font-size: 11px;
+    width: 180px;
+  }
+}
+@media (max-height: 950px) {
+  .form {
+    padding-top: 80px;
+    padding-bottom: 50px;
+  }
+}
+@media (max-height: 800px) {
+  .form {
+    padding-bottom: 20px;
+    gap: 24px;
+  }
+}
+@media (max-width: 700px) {
+  .form {
+    padding-top: 32px;
+    padding-bottom: 72px;
+  }
+}
+@media (max-width: 400px) {
+  .form {
+    gap: 24px;
+  }
+}
+.form__description {
+  margin-top: -8px;
+  width: 368px;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  line-height: 19px;
+  font-style: normal;
+  font-weight: 400;
+  color: #A1ABC9;
+}
+@media (max-width: 400px) {
+  .form__description {
+    width: 256px;
+  }
+}
+@media (max-width: 300px) {
+  .form__description {
+    width: 150px;
+    font-size: 13px;
+  }
+}
+@media (max-width: 400px) {
+  .form_padding {
+    padding-top: 32px;
+    padding-bottom: 97px;
+  }
+}
+.form__back-arrow-link {
+  width: 24px;
+  height: 24px;
+  text-decoration: none;
+  margin-right: 16px;
+}
+.form__label {
+  display: flex;
+}
+@media (max-height: 400px) {
+  .form_password {
+    padding-bottom: 0;
+  }
+}
+
+.link-button {
+  margin-top: 24px;
+  align-self: start;
+  margin-left: 96px;
+}
+.link-button__button {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 24px;
+  position: relative;
+  color: #FFFFFF;
+  text-align: start;
+  padding: 16px 24px;
+  width: 146px;
+  height: 56px;
+  background: #7297FF;
+  border-radius: 8px;
+  border: none;
+}
+.link-button__button:hover {
+  cursor: pointer;
+  background: #4d6bc2;
+}
+.link-button__button:after {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 16px;
+  right: 24px;
+  background: url("../assets/icons/arrow-right.svg");
+  content: "";
+}
+@media (max-width: 400px) {
+  .link-button__button:after {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 12px;
+    right: 16px;
+    background: url("../assets/icons/arrow-right.svg");
+    content: "";
+  }
+}
+@media (max-width: 400px) {
+  .link-button__button {
+    width: 122px;
+    height: 48px;
+    padding: 12px 16px;
+    font-size: 15px;
+    line-height: 19px;
+  }
+}
+.link-button__button_size {
+  width: 138px;
+}
+@media (max-width: 400px) {
+  .link-button__button_size {
+    width: 116px;
+  }
+}
+.link-button__button_size_restore-password {
+  width: 214px;
+}
+@media (max-width: 400px) {
+  .link-button__button_size_restore-password {
+    width: 198px;
+  }
+}
+@media (max-width: 700px) {
+  .link-button {
+    margin-left: auto;
+    margin-right: auto;
+    width: 368px;
+  }
+}
+@media (max-width: 400px) {
+  .link-button {
+    width: 256px;
+    margin-top: 8px;
+  }
+}
+@media (max-width: 300px) {
+  .link-button {
+    width: 180px;
+  }
+}
+
+.question-link {
+  margin-left: 96px;
+  width: 262px;
+  display: flex;
+  justify-content: space-between;
+}
+.question-link_size {
+  width: 270px;
+}
+.question-link_sign-in-position {
+  margin-left: -110px;
+  margin-top: -8px;
+}
+.question-link__text {
+  color: #A1ABC9;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 21px;
+}
+@media (max-width: 300px) {
+  .question-link__text {
+    font-size: 13px;
+  }
+}
+.question-link__link {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 19px;
+  color: #7297FF;
+  text-decoration-line: underline;
+}
+@media (max-width: 300px) {
+  .question-link__link {
+    font-size: 13px;
+  }
+}
+@media (max-width: 700px) {
+  .question-link {
+    flex-direction: column;
+    margin: 0 auto;
+    width: 368px;
+  }
+}
+@media (max-width: 400px) {
+  .question-link {
+    width: 256px;
+  }
+}
+@media (max-width: 300px) {
+  .question-link {
+    width: 180px;
+  }
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+}
+
+input[type=text],
+input[type=email],
+input[type=password],
+textarea {
+  -webkit-appearance: none;
+}
+
+/*# sourceMappingURL=styles.css.map */

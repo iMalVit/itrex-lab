@@ -1,0 +1,528 @@
+body {
+  margin: 0;
+}
+
+.content {
+  height: 100%;
+  width: 560px;
+  background: #F9FAFF;
+  min-height: 680px;
+
+  @media (max-width: 700px) {
+    margin-top: 72px;
+    width: 100%;
+    border-radius: 24px 24px 0 0;
+    min-height: 600px;
+  }
+
+  &_sign-in {
+
+
+    @media (max-height: 667px) {
+      min-height: 80vh;
+    }
+
+    @media (max-height: 530px) {
+      min-height: 500px;
+    }
+  }
+
+  &_password {
+
+
+    @media (max-height: 667px) {
+      min-height: 80vh;
+    }
+
+    @media (max-height: 530px) {
+      min-height: 320px;
+    }
+  }
+}
+
+.background {
+  display: flex;
+  flex-direction: row-reverse;
+  background: url("../assets/images/bg.png");
+  background-size: cover;
+  height: 100vh;
+  min-height: 680px;
+
+
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+    min-height: 800px;
+  }
+
+  @media (max-width: 700px) {
+    background: url("../assets/images/bg-small.png");
+    background-size: contain;
+  }
+
+  @media (max-width: 400px) {
+    min-height: 672px;
+  }
+
+  &_sign-in {
+    @media (max-height: 667px) {
+      min-height: 100vh;
+    }
+  }
+
+  &_password {
+    @media (max-height: 667px) {
+      min-height: 100vh;
+    }
+  }
+}
+
+.form {
+  padding-top: 168px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding-bottom: 120px;
+
+  &_padding {
+    padding-top: 264px;
+    padding-bottom: 261px;
+  }
+
+  &__show-password-icon {
+    width: 24px;
+    height: 24px;
+    background: url(../assets/icons/visibility_off.svg) no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 18px;
+    right: 26px;
+
+    &_show {
+      background: url(../assets/icons/visibility.svg) no-repeat;
+
+    }
+
+
+
+    @media (max-width: 400px) {
+      top: 8px;
+      right: 18px;
+    }
+  }
+
+  &__password-description {
+    font-family: "Poppins", sans-serif;
+    position: absolute;
+    font-size: 13px;
+    line-height: 120%;
+    top: 60px;
+    color: #F6657F;
+
+    @media (max-width: 400px) {
+      font-size: 8px;
+      top: 42px;
+    }
+  }
+  &__title {
+    width: 368px;
+    height: 32px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 26px;
+    color: #202225;
+
+    &_size_restore-password {
+      width: 328px;
+
+    }
+
+    @media (max-width: 400px) {
+      width: 256px;
+      font-size: 20px;
+      line-height: 24px;
+    }
+
+    @media (max-width: 300px) {
+      width: 180px;
+      font-size: 17px;
+    }
+
+
+
+
+  }
+
+
+  &__input-wrapper {
+    position: relative;
+
+
+    &:before {
+      z-index: 20;
+      content: "";
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 18px;
+      left: 26px;
+    }
+
+
+    &_first-name:before, &_last-name:before {
+      background-image: url("../assets/icons/name.svg");
+
+      @media (max-width: 400px) {
+        top: 10px;
+        left: 18px;
+      }
+    }
+
+    &_email:before {
+      background-image: url("../assets/icons/mail.svg");
+      height: 16px;
+      top: 20px;
+
+      @media (max-width: 400px) {
+        top: 12px;
+        left: 18px;
+      }
+    }
+
+    &_password:before {
+      background-image: url("../assets/icons/password.svg");
+      left: 28px;
+      width: 16px;
+
+      @media (max-width: 400px) {
+        top: 10px;
+        left: 20px;
+      }
+    }
+
+    &_confirm-password:before {
+      background-image: url("../assets/icons/confirm-password.svg");
+      width: 16px;
+      height: 12px;
+      top: 23px;
+      left: 29px;
+
+      @media (max-width: 400px) {
+        top: 15px;
+        left: 21px;
+      }
+    }
+
+    //&_password:after, &_confirm-password:after {
+    //  content: "";
+    //  width: 22px;
+    //  height: 22px;
+    //  background: url(../assets/icons/eye.svg) no-repeat;
+    //  background-size: contain;
+    //  position: absolute;
+    //  top: 18px;
+    //  right: 26px;
+    //
+    //  @media (max-width: 400px) {
+    //    top: 10px;
+    //    right: 18px;
+    //  }
+    //}
+
+  }
+
+
+  &__input {
+    padding-left: 63px;
+    padding-right: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 24px;
+    width: 368px;
+    height: 56px;
+    color: #202225;
+    border: 1px solid #DCE0EC;
+    border-radius: 8px;
+    box-sizing: border-box;
+    position: relative;
+
+    &_valid {
+    border: solid 2px green;
+  }
+
+
+    &_invalid {
+      border: solid 2px red;
+    }
+
+    &_compared_valid {
+      border: solid 2px greenyellow;
+    }
+
+
+    &:focus::-webkit-input-placeholder {
+      color: transparent;
+
+    }
+
+    &::-webkit-input-placeholder {
+      color: #A1ABC9;
+
+    }
+
+    @media (max-width: 400px) {
+      padding-left: 47px;
+      width: 256px;
+      height: 40px;
+    }
+
+    @media (max-width: 300px) {
+      font-size: 11px;
+      width: 180px;
+
+    }
+  }
+
+  @media (max-height: 950px) {
+    padding-top: 80px;
+    padding-bottom: 50px;
+
+  }
+
+  @media (max-height: 800px) {
+    padding-bottom: 20px;
+    gap: 24px;
+
+  }
+  @media (max-width: 700px) {
+    padding-top: 32px;
+    padding-bottom: 72px;
+  }
+
+  @media (max-width: 400px) {
+    gap: 24px;
+  }
+
+  &__description {
+    margin-top: -8px;
+    width: 368px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    line-height: 19px;
+    font-style: normal;
+    font-weight: 400;
+    color: #A1ABC9;
+
+    @media (max-width: 400px) {
+      width: 256px;
+    }
+
+    @media (max-width: 300px) {
+      width: 150px;
+      font-size: 13px;
+    }
+  }
+
+  &_padding {
+
+
+    @media (max-width: 400px) {
+      padding-top: 32px;
+      padding-bottom: 97px;
+
+    }
+  }
+
+  &__back-arrow-link {
+    width: 24px;
+    height: 24px;
+    text-decoration: none;
+    margin-right: 16px;
+  }
+
+  &__label {
+    display: flex;
+  }
+
+  &_password {
+    @media (max-height: 400px) {
+      padding-bottom: 0;
+
+    }
+  }
+}
+
+
+.link-button {
+  margin-top: 24px;
+  align-self: start;
+  margin-left: 96px;
+
+  &__button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 24px;
+    position: relative;
+    color: #FFFFFF;
+    text-align: start;
+    padding: 16px 24px;
+    width: 146px;
+    height: 56px;
+    background: #7297FF;
+    border-radius: 8px;
+    border: none;
+
+
+    &:hover {
+      cursor: pointer;
+      background: #4d6bc2;
+    }
+
+    &:after {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      top: 16px;
+      right: 24px;
+      background: url("../assets/icons/arrow-right.svg");
+      content: "";
+
+
+      @media (max-width: 400px) {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        top: 12px;
+        right: 16px;
+        background: url("../assets/icons/arrow-right.svg");
+        content: "";
+      }
+    }
+
+    @media (max-width: 400px) {
+      width: 122px;
+      height: 48px;
+      padding: 12px 16px;
+      font-size: 15px;
+      line-height: 19px;
+    }
+
+    &_size {
+      width: 138px;
+
+      @media (max-width: 400px) {
+        width: 116px;
+      }
+    }
+
+    &_size_restore-password {
+      width: 214px;
+
+      @media (max-width: 400px) {
+        width: 198px;
+      }
+    }
+
+
+  }
+
+
+  @media (max-width: 700px) {
+    margin-left: auto;
+    margin-right: auto;
+    width: 368px;
+  }
+
+  @media (max-width: 400px) {
+    width: 256px;
+    margin-top: 8px;
+  }
+
+  @media (max-width: 300px) {
+    width: 180px;
+  }
+
+
+}
+
+
+.question-link {
+  margin-left: 96px;
+  width: 262px;
+  display: flex;
+  justify-content: space-between;
+
+  &_size {
+    width: 270px;
+  }
+
+  &_sign-in-position {
+    margin-left: -110px;
+    margin-top: -8px;
+  }
+
+  &__text {
+    color: #A1ABC9;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 21px;
+
+    @media (max-width: 300px) {
+      font-size: 13px;
+    }
+  }
+
+  &__link {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 19px;
+    color: #7297FF;
+    text-decoration-line: underline;
+
+    @media (max-width: 300px) {
+      font-size: 13px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+
+    margin: 0 auto;
+    width: 368px;
+
+  }
+
+  @media (max-width: 400px) {
+    width: 256px;
+  }
+
+  @media (max-width: 300px) {
+    width: 180px;
+  }
+}
+
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+}
+
+input[type=text],
+input[type=email],
+input[type=password],
+textarea {
+  -webkit-appearance: none;
+}
