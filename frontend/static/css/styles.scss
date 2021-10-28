@@ -98,6 +98,7 @@ body {
     position: absolute;
     top: 18px;
     right: 26px;
+    cursor: pointer;
 
     &_show {
       background: url(../assets/icons/visibility.svg) no-repeat;
@@ -119,6 +120,12 @@ body {
     line-height: 120%;
     top: 60px;
     color: #F6657F;
+
+
+    @media (max-height: 800px) {
+      font-size: 9px;
+      top: 63px;
+    }
 
     @media (max-width: 400px) {
       font-size: 8px;
