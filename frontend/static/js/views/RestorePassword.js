@@ -1,4 +1,7 @@
 import AbstractView from "./AbstractView.js";
+import Regexp from "../Regexp.js";
+import validateInput from "../validateInput.js";
+
 
 export default class extends AbstractView {
 
@@ -42,30 +45,8 @@ export default class extends AbstractView {
     validation() {
         const emailInput = document.querySelector("#emailInput");
 
+        validateInput(emailInput, Regexp.emailInput);
 
-        emailInput.oninput = () => {
-            if (/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/.test(emailInput.value)) {
-                // document.querySelector('.form__input-wrapper_email .form__message').textContent = '';
-                emailInput.style.outline = "none";
-                emailInput.classList.add('form__input_valid');
-                emailInput.classList.remove('form__input_invalid');
-            } else {
-                // document.querySelector('.form__input-wrapper_email .form__message').textContent = 'Email is not valid'
-                emailInput.style.outline = "none";
-
-                emailInput.classList.add('form__input_invalid');
-                emailInput.classList.remove('form__input_valid');
-            }
-
-            if(emailInput.value === '') {
-                // document.querySelector('.form__input-wrapper_email .form__message').textContent = '';
-                emailInput.style.outline = '';
-                emailInput.classList.remove('form__input_invalid');
-                emailInput.classList.remove('form__input_valid');
-
-
-            }
-        }
     }
 }
 

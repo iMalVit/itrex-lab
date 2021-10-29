@@ -1,6 +1,7 @@
 import AbstractView from "./AbstractView.js";
 import validateInput from "../validateInput.js";
 import toogleVisibility from "../toogleVisibility.js";
+import Regexp from "../Regexp.js";
 
 export default class extends AbstractView {
 
@@ -47,8 +48,8 @@ export default class extends AbstractView {
         const emailInput = document.querySelector("#emailInput");
         const passwordInput = document.querySelector("#passwordInput");
 
-        validateInput(emailInput, /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/);
-        validateInput(passwordInput, /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{8,}$/);
+        validateInput(emailInput, Regexp.emailInput);
+        validateInput(passwordInput, Regexp.passwordInput);
 
         document.querySelector(".form__input-wrapper_password span").addEventListener('click', toogleVisibility.bind(event, passwordInput));
     }

@@ -1,6 +1,7 @@
 import AbstractView from "./AbstractView.js";
 import validateInput from "../../../static/js/validateInput.js";
 import toogleVisibility from "../toogleVisibility.js";
+import Regexp from "../Regexp.js"
 
 export default class extends AbstractView {
 
@@ -58,17 +59,18 @@ export default class extends AbstractView {
 
 
     validation() {
+
         const emailInput = document.querySelector("#emailInput");
         const passwordInput = document.querySelector("#passwordInput");
         const firstNameInput = document.querySelector("#firstNameInput");
         const lastNameInput = document.querySelector("#lastNameInput");
         const confirmPasswordInput = document.querySelector("#confirmPasswordInput");
 
-        validateInput(firstNameInput, /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/);
-        validateInput(lastNameInput, /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/);
-        validateInput(emailInput, /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/i);
-        validateInput(passwordInput, /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{8,}$/, confirmPasswordInput);
-        validateInput(confirmPasswordInput, /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{8,}$/, passwordInput);
+        validateInput(firstNameInput, Regexp.nameInput);
+        validateInput(lastNameInput, Regexp.nameInput);
+        validateInput(emailInput, Regexp.emailInput);
+        validateInput(passwordInput, Regexp.passwordInput, confirmPasswordInput);
+        validateInput(confirmPasswordInput, Regexp.passwordInput, passwordInput);
 
         document.querySelector(".form__input-wrapper_password span").addEventListener('click', toogleVisibility.bind(event, passwordInput));
         document.querySelector(".form__input-wrapper_confirm-password span").addEventListener('click', toogleVisibility.bind(event, confirmPasswordInput));

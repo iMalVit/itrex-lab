@@ -41,7 +41,6 @@ const router = async () => {
 
     view.validation();
 
-    // console.log(match.route.view());
 };
 
 window.addEventListener("popstate", router);
@@ -49,7 +48,7 @@ window.addEventListener("popstate", router);
 
 document.addEventListener("DOMContentLoaded", () => {
     document.body.addEventListener("click", e => {
-        // console.log(e.target)
+
         if (e.target.matches("[data-link]") && (e.target.tagName === 'A'))  {
             e.preventDefault();
             navigateTo(e.target.href);
