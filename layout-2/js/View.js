@@ -2,7 +2,6 @@
 
 export default class View {
     constructor() {
-
     }
 
     getElement(selector) {
