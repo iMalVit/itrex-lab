@@ -10,7 +10,15 @@ export default class extends AbstractView {
         this.setTitle("Sign In");
     }
 
+    getElement(selector) {
+        return document.querySelector(selector);
+    }
+
     async getHtml() {
+
+
+        this.getElement('link').setAttribute('href', './static/css/styles.css')
+
         return `
         <div class="background background_sign-in">
         <main class="content content_sign-in">
@@ -24,8 +32,8 @@ export default class extends AbstractView {
                     <span class="form__show-password-icon"></span>
                     <div class="form__password-description"></div>
                 </div>
-                <a class="link-button" href="">
-                    <button class="link-button__button link-button__button_size">Sign In</button>
+                <a class="link-button" href="/patients" data-link>
+                    <button class="link-button__button link-button__button_size" data-link>Sign In</button>
 
                 </a>
 
