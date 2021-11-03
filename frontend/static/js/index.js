@@ -1,4 +1,4 @@
-import Controller from './Controller.js'
+import Controller from './controllers/Controller.js'
 // import Model from './Model.js'
 
 

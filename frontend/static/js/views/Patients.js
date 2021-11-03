@@ -7,9 +7,6 @@ export default class extends AbstractView {
         this.setTitle("Restore Password Success");
     }
 
-    getElement(selector) {
-        return document.querySelector(selector);
-    }
 
     status(param) {
         if(param) {
@@ -27,9 +24,9 @@ export default class extends AbstractView {
     }
 
     getHtml(data) {
-        this.getElement('link').setAttribute('href', './static/css/patients.css')
+
         if(data === undefined) {
-            return `<div class="content">
+            return `<div class="content-patients">
         <header class="header">
             <div class="header__logo">
                 <svg width="132" height="32" viewBox="0 0 132 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -130,11 +127,11 @@ export default class extends AbstractView {
                 </div>`
             });
 
-            const patientsSum = patients.reduce((prev, cur) => prev + cur);
+            const patientsSum = patients.join(" ");
 
 
 
-            return `<div class="content">
+            return `<div class="content-patients">
         <header class="header">
             <div class="header__logo">
                 <svg width="132" height="32" viewBox="0 0 132 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -189,11 +186,11 @@ export default class extends AbstractView {
         </header>
         <main class="board">
             <div class="wrapper">
-                <a class="link-button" >
-                    <button class="link-button__button link-button__button_active link-button__button_position">Patients</button>
+                <a class="patients-link-button" >
+                    <button class="patients-link-button__button patients-link-button__button_active patients-link-button__button_position">Patients</button>
                 </a>
-                <a class="link-button" href="">
-                    <button class="link-button__button ">Resolutions</button>
+                <a class="patients-link-button" href="">
+                    <button class="patients-link-button__button ">Resolutions</button>
                 </a>
             </div>
 

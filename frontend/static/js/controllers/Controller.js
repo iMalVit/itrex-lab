@@ -1,9 +1,9 @@
-import SignUp from "./views/SignUp.js";
-import SignIn from "./views/SignIn.js";
-import RestorePassword from "./views/RestorePassword.js";
-import RestorePasswordSuccess from "./views/RestorePasswordSuccess.js";
-import Patients from "./views/Patients.js";
-import Model from "./Model.js";
+import SignUp from "../views/SignUp.js";
+import SignIn from "../views/SignIn.js";
+import RestorePassword from "../views/RestorePassword.js";
+import RestorePasswordSuccess from "../views/RestorePasswordSuccess.js";
+import Patients from "../views/Patients.js";
+import Model from "../models/Model.js";
 
 export default class Controller {
     constructor() {

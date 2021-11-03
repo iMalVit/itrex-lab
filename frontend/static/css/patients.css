@@ -2,7 +2,7 @@ body {
   margin: 0;
 }
 
-.content {
+.content-patients {
   min-width: 270px;
   background: #E4EBFF;
   height: 100vh;
@@ -161,7 +161,7 @@ body {
   }
 }
 
-.link-button__button {
+.patients-link-button__button {
   font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -173,32 +173,32 @@ body {
   border-radius: 8px;
 }
 @media (max-width: 460px) {
-  .link-button__button {
+  .patients-link-button__button {
     width: 120px;
   }
 }
 @media (max-width: 317px) {
-  .link-button__button {
+  .patients-link-button__button {
     width: 104px;
   }
 }
-.link-button__button_active {
+.patients-link-button__button_active {
   color: #FFFFFF;
   background-color: #7297FF;
   font-weight: 600;
 }
-.link-button__button_position {
+.patients-link-button__button_position {
   margin-right: 12px;
   margin-bottom: 56px;
 }
 @media (max-width: 460px) {
-  .link-button__button_position {
+  .patients-link-button__button_position {
     margin-right: 24px;
     margin-bottom: 40px;
   }
 }
 @media (max-width: 317px) {
-  .link-button__button_position {
+  .patients-link-button__button_position {
     margin-right: 10px;
   }
 }

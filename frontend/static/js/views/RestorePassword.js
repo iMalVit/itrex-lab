@@ -1,6 +1,6 @@
 import AbstractView from "./AbstractView.js";
-import Regexp from "../Regexp.js";
-import validateInput from "../validateInput.js";
+import regexp from "../utils/regexp.js";
+import validateInput from "../utils/validateInput.js";
 
 
 export default class extends AbstractView {
@@ -9,6 +9,7 @@ export default class extends AbstractView {
         super();
         this.setTitle("Restore Password");
     }
+
 
     async getHtml() {
         return `
@@ -43,9 +44,9 @@ export default class extends AbstractView {
     }
 
     validation() {
-        const emailInput = document.querySelector("#emailInput");
+        const emailInput = document.getElementById("emailInput");
 
-        validateInput(emailInput, Regexp.emailInput);
+        validateInput(emailInput, regexp.emailInput);
 
     }
 }

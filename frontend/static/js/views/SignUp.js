@@ -1,7 +1,7 @@
 import AbstractView from "./AbstractView.js";
-import validateInput from "../../../static/js/validateInput.js";
-import toogleVisibility from "../toogleVisibility.js";
-import Regexp from "../Regexp.js"
+import validateInput from "../utils/validateInput.js";
+import toogleVisibility from "../utils/toogleVisibility.js";
+import regexp from "../utils/regexp.js"
 
 export default class extends AbstractView {
 
@@ -30,15 +30,15 @@ export default class extends AbstractView {
                 </div>
                 <div class="form__input-wrapper form__input-wrapper_password">
                     <input class="form__input" placeholder="Password" type="password" id="passwordInput">
-                    <span class="form__show-password-icon"></span>
-                    <div class="form__password-description"></div>
+                    <span class="form__show-password-icon" id="passwordShowIcon"></span>
+                    <div class="form__password-description" id="inputDescription"></div>
 
 
 
                 </div>
                 <div class="form__input-wrapper form__input-wrapper_confirm-password">
                     <input class="form__input" placeholder="Confirm Password" type="password" id="confirmPasswordInput">
-                    <span class="form__show-password-icon"></span>
+                    <span class="form__show-password-icon" id="confirmPasswordShowIcon"></span>
 
 
                 </div>
@@ -60,20 +60,20 @@ export default class extends AbstractView {
 
     validation() {
 
-        const emailInput = document.querySelector("#emailInput");
-        const passwordInput = document.querySelector("#passwordInput");
-        const firstNameInput = document.querySelector("#firstNameInput");
-        const lastNameInput = document.querySelector("#lastNameInput");
-        const confirmPasswordInput = document.querySelector("#confirmPasswordInput");
+        const emailInput = document.getElementById("emailInput");
+        const passwordInput = document.getElementById("passwordInput");
+        const firstNameInput = document.getElementById("firstNameInput");
+        const lastNameInput = document.getElementById("lastNameInput");
+        const confirmPasswordInput = document.getElementById("confirmPasswordInput");
 
-        validateInput(firstNameInput, Regexp.nameInput);
-        validateInput(lastNameInput, Regexp.nameInput);
-        validateInput(emailInput, Regexp.emailInput);
-        validateInput(passwordInput, Regexp.passwordInput, confirmPasswordInput);
-        validateInput(confirmPasswordInput, Regexp.passwordInput, passwordInput);
+        validateInput(firstNameInput, regexp.nameInput);
+        validateInput(lastNameInput, regexp.nameInput);
+        validateInput(emailInput, regexp.emailInput);
+        validateInput(passwordInput, regexp.passwordInput, confirmPasswordInput);
+        validateInput(confirmPasswordInput, regexp.passwordInput, passwordInput);
 
-        document.querySelector(".form__input-wrapper_password span").addEventListener('click', toogleVisibility.bind(event, passwordInput));
-        document.querySelector(".form__input-wrapper_confirm-password span").addEventListener('click', toogleVisibility.bind(event, confirmPasswordInput));
+        document.getElementById("passwordShowIcon").addEventListener('click', toogleVisibility.bind(event, passwordInput));
+        document.getElementById("confirmPasswordShowIcon").addEventListener('click', toogleVisibility.bind(event, confirmPasswordInput));
 
     }
 }

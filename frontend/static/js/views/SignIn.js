@@ -1,7 +1,7 @@
 import AbstractView from "./AbstractView.js";
-import validateInput from "../validateInput.js";
-import toogleVisibility from "../toogleVisibility.js";
-import Regexp from "../Regexp.js";
+import validateInput from "../utils/validateInput.js";
+import toogleVisibility from "../utils/toogleVisibility.js";
+import regexp from "../utils/regexp.js";
 
 export default class extends AbstractView {
 
@@ -10,14 +10,11 @@ export default class extends AbstractView {
         this.setTitle("Sign In");
     }
 
-    getElement(selector) {
-        return document.querySelector(selector);
-    }
 
     async getHtml() {
 
 
-        this.getElement('link').setAttribute('href', './static/css/styles.css')
+
 
         return `
         <div class="background background_sign-in">
@@ -29,8 +26,8 @@ export default class extends AbstractView {
                 </div>
                 <div class="form__input-wrapper form__input-wrapper_password">
                     <input class="form__input" placeholder="Password" type="password" id="passwordInput" maxlength="30">
-                    <span class="form__show-password-icon"></span>
-                    <div class="form__password-description"></div>
+                    <span class="form__show-password-icon" id="passwordShowIcon"></span>
+                    <div class="form__password-description" id="inputDescription"></div>
                 </div>
                 <a class="link-button" href="/patients" data-link>
                     <button class="link-button__button link-button__button_size" data-link>Sign In</button>
@@ -53,13 +50,13 @@ export default class extends AbstractView {
 
 
     validation() {
-        const emailInput = document.querySelector("#emailInput");
-        const passwordInput = document.querySelector("#passwordInput");
+        const emailInput = document.getElementById("emailInput");
+        const passwordInput = document.getElementById("passwordInput");
 
-        validateInput(emailInput, Regexp.emailInput);
-        validateInput(passwordInput, Regexp.passwordInput);
+        validateInput(emailInput, regexp.emailInput);
+        validateInput(passwordInput, regexp.passwordInput);
 
-        document.querySelector(".form__input-wrapper_password span").addEventListener('click', toogleVisibility.bind(event, passwordInput));
+        document.getElementById("passwordShowIcon").addEventListener('click', toogleVisibility.bind(event, passwordInput));
     }
 
 
