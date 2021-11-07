@@ -13,7 +13,8 @@ import {
   FormInputWrapperConfirmPasword,
   ShowPasswordIcon,
 } from "../../common/styles/common.style";
-import { FormButtonSubmit, Form, FormTitle } from "../SignUp.style";
+import { Form, FormTitle } from "../SignUp.style";
+import { Button } from "../../common/styles/button.style";
 
 const SignUpForm = () => {
   return (
@@ -107,13 +108,18 @@ const SignUpForm = () => {
             ></div>
           </FormInputWrapperConfirmPasword>
           <FormButtonWrapper>
-            <FormButtonSubmit
+            <Button
+              primary
+              medium
+              width="146px"
+              textAlign="start"
+              iconRight
               disabled={!isValid && dirty}
               onClick={handleSubmit}
               type={"submit"}
             >
               Sign Up
-            </FormButtonSubmit>
+            </Button>
           </FormButtonWrapper>
         </Form>
       )}

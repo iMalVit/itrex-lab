@@ -1,5 +1,5 @@
 import React from "react";
-import Patient from "./Patient/Patient";
+import Patient from "./PatientDoctorView/PatientDoctorView";
 
 const BoardOfPatients = (props) => {
   return (

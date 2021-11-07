@@ -10,16 +10,16 @@ import {
   LoggedPersonProfession,
 } from "./Header.style";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <HeaderWrapper>
       <HeaderLogo />
       <LoggedPerson>
         <LoggedPersonDescription>
-          <LoggedPersonName>Miranda Nelson</LoggedPersonName>
-          <LoggedPersonProfession>Doctor</LoggedPersonProfession>
+          <LoggedPersonName>{props.name}</LoggedPersonName>
+          <LoggedPersonProfession>{props.profession}</LoggedPersonProfession>
         </LoggedPersonDescription>
-        <img src="/assets/avatars/avatar.png" alt="logged-person__avatar" />
+        <img src={props.avatar} alt="logged-person__avatar" />
         <IndicatorBox>
           <Indicator></Indicator>
         </IndicatorBox>

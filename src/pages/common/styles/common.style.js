@@ -261,6 +261,7 @@ export const ShowPasswordIcon = styled.span`
   top: 18px;
   right: 26px;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 
   @media (max-width: 400px) {
     top: 8px;

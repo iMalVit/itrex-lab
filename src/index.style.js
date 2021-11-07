@@ -1,3 +1,6 @@
+import { createGlobalStyle } from "styled-components";
+
+export const GlobalStyle = createGlobalStyle`
 body {
   margin: 0;
 }
@@ -34,3 +37,10 @@ input::-webkit-input-placeholder {
 .form__show-password-icon_show {
   background: url("./assets/icons/visibility.svg") no-repeat !important;
 }
+
+@media (max-width: 560px) {
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+}
+`;

@@ -1,21 +1,19 @@
 import React from "react";
 import {
   PatientBox,
-  Avatar,
   MainInfo,
-  Status,
-  StatusText,
+  Avatar,
+  DescriptionBox,
+  PatientName,
+  PaitentInfo,
+  PatientTimeText,
+  DescriptionBoxDocument,
   PatientDocumentText,
   PatientDocumentIcon,
-  PatientTimeText,
-  PatientName,
-  DescriptionBox,
-  StatusIcon,
-  PaitentInfo,
-  DescriptionBoxDocument,
-} from "./Patient.style";
+} from "../../PatientsDoctorView/PatientDoctorView/PatientDoctorView.style";
+import { Profession } from "./PatientUserView.style";
 
-const Patient = (props) => {
+const PatientUserView = (props) => {
   const displayFlex = {
     display: "flex",
   };
@@ -33,10 +31,7 @@ const Patient = (props) => {
           <PatientName>
             {props.firstName} {props.lastName}
           </PatientName>
-          <Status>
-            <StatusIcon status={props.status}></StatusIcon>
-            <StatusText>Appointment is confirmed</StatusText>
-          </Status>
+          <Profession>Therapist</Profession>
         </DescriptionBox>
       </MainInfo>
       <PaitentInfo>
@@ -48,7 +43,7 @@ const Patient = (props) => {
         </div>
         <DescriptionBoxDocument>
           <PatientDocumentIcon
-            src="/assets/icons/document.svg"
+            src="/assets/icons/Illness.svg"
             alt="patient__document-icon"
           />
           <PatientDocumentText>{props.description}</PatientDocumentText>
@@ -58,4 +53,4 @@ const Patient = (props) => {
   );
 };
 
-export default Patient;
+export default PatientUserView;

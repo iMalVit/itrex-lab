@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import Patients from "./pages/Patients/Patients";
+import PatientsDoctorView from "./pages/Patients/PatientsDoctorView/PatientsDoctorView";
 import EmptyPatients from "./pages/Patients/EmptyPatients/EmptyPatients";
 import SignUp from "./pages/SignUp/SignUp";
 import SignIn from "./pages/SignIn/SignIn";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import RestorePassword from "./pages/RestorePassword/RestorePassword";
 import RestorePasswordSuccess from "./pages/RestorePasswordSuccess/RestorePasswordSuccess";
+import PatientsUserView from "./pages/Patients/PatientsUserView/PatientsUserView";
 import { Route, Switch } from "react-router-dom";
 
 function App() {
@@ -17,8 +18,12 @@ function App() {
   return (
     <React.Fragment>
       <Switch>
-        <Route path="/patients">
-          <Patients />
+        <Route path="/patients_doctor_view">
+          <PatientsDoctorView />
+        </Route>
+
+        <Route path="/patients_user_view">
+          <PatientsUserView />
         </Route>
 
         <Route path="/empty_patients">

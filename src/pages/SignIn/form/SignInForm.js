@@ -11,11 +11,8 @@ import {
   FormInputWrapperPassword,
   ShowPasswordIcon,
 } from "../../common/styles/common.style";
-import {
-  FormButtonSubmit,
-  Form,
-  QuestionLinkForgotWrapper,
-} from "../SignIn.style";
+import { Form, QuestionLinkForgotWrapper } from "../SignIn.style";
+import { Button } from "../../common/styles/button.style";
 import { toogleVisibility } from "../../../utils/toogleVisibility";
 import { FormTitle } from "../../SignIn/SignIn.style";
 
@@ -31,7 +28,7 @@ const SignInForm = () => {
       validateOnBlur
       onSubmit={(values) => {
         console.log(values);
-        history.push("/patients");
+        history.push("/patients_doctor_view");
       }}
       validationSchema={SignInFormValidationsSchema}
     >
@@ -69,13 +66,18 @@ const SignInForm = () => {
             ></ShowPasswordIcon>
           </FormInputWrapperPassword>
           <FormButtonWrapper>
-            <FormButtonSubmit
+            <Button
+              primary
+              medium
+              width="138px"
+              textAlign="start"
+              iconRight
               disabled={!isValid && dirty}
               onClick={handleSubmit}
               type={"submit"}
             >
               Sign In
-            </FormButtonSubmit>
+            </Button>
           </FormButtonWrapper>
           <QuestionLinkForgotWrapper>
             <QuestionLink to="restore_password">Forgot Password?</QuestionLink>

@@ -13,9 +13,9 @@ import {
   FormLabel,
   FormTitle,
   FormDescription,
-  FormButtonSubmit,
   Form,
 } from "../RestorePassword.style";
+import { Button } from "../../common/styles/button.style";
 
 const RestorePasswordForm = (props) => {
   const history = useHistory();
@@ -61,13 +61,18 @@ const RestorePasswordForm = (props) => {
           </FormInputWrapperEmail>
 
           <FormButtonWrapper>
-            <FormButtonSubmit
+            <Button
+              primary
+              width="214px"
+              medium
+              textAlign="start"
+              iconRight
               disabled={!isValid && dirty}
               onClick={handleSubmit}
               type={"submit"}
             >
               Send Reset Link
-            </FormButtonSubmit>
+            </Button>
           </FormButtonWrapper>
         </Form>
       )}

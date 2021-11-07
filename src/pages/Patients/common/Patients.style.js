@@ -84,6 +84,15 @@ export const ResolutionsButton = styled.button`
   height: 40px;
   border: none;
   border-radius: 8px;
+  color: #7297ff;
+  background: #ffffff;
+
+  box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.16);
+
+  @media (max-width: 768px) {
+    display: ${(props) =>
+      props.page === "PatientsUserView" ? "none" : "inline-block"};
+  }
 
   @media (max-width: 460px) {
     width: 120px;
