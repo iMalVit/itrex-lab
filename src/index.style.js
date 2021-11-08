@@ -43,4 +43,10 @@ input::-webkit-input-placeholder {
     width: 0;
   }
 }
+
+
+input:focus {
+  outline: none;
+  border: 1px solid #7297FF
+}
 `;
