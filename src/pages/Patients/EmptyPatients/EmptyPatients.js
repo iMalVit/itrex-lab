@@ -26,14 +26,14 @@ const EmptyPatients = () => {
 
         <BoardTitle>My Patients</BoardTitle>
         <EmptyBox>
-          <EmptyBoxLogo></EmptyBoxLogo>
+          <EmptyBoxLogo />
           <EmptyBoxText>
             You have no patients yet. <br />
             To create a patient profile, please contact your administrator.
           </EmptyBoxText>
         </EmptyBox>
       </Board>
-      <Footer></Footer>
+      <Footer />
     </Content>
   );
 };

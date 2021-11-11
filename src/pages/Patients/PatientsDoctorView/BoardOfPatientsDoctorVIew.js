@@ -3,7 +3,7 @@ import Patient from "./PatientDoctorView/PatientDoctorView";
 
 const BoardOfPatients = (props) => {
   return (
-    <React.Fragment>
+    <>
       {props.patients.map((patient) => (
         <Patient
           firstName={patient.firstName}
@@ -15,7 +15,7 @@ const BoardOfPatients = (props) => {
           key={patient.id}
         />
       ))}
-    </React.Fragment>
+    </>
   );
 };
 

@@ -16,7 +16,7 @@ function App() {
     console.log(emailRestore);
   };
   return (
-    <React.Fragment>
+    <>
       <Switch>
         <Route path="/patients_doctor_view">
           <PatientsDoctorView />
@@ -54,7 +54,7 @@ function App() {
           <NotFoundPage />
         </Route>
       </Switch>
-    </React.Fragment>
+    </>
   );
 }
 

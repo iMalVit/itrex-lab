@@ -19,15 +19,15 @@ const Patient = (props) => {
   const displayFlex = {
     display: "flex",
   };
-  const timeHelper = (param) => {
-    const date = new Date(param);
+  const timeHelper = (time) => {
+    const date = new Date(time);
     return date.toString().substr(0, 16);
   };
 
   return (
     <PatientBox>
       <MainInfo>
-        <Avatar src={props.imageSrc} alt="patient__avatar" />
+        <Avatar src={props.imageSrc} alt="patient avatar" />
 
         <DescriptionBox>
           <PatientName>
