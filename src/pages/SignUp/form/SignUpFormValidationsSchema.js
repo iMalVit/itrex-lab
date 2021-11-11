@@ -1,27 +1,19 @@
 import * as Yup from "yup";
+import { validation } from "../../../utils/validation.util";
 export const SignUpFormValidationsSchema = Yup.object().shape({
   firstName: Yup.string()
     .required("First Name is required")
-    .matches(
-      /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/,
-      "First Name is not valid"
-    ),
+    .matches(validation.name, "First Name is not valid"),
   lastName: Yup.string()
     .required("Last Name is required")
-    .matches(
-      /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/,
-      "Last Name is not valid"
-    ),
+    .matches(validation.name, "Last Name is not valid"),
   email: Yup.string()
-    .matches(
-      /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/i,
-      "Email is not valid"
-    )
+    .matches(validation.email, "Email is not valid")
     .required("Email is required"),
   password: Yup.string()
     .required("Password is required")
     .matches(
-      /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{8,}$/,
+      validation.password,
       "Password must contain a capital letter, a number and be at least 8 characters"
     ),
   confirmPassword: Yup.string()
