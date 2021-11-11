@@ -34,10 +34,6 @@ input::-webkit-input-placeholder {
   color: #a1abc9;
 }
 
-.form__show-password-icon_show {
-  background: url("./assets/icons/visibility.svg") no-repeat !important;
-}
-
 @media (max-width: 560px) {
   ::-webkit-scrollbar {
     width: 0;

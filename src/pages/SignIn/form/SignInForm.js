@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik } from "formik";
 import { useHistory } from "react-router-dom";
 import { SignInFormValidationsSchema } from "./SignInFormValidationsSchema";
@@ -13,11 +13,11 @@ import {
 } from "../../common/styles/common.style";
 import { Form, QuestionLinkForgotWrapper } from "../SignIn.style";
 import { Button } from "../../common/styles/button.style";
-import { toogleVisibility } from "../../../utils/toogleVisibility";
 import { FormTitle } from "../../SignIn/SignIn.style";
 
 const SignInForm = () => {
   const history = useHistory();
+  const [isShowPassword, setIsShowPassword] = useState(false);
 
   return (
     <Formik
@@ -53,16 +53,15 @@ const SignInForm = () => {
               isvalid={touched.password && errors.password}
               name={"password"}
               placeholder={"Password"}
-              type={"password"}
-              id={"passwordInput"}
+              type={isShowPassword ? "text" : "password"}
               maxLength="30"
             />
             {touched.password && errors.password && (
               <InputErrorText type="password">{errors.password}</InputErrorText>
             )}
             <ShowPasswordIcon
-              onClick={toogleVisibility.bind(null, "passwordInput")}
-              id="passwordShowIcon"
+              isShow={isShowPassword}
+              onClick={() => setIsShowPassword(!isShowPassword)}
             ></ShowPasswordIcon>
           </FormInputWrapperPassword>
           <FormButtonWrapper>

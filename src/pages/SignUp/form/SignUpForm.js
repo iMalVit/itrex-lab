@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik } from "formik";
 import { SignUpFormValidationsSchema } from "./SignUpFormValidationsSchema";
-import { toogleVisibility } from "../../../utils/toogleVisibility";
 import {
   InputErrorText,
   FormButtonWrapper,
@@ -17,6 +16,10 @@ import { Form, FormTitle } from "../SignUp.style";
 import { Button } from "../../common/styles/button.style";
 
 const SignUpForm = () => {
+  const [isShowPassword, setIsShowPassword] = useState(false);
+
+  const [isShowConfirmPassword, setIsShowConfirmPassword] = useState(false);
+
   return (
     <Formik
       initialValues={{
@@ -73,17 +76,15 @@ const SignUpForm = () => {
               isvalid={touched.password && errors.password}
               name={"password"}
               placeholder={"Password"}
-              type={"password"}
-              id={"passwordInput"}
+              type={isShowPassword ? "text" : "password"}
               maxLength="30"
             />
             {touched.password && errors.password && (
               <InputErrorText type="password">{errors.password}</InputErrorText>
             )}
             <ShowPasswordIcon
-              onClick={toogleVisibility.bind(null, "passwordInput")}
-              className="form__show-password-icon"
-              id="passwordShowIcon"
+              isShow={isShowPassword}
+              onClick={() => setIsShowPassword(!isShowPassword)}
             ></ShowPasswordIcon>
           </FormInputWrapperPassword>
           <FormInputWrapperConfirmPasword>
@@ -91,21 +92,17 @@ const SignUpForm = () => {
               isvalid={touched.confirmPassword && errors.confirmPassword}
               name={"confirmPassword"}
               placeholder={"Confirm Password"}
-              type={"password"}
-              id={"confirmPasswordInput"}
+              type={isShowConfirmPassword ? "text" : "password"}
               maxLength="30"
             />
             {touched.confirmPassword && errors.confirmPassword && (
               <InputErrorText>{errors.confirmPassword}</InputErrorText>
             )}
             <ShowPasswordIcon
-              onClick={toogleVisibility.bind(null, "confirmPasswordInput")}
-              id="passwordShowIcon"
+              isShow={isShowConfirmPassword}
+              onClick={() => setIsShowConfirmPassword(!isShowConfirmPassword)}
             ></ShowPasswordIcon>
-            <div
-              className="form__password-description"
-              id="inputDescription"
-            ></div>
+            <div id="inputDescription"></div>
           </FormInputWrapperConfirmPasword>
           <FormButtonWrapper>
             <Button

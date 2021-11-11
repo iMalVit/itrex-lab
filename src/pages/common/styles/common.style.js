@@ -255,7 +255,10 @@ export const FormInputWrapperConfirmPasword = styled.div`
 export const ShowPasswordIcon = styled.span`
   width: 24px;
   height: 24px;
-  background: url("../../../assets/icons/visibility_off.svg") no-repeat;
+  background: ${(props) =>
+    props.isShow
+      ? 'url("../../../assets/icons/visibility_off.svg") no-repeat'
+      : 'url("../../../assets/icons/visibility.svg") no-repeat'};
   background-size: contain;
   position: absolute;
   top: 18px;
