@@ -1,18 +1,14 @@
 import React from "react";
 import Header from "../../../components/Header/Header";
 import Footer from "../../../components/Footer/Footer";
-import {
-  Board,
-  Content,
-  PatientsButton,
-  ResolutionsButton,
-  BoardTitle,
-} from "../common/common.style";
+import { Board, Content, BoardTitle } from "../common/common.style";
 import {
   EmptyBox,
   EmptyBoxLogo,
   EmptyBoxText,
+  ButtonsWrapper,
 } from "./CabinetDoctorEmpty.style";
+import { Button } from "../../../components/Button/Button.style";
 
 const EmptyPatients = () => {
   return (
@@ -23,14 +19,18 @@ const EmptyPatients = () => {
         avatar="/assets/avatars/avatar.png"
       />
       <Board>
-        <div>
+        <ButtonsWrapper>
           <a>
-            <PatientsButton>Patients</PatientsButton>
+            <Button variant="primary" size="small">
+              Patients
+            </Button>
           </a>
           <a>
-            <ResolutionsButton>Resolutions</ResolutionsButton>
+            <Button variant="secondary" size="small">
+              Resolutions
+            </Button>
           </a>
-        </div>
+        </ButtonsWrapper>
 
         <BoardTitle>My Patients</BoardTitle>
         <EmptyBox>

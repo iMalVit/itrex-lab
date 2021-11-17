@@ -231,9 +231,10 @@ const CabinetUserMakeAnAppointment = (props) => {
                 </ChooseTimeContainer>
                 <ButtonWrapper>
                   <Button
-                    primary
-                    medium
+                    variant="primary"
+                    size="medium"
                     type="submit"
+                    width="160px"
                     onClick={handleSubmit}
                     disabled={!isValid && dirty}
                   >

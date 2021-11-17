@@ -6,8 +6,18 @@ import BoardOfDoctorsCabinetUser from "./BoardOfDoctorsCabinetUser";
 import { Button } from "../../../components/Button/Button.style";
 
 import { Content, Board, BoardTitle, BoardBox } from "../common/common.style";
+import { ButtonsWrapper, ToolBox } from "./CabinetUser.style";
+
+import { useHistory } from "react-router";
+import { PATH } from "../../../routes/routes";
 
 const PatientsUserView = (props) => {
+  const history = useHistory();
+
+  const handleClick = () => {
+    history.push(PATH.CABINET_USER_MAKE_AN_APPOINTMENT);
+  };
+
   return (
     <Content>
       <Header
@@ -16,30 +26,35 @@ const PatientsUserView = (props) => {
         avatar="/assets/avatars/avatarPatient.png"
       ></Header>
       <Board>
-        <div>
+        <ButtonsWrapper>
           <a>
-            <Button secondary small>
+            <Button variant="secondary" size="small">
               Profile
             </Button>
           </a>
           <a>
-            <Button
-              primary
-              small
-              marginBottom="61px"
-              marginLeft="12px"
-              marginRight="12px"
-            >
+            <Button variant="primary" size="small">
               Appointments
             </Button>
           </a>
           <a>
-            <Button secondary small noneOnMobile>
+            <Button variant="secondary" size="small" noneOnMobile>
               Resolutions
             </Button>
           </a>
-        </div>
-        <BoardTitle>My Appointments</BoardTitle>
+        </ButtonsWrapper>
+        <ToolBox>
+          <BoardTitle>My Appointments</BoardTitle>
+          <Button
+            variant="primary"
+            iconLeft="plus"
+            size="medium"
+            width="244px"
+            onClick={handleClick}
+          >
+            Create an appointment
+          </Button>
+        </ToolBox>
         <BoardBox>
           <BoardOfDoctorsCabinetUser doctors={props.doctors} />
         </BoardBox>

@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 import { Field } from "formik";
 
@@ -15,6 +14,9 @@ export const Board = styled.main`
   height: 89%;
   background: #f9faff;
   box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.32);
+  @media (max-height: 976px) {
+    overflow-y: scroll;
+  }
 
   @media (max-width: 460px) {
     width: 100%;
@@ -112,14 +114,18 @@ export const ChooseTimeContainer = styled.ul`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   grid-gap: 16px;
+
+  @media (max-width: 1550px) {
+    grid-gap: 8px;
+    width: 300px;
+  }
 `;
 
-export const TimeSlot = styled.div`
+export const TimeSlot = styled.li`
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 104px;
   height: 40px;
   box-sizing: border-box;
 
@@ -136,6 +142,10 @@ export const TimeSlot = styled.div`
   border-radius: 8px;
 
   cursor: pointer;
+
+  @media (max-width: 1550px) {
+    font-size: 14px;
+  }
 `;
 
 export const SelectWrapper = styled.div`
@@ -158,7 +168,6 @@ export const ButtonContainer = styled.div`
   align-self: flex-end;
 `;
 
-
 export const Input = styled(Field)`
   padding-left: 24px;
   box-sizing: border-box;
@@ -174,4 +183,12 @@ export const Input = styled(Field)`
   line-height: 24px;
 
   box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.16);
+
+  @media (max-width: 1790px) {
+    width: 400px;
+  }
+
+  @media (max-width: 1550px) {
+    width: 300px;
+  }
 `;

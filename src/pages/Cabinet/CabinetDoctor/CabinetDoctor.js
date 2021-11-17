@@ -6,6 +6,7 @@ import { patients } from "../../../mock/patients";
 import { Content, Board, BoardTitle, BoardBox } from "../common/common.style";
 import { Button } from "../../../components/Button/Button.style";
 import BoardOfPatientsCabinetDoctor from "./BoardOfPatientsCabinetDoctor";
+import { ButtonsWrapper } from "./CabinetDoctor.style";
 
 const Patients = () => {
   return (
@@ -16,18 +17,18 @@ const Patients = () => {
         avatar="/assets/avatars/avatar.png"
       />
       <Board>
-        <div>
+        <ButtonsWrapper>
           <a>
-            <Button primary small marginRight="12px" marginBottom="56px">
+            <Button variant="primary" size="small">
               Patients
             </Button>
           </a>
           <a>
-            <Button secondary small>
+            <Button variant="secondary" size="small">
               Resolutions
             </Button>
           </a>
-        </div>
+        </ButtonsWrapper>
         <BoardTitle>My Patients</BoardTitle>
         <BoardBox>
           <BoardOfPatientsCabinetDoctor patients={patients} />

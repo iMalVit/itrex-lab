@@ -5,7 +5,7 @@ export const Button = styled.button`
   position: relative;
 
   ${(props) =>
-    props.primary &&
+    props.variant === "primary" &&
     css`
       background-color: #7297ff;
       color: #ffffff;
@@ -26,10 +26,14 @@ export const Button = styled.button`
         background-color: #dce0ec;
         cursor: default;
       }
+
+      &:active {
+        background-color: #7297ff;
+      }
     `}
 
   ${(props) =>
-    props.secondary &&
+    props.variant === "secondary" &&
     css`
       background-color: #ffffff;
       color: #7297ff;
@@ -51,7 +55,7 @@ export const Button = styled.button`
     `}
 
   ${(props) =>
-    props.small &&
+    props.size === "small" &&
     css`
       width: 160px;
       height: 40px;
@@ -72,14 +76,15 @@ export const Button = styled.button`
     `}
 
     ${(props) =>
-    props.medium &&
+    props.size === "medium" &&
     css`
       padding: 16px 24px;
     `}
 
     ${(props) =>
-    props.iconRight &&
+    props.iconRight === "arrow" &&
     css`
+      text-align: start;
       &:after {
         position: absolute;
         width: 24px;
@@ -91,11 +96,26 @@ export const Button = styled.button`
       }
     `}
 
+    ${(props) =>
+    props.iconLeft === "plus" &&
+    css`
+      text-align: end;
+      padding-right: 16px;
+      &:after {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        top: 16px;
+        left: 16px;
+        background: url(../../../assets/icons/plus.svg);
+        content: "";
+      }
+    `}
+
   font-size: ${(props) => props.fontSize};
   margin-top: ${(props) => props.marginTop};
   margin-right: ${(props) => props.marginRight};
   margin-bottom: ${(props) => props.marginBottom};
   margin-left: ${(props) => props.marginLeft};
   width: ${(props) => props.width};
-  text-align: ${(props) => props.textAlign};
 `;

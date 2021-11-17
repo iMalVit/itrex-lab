@@ -63,11 +63,10 @@ const RestorePasswordForm = (props) => {
 
           <FormButtonWrapper>
             <Button
-              primary
+              variant="primary"
               width="214px"
-              medium
-              textAlign="start"
-              iconRight
+              size="medium"
+              iconRight="arrow"
               disabled={!isValid && dirty}
               onClick={handleSubmit}
               type={"submit"}

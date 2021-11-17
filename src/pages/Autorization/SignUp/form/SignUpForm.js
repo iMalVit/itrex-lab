@@ -107,11 +107,10 @@ const SignUpForm = () => {
           </FormInputWrapperConfirmPasword>
           <FormButtonWrapper>
             <Button
-              primary
-              medium
+              variant="primary"
+              size="medium"
               width="146px"
-              textAlign="start"
-              iconRight
+              iconRight="arrow"
               disabled={!isValid && dirty}
               onClick={handleSubmit}
               type={"submit"}

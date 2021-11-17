@@ -62,6 +62,12 @@ export const selectStyles = {
     boxSizing: "border-box",
     boxShadow: "0px 4px 32px rgba(218, 228, 255, 0.16)",
     borderRadius: "8px",
+    "@media (max-width: 1790px)": {
+      width: "400px",
+    },
+    "@media (max-width: 1550px)": {
+      width: "300px",
+    },
   }),
   indicatorSeparator: (provided) => ({
     ...provided,
