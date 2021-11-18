@@ -1,8 +1,7 @@
 import React from "react";
-import Select from "react-select";
 import { useField } from "formik";
 
-import { selectStyles } from "./SelectList.style";
+import { SelectStyled } from "./SelectList.style";
 
 export const SelectList = ({ options, ...props }) => {
   const [field, state, { setValue, setTouched }] = useField(props.field);
@@ -11,11 +10,11 @@ export const SelectList = ({ options, ...props }) => {
   };
 
   return (
-    <Select
-      styles={selectStyles}
+    <SelectStyled
       onChange={onChange}
       onBlur={setTouched}
       options={options}
+      classNamePrefix="ReactSelect"
     />
   );
 };

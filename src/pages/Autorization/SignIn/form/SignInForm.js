@@ -28,7 +28,7 @@ const SignInForm = () => {
       validateOnBlur
       onSubmit={(values) => {
         console.log(values);
-        history.push("/patients_doctor_view");
+        history.push(PATH.CABINET_USER);
       }}
       validationSchema={SignInFormValidationsSchema}
     >
