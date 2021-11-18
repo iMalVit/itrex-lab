@@ -1,6 +1,6 @@
 # Deploy
 
-You can try this project on (https://malyshkin-vitali-react-lab-task-4.netlify.app).
+You can try this project on [Netlify](https://malyshkin-vitali-react-lab-task-4.netlify.app).
 
 # Getting Started with Create React App
 
