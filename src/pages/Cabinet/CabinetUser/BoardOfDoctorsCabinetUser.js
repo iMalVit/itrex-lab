@@ -1,18 +1,21 @@
 import React from "react";
 import DoctorCabinetUser from "./DoctorCabinetUser/DoctorCabinetUser";
+import { useSelector } from "react-redux";
 
 const BoardOfDoctorsCabinetUser = (props) => {
+  const appointments = useSelector((state) => state.appointments.appointments);
+
   return (
     <>
-      {props.doctors.map((doctor) => (
+      {appointments.map((doctor) => (
         <DoctorCabinetUser
-          firstName={doctor.firstName}
-          lastName={doctor.lastName}
-          date={doctor.date}
-          time={doctor.time}
-          imageSrc={doctor.avatar}
-          occupation={doctor.occupation}
-          description={doctor.description}
+          firstName={doctor.doctor.first_name}
+          lastName={doctor.doctor.last_name}
+          date={new Date(doctor.visit_date)}
+          time={new Date(doctor.visit_date).getHours()}
+          imageSrc={doctor.doctor.photo}
+          occupation={doctor.doctor.specialization_name}
+          description={doctor.reason}
           key={doctor.id}
         />
       ))}

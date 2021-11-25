@@ -7,26 +7,14 @@ import {
   CloseButton,
 } from "./Message.style";
 
-const ErrorMessage = () => {
+const ErrorMessage = (props) => {
   return (
     <>
       <MessageContainer error>
         <AttentionIcon />
         <CloseButton />
         <MessageTitle>Error message goes here</MessageTitle>
-        <MessageDescription>
-          We show this message if something irreparable has happened. But there
-          is nothing irreparable
-        </MessageDescription>
-      </MessageContainer>
-      <MessageContainer success>
-        <AttentionIcon />
-        <CloseButton />
-        <MessageTitle>Success message goes here</MessageTitle>
-        <MessageDescription>
-          We show this message if something awesome has happened. You are
-          awesome too
-        </MessageDescription>
+        <MessageDescription>{props.errorMessage}</MessageDescription>
       </MessageContainer>
     </>
   );

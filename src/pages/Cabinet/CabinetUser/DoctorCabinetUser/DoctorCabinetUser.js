@@ -38,8 +38,8 @@ const DoctorCabinetUser = (props) => {
         <div style={displayFlex}>
           <img src="/assets/icons/time.svg" alt="patients__time-icon" />
           <PatientTimeText>
-            {timeHelper(props.date)} {props.time} pm – {Number(props.time) + 1}{" "}
-            pm
+            {timeHelper(props.date)} {props.time - 3} pm –{" "}
+            {Number(props.time - 3) + 1} pm
           </PatientTimeText>
         </div>
         <DescriptionBoxDocument>

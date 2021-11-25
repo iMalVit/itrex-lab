@@ -25,10 +25,19 @@ import { InputErrorText } from "../../common/common.style";
 import { Formik, Field } from "formik";
 import TimeBoard from "../components/TimeBoard/TimeBoard";
 import { getDoctorsSpecializations } from "../../../../api/api.util";
-import { api } from "../../../../api/api";
+import { useCreateAnAppointment } from "../../redux/saga/useCreateAnAppointment";
 
 const CabinetUserMakeAnAppointmentForm = (props) => {
+  const { createAnAppointment } = useCreateAnAppointment();
   const [doctorsSpecializations, setDoctorsSpecializations] = useState(null);
+
+  const convertTime = (time) => {
+    const convertedTime = time.slice(0, -8);
+    const afterNumber = time.slice(6, 8);
+    if (afterNumber === "AM" && convertedTime < 12) return `${convertedTime}`;
+    if (afterNumber === "PM" && convertedTime <= 12)
+      return `${Number(convertedTime) + 12}`;
+  };
 
   useEffect(() => {
     getDoctorsSpecializations().then((responce) => {
@@ -55,7 +64,24 @@ const CabinetUserMakeAnAppointmentForm = (props) => {
       }}
       validationSchema={CabinetUserMakeAnAppointmentFormValidationSchema}
       validateOnBlur={false}
-      onSubmit={(values) => {}}
+      onSubmit={(values) => {
+        console.log(values);
+        const { doctorName: doctorID, reason, note, date, time } = values;
+        const appointmentData = {
+          date: `${date.getFullYear()}-${
+            date.getMonth() + 1
+          }-${date.getDate()}T${convertTime(time)}:00:00.000Z`,
+          doctorID,
+          reason,
+          note,
+        };
+
+        console.log(appointmentData);
+
+        createAnAppointment(appointmentData);
+
+
+      }}
     >
       {({ values, errors, touched, handleSubmit, isValid, dirty }) => (
         <MakeAnAppointmentForm onSubmit={handleSubmit}>

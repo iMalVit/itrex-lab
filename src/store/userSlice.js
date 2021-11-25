@@ -1,4 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAction, createSlice } from "@reduxjs/toolkit";
+
+export const loginRequest = createAction("login/request");
+export const loginSuccess = createAction("login/success");
+export const loginFailed = createAction("login/failed");
+export const getUserDataRequest = createAction("getUserData/request");
+export const getUserDataSuccess = createAction("getUserData/success");
+export const getUserDataFailed = createAction("getUserData/failed");
+export const registerRequest = createAction("register/request");
+export const registerSuccess = createAction("register/success");
+export const registerFailed = createAction("register/failed");
 
 const userSlice = createSlice({
   name: "user",
@@ -8,6 +18,7 @@ const userSlice = createSlice({
     id: "",
     photo: "",
     role_name: "",
+    isLogged: false,
   },
   reducers: {
     setCurrentUser(state, action) {
@@ -17,6 +28,7 @@ const userSlice = createSlice({
         id: action.payload.id,
         photo: action.payload.photo,
         role_name: action.payload.role_name,
+        isLogged: true,
       };
     },
   },

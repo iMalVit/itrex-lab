@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Formik } from "formik";
-import { useHistory } from "react-router-dom";
-import { login, getUserProfile } from "../../../../api/api.util";
 import { SignInFormValidationsSchema } from "./SignInFormValidationsSchema";
 import { PATH } from "../../../../routes/routes";
 import {
@@ -15,25 +13,11 @@ import {
 } from "../../common/common.style";
 import { Form, FormTitle, QuestionLinkForgotWrapper } from "../SignIn.style";
 import { Button } from "../../../../components/Button/Button.style";
-import { useDispatch } from "react-redux";
-import { userActions } from "../../../../store/userSlice";
+import { useLogin } from "./redux/useLogin";
 
 const SignInForm = () => {
-  const history = useHistory();
+  const { login } = useLogin();
   const [isShowPassword, setIsShowPassword] = useState(false);
-  const dispatch = useDispatch();
-
-  const goToCabinet = (profileData) => {
-    // eslint-disable-next-line default-case
-    switch (profileData.data.role_name) {
-      case "Doctor":
-        history.push(PATH.CABINET_DOCTOR);
-        break;
-      case "Patient":
-        history.push(PATH.CABINET_USER);
-        break;
-    }
-  };
 
   return (
     <Formik
@@ -43,24 +27,7 @@ const SignInForm = () => {
       }}
       validateOnBlur
       onSubmit={(values) => {
-        console.log(values);
-        login(values)
-          .then((res) => {
-            console.log(res.data.access_token);
-            return res;
-          })
-          .then(
-            (res) =>
-              sessionStorage.setItem("access_token", res.data.access_token)
-            // console.log(res)
-          )
-          .then(() => getUserProfile(sessionStorage.getItem("access_token")))
-          .then((res) => {
-            dispatch(userActions.setCurrentUser(res.data));
-            goToCabinet(res);
-            console.log(res);
-          });
-        // history.push(PATH.CABINET_USER);
+        login(values);
       }}
       validationSchema={SignInFormValidationsSchema}
     >

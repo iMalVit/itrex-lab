@@ -15,11 +15,12 @@ import {
 } from "../../common/common.style";
 import { Form, FormTitle } from "../SignUp.style";
 import { Button } from "../../../../components/Button/Button.style";
-import { register } from "../../../../api/api.util";
 import { useHistory } from "react-router";
 import { PATH } from "../../../../routes/routes";
+import { useRegister } from "../../SignIn/form/redux/useRegister";
 
 const SignUpForm = () => {
+  const { register } = useRegister();
   const [isShowPassword, setIsShowPassword] = useState(false);
 
   const [isShowConfirmPassword, setIsShowConfirmPassword] = useState(false);
@@ -39,7 +40,7 @@ const SignUpForm = () => {
       onSubmit={(values) => {
         console.log(values);
         const { confirmPassword, ...userData } = values;
-        register(userData).then(() => history.push(PATH.SIGN_IN));
+        register(userData);
       }}
       validationSchema={SignUpFormValidationsSchema}
     >

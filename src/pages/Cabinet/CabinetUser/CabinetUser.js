@@ -10,6 +10,11 @@ import { ButtonsWrapper, ToolBox } from "./CabinetUser.style";
 
 import { useHistory } from "react-router";
 import { PATH } from "../../../routes/routes";
+import { useDispatch, useSelector } from "react-redux";
+import SuccessMessage from "../../../components/StatusMessages/SuccessMessage";
+import ErrorMessage from "../../../components/StatusMessages/ErrorMessage";
+import { MessageBox } from "../../../components/StatusMessages/MessageBox.style";
+import { statusMessageActions } from "../../../store/statusMessageSlice";
 
 const PatientsUserView = (props) => {
   const history = useHistory();
@@ -18,8 +23,27 @@ const PatientsUserView = (props) => {
     history.push(PATH.CABINET_USER_MAKE_AN_APPOINTMENT);
   };
 
+  const dispatch = useDispatch();
+
+  const messageStatus = useSelector((state) => state.statusMessage);
+
+  const timeout = () =>
+    setTimeout(() => {
+      dispatch(statusMessageActions.setUndefinedStatus());
+    }, 3000);
+
   return (
     <Content>
+      {messageStatus.status && timeout() && (
+        <MessageBox>
+          <SuccessMessage></SuccessMessage>
+        </MessageBox>
+      )}
+      {messageStatus.status === false && timeout() && (
+        <MessageBox>
+          <ErrorMessage errorMessage={messageStatus.error}></ErrorMessage>
+        </MessageBox>
+      )}
       <Header
         name="Larry Prinston"
         profession="Patient"

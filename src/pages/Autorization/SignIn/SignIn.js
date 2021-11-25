@@ -11,6 +11,8 @@ import { Content } from "./SignIn.style";
 const SignIn = () => {
   return (
     <BackgroundWrapper page="SignIn">
+      {console.log("PGG")}
+
       <Content>
         <SignInForm />
         <QuestionLinkWrapper page="SignIn">

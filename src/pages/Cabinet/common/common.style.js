@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Content = styled.div`
+  position: relative;
   min-width: 270px;
   background: #e4ebff;
   height: 100vh;
