@@ -3,12 +3,12 @@ import {
   getAllDoctorAppointments,
   getUserProfile,
   login,
-} from "../../../../../../api/api.util";
+} from "../../../../api/api.util";
 import {
   getDoctorAppointmentsRequest,
   getPatientAppointmentsRequest,
-} from "../../../../../../store/appointmentsSlice";
-import { setToken, getToken } from "../../../../../../store/token";
+} from "../../../../store/appointmentsSlice";
+import { setToken, getToken } from "../../../../store/token";
 import {
   getUserDataRequest,
   getUserDataSuccess,
@@ -16,8 +16,8 @@ import {
   loginFailed,
   loginSuccess,
   userActions,
-} from "../../../../../../store/userSlice";
-import { statusMessageActions } from "../../../../../../store/statusMessageSlice";
+} from "../../../../store/userSlice";
+import { statusMessageActions } from "../../../../store/statusMessageSlice";
 
 export function* loginSaga({ payload }) {
   const userData = { ...payload };

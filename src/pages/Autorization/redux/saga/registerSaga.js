@@ -1,10 +1,10 @@
 import { call, put } from "redux-saga/effects";
-import { register } from "../../../../../../api/api.util";
+import { register } from "../../../../api/api.util";
 import {
   registerFailed,
   registerSuccess,
   loginRequest,
-} from "../../../../../../store/userSlice";
+} from "../../../../store/userSlice";
 
 export function* registerSaga({ payload }) {
   const userData = { ...payload };

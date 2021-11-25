@@ -1,8 +1,8 @@
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useCallback } from "react";
-import { PATH } from "../../../../../routes/routes";
-import { registerRequest } from "../../../../../store/userSlice";
+import { PATH } from "../../../routes/routes";
+import { registerRequest } from "../../../store/userSlice";
 
 export const useRegister = () => {
   const history = useHistory();

@@ -13,7 +13,7 @@ import {
 } from "../../common/common.style";
 import { Form, FormTitle, QuestionLinkForgotWrapper } from "../SignIn.style";
 import { Button } from "../../../../components/Button/Button.style";
-import { useLogin } from "./redux/useLogin";
+import { useLogin } from "../../redux/useLogin";
 
 const SignInForm = () => {
   const { login } = useLogin();

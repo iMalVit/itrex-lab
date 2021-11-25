@@ -1,9 +1,9 @@
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useCallback } from "react";
-import { PATH } from "../../../../../routes/routes";
-import { loginRequest } from "../../../../../store/userSlice";
-import { statusMessageActions } from "../../../../../store/statusMessageSlice";
+import { PATH } from "../../../routes/routes";
+import { loginRequest } from "../../../store/userSlice";
+import { statusMessageActions } from "../../../store/statusMessageSlice";
 export const useLogin = () => {
   const history = useHistory();
   const user = useSelector((state) => state.user);

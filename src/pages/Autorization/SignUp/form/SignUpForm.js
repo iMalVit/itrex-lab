@@ -17,7 +17,7 @@ import { Form, FormTitle } from "../SignUp.style";
 import { Button } from "../../../../components/Button/Button.style";
 import { useHistory } from "react-router";
 import { PATH } from "../../../../routes/routes";
-import { useRegister } from "../../SignIn/form/redux/useRegister";
+import { useRegister } from "../../redux/useRegister";
 
 const SignUpForm = () => {
   const { register } = useRegister();
