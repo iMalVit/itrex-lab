@@ -15,17 +15,13 @@ import {
 } from "../../common/common.style";
 import { Form, FormTitle } from "../SignUp.style";
 import { Button } from "../../../../components/Button/Button.style";
-import { useHistory } from "react-router";
-import { PATH } from "../../../../routes/routes";
-import { useRegister } from "../../redux/useRegister";
+import { useRegister } from "../../../../store/hooks/useRegister";
 
 const SignUpForm = () => {
   const { register } = useRegister();
   const [isShowPassword, setIsShowPassword] = useState(false);
 
   const [isShowConfirmPassword, setIsShowConfirmPassword] = useState(false);
-
-  const history = useHistory();
 
   return (
     <Formik

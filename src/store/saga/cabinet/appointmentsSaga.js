@@ -1,6 +1,6 @@
 import { put, takeEvery, call } from "redux-saga/effects";
 
-import { getToken } from "../../../../store/token";
+import { getToken } from "../../token";
 
 import {
   getPatientAppointmentsRequest,
@@ -13,46 +13,45 @@ import {
   createAnAppointmentRequest,
   createAnAppointmentSuccess,
   createAnAppointmentFailed,
-} from "../../../../store/appointmentsSlice";
+} from "../../appointmentsSlice";
 
-import { statusMessageActions } from "../../../../store/statusMessageSlice";
+import { statusMessageActions } from "../../statusMessageSlice";
 
 import {
   getAllDoctorAppointments,
   getAllPatientAppointments,
   createAnAppointment,
-} from "../../../../api/api.util";
-import { useCreateAnAppointment } from "./useCreateAnAppointment";
+} from "../../../api/api.util";
 
 export function* getAppointmentsWorker({ type, payload }) {
-  let responce;
+  let response;
   let error;
   const token = getToken();
   console.log({ type, payload });
 
   switch (type) {
     case getDoctorAppointmentsRequest.type:
-      const { responce: doctorResponce, error: doctorError } = yield call(
+      const { response: doctorResponse, error: doctorError } = yield call(
         getAllDoctorAppointments,
-        [...payload, token]
+        token
       );
-      responce = doctorResponce;
+      response = doctorResponse;
       error = doctorError;
       break;
     case getPatientAppointmentsRequest.type:
-      const { responce: patientResponce, error: patientError } = yield call(
+      const { response: patientResponse, error: patientError } = yield call(
         getAllPatientAppointments,
-        [...payload, token]
+        token
       );
-      console.log(patientResponce);
+      console.log(patientResponse);
 
-      responce = patientResponce;
+      response = patientResponse;
       error = patientError;
       break;
   }
 
-  if (responce) {
-    yield put(setUserAppointments(responce.data.appointments));
+  if (response) {
+    yield put(setUserAppointments(response.data.appointments));
     switch (type) {
       case getPatientAppointmentsRequest.type:
         yield put(getPatientAppointmentsSuccess());
@@ -83,14 +82,14 @@ export function* createAnAppointmentWorker(payload) {
   console.log(payload);
   console.log([{ ...payload.payload }, token]);
 
-  const { responce, error } = yield call(createAnAppointment, [
+  const { response, error } = yield call(createAnAppointment, [
     { ...payload.payload },
     token,
   ]);
 
-  if (responce) {
+  if (response) {
     yield put(createAnAppointmentSuccess());
-    yield put(getPatientAppointmentsRequest([20, 0, getToken()]));
+    yield put(getPatientAppointmentsRequest(getToken()));
   }
   if (error) {
     yield put(createAnAppointmentFailed());

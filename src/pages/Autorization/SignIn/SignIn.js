@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import SignInForm from "./form/SignInForm";
 import {
   BackgroundWrapper,
@@ -11,8 +11,6 @@ import { Content } from "./SignIn.style";
 const SignIn = () => {
   return (
     <BackgroundWrapper page="SignIn">
-      {console.log("PGG")}
-
       <Content>
         <SignInForm />
         <QuestionLinkWrapper page="SignIn">

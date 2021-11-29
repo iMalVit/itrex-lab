@@ -2,7 +2,7 @@ import { all } from "redux-saga/effects";
 import {
   getAppointmentsWatcher,
   createAnAppointmentWatcher,
-} from "../../pages/Cabinet/redux/saga/appointmentsSaga";
+} from "./cabinet/appointmentsSaga";
 import { loginWatcher } from "./login/loginWatcher";
 import { registerWatcher } from "./register/registerWatcher";
 

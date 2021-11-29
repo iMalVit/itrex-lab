@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 
 export const MessageContainer = styled.div`
   position: relative;
+  z-index: 100;
   box-sizing: border-box;
   border-radius: 12px;
   width: 457px;

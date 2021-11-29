@@ -2,7 +2,6 @@ import React from "react";
 import Header from "../../../components/Header/Header";
 import Footer from "../../../components/Footer/Footer";
 
-import { patients } from "../../../mock/patients";
 import { Content, Board, BoardTitle, BoardBox } from "../common/common.style";
 import { Button } from "../../../components/Button/Button.style";
 import BoardOfPatientsCabinetDoctor from "./BoardOfPatientsCabinetDoctor";
@@ -12,10 +11,12 @@ import { PATH } from "../../../routes/routes";
 import { getUserProfile } from "../../../api/api.util";
 import { userActions } from "../../../store/userSlice";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Patients = () => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const userInfo = useSelector((state) => state.user);
 
   if (sessionStorage.getItem("access_token")) {
     console.log(sessionStorage.getItem("access_token"));
@@ -29,7 +30,7 @@ const Patients = () => {
 
   return (
     <Content>
-      <Header />
+      <Header userInfo={userInfo} />
       <Board>
         <ButtonsWrapper>
           <a>
@@ -45,7 +46,7 @@ const Patients = () => {
         </ButtonsWrapper>
         <BoardTitle>My Patients</BoardTitle>
         <BoardBox>
-          <BoardOfPatientsCabinetDoctor patients={patients} />
+          <BoardOfPatientsCabinetDoctor patients={[]} />
         </BoardBox>
       </Board>
       <Footer />

@@ -1,19 +1,15 @@
 import { call, put } from "redux-saga/effects";
-import { register } from "../../../../api/api.util";
-import {
-  registerFailed,
-  registerSuccess,
-  loginRequest,
-} from "../../../../store/userSlice";
+import { register } from "../../../api/api.util";
+import { registerFailed, registerSuccess, loginRequest } from "../../userSlice";
 
 export function* registerSaga({ payload }) {
   const userData = { ...payload };
   const { userName, password } = payload;
   const loginData = { userName, password };
 
-  const { responce, error } = yield call(register, userData);
+  const { response, error } = yield call(register, userData);
 
-  if (responce) {
+  if (response) {
     yield put(registerSuccess());
 
     yield put(loginRequest(loginData));

@@ -18,6 +18,7 @@ import { statusMessageActions } from "../../../store/statusMessageSlice";
 
 const PatientsUserView = (props) => {
   const history = useHistory();
+  const userInfo = useSelector((state) => state.user);
 
   const handleClick = () => {
     history.push(PATH.CABINET_USER_MAKE_AN_APPOINTMENT);
@@ -44,11 +45,7 @@ const PatientsUserView = (props) => {
           <ErrorMessage errorMessage={messageStatus.error}></ErrorMessage>
         </MessageBox>
       )}
-      <Header
-        name="Larry Prinston"
-        profession="Patient"
-        avatar="/assets/avatars/avatarPatient.png"
-      ></Header>
+      <Header userInfo={userInfo}></Header>
       <Board>
         <ButtonsWrapper>
           <a>

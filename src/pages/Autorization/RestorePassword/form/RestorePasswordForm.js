@@ -29,7 +29,7 @@ const RestorePasswordForm = (props) => {
       validateOnBlur
       onSubmit={(values) => {
         console.log(values);
-        props.onSaveEmailData(values);
+
         history.push(PATH.RESTORE_PASSWORD_SUCCESSED);
       }}
       validationSchema={RestorePasswordFormValidationsSchema}

@@ -11,10 +11,7 @@ import {
   UserLogo,
 } from "./Header.style";
 
-import { useSelector } from "react-redux";
-
-const Header = (props) => {
-  const userInfo = useSelector((state) => state.user);
+const Header = ({ userInfo }) => {
   return (
     <HeaderWrapper>
       <HeaderLogo />

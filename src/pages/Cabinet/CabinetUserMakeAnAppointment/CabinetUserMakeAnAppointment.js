@@ -11,11 +11,13 @@ import {
   PageTitle,
 } from "./CabinetUserMakeAnAppointment.style.";
 import CabinetUserMakeAnAppointmentForm from "./form/CabinetUserMakeAnAppointmentForm";
+import { useSelector } from "react-redux";
 
 const CabinetUserMakeAnAppointment = () => {
+  const userInfo = useSelector((state) => state.user);
   return (
     <Content>
-      <Header></Header>
+      <Header userInfo={userInfo}></Header>
       <Board>
         <Navigation>
           <MainTitle>Doctors</MainTitle>

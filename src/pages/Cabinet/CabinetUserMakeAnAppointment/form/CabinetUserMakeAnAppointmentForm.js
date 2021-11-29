@@ -25,7 +25,7 @@ import { InputErrorText } from "../../common/common.style";
 import { Formik, Field } from "formik";
 import TimeBoard from "../components/TimeBoard/TimeBoard";
 import { getDoctorsSpecializations } from "../../../../api/api.util";
-import { useCreateAnAppointment } from "../../redux/saga/useCreateAnAppointment";
+import { useCreateAnAppointment } from "../../../../store/hooks/useCreateAnAppointment";
 
 const CabinetUserMakeAnAppointmentForm = (props) => {
   const { createAnAppointment } = useCreateAnAppointment();
@@ -34,8 +34,12 @@ const CabinetUserMakeAnAppointmentForm = (props) => {
   const convertTime = (time) => {
     const convertedTime = time.slice(0, -8);
     const afterNumber = time.slice(6, 8);
-    if (afterNumber === "AM" && convertedTime < 12) return `${convertedTime}`;
-    if (afterNumber === "PM" && convertedTime <= 12)
+    console.log(convertedTime);
+    console.log(afterNumber);
+    if (convertedTime === "12") return `${convertedTime}`;
+    if (afterNumber === " A" && convertedTime < 12) return `${convertedTime}`;
+    if (afterNumber === "AM" && convertedTime < 12) return `0${convertedTime}`;
+    if (afterNumber === "PM" && convertedTime < 12)
       return `${Number(convertedTime) + 12}`;
   };
 
@@ -79,8 +83,6 @@ const CabinetUserMakeAnAppointmentForm = (props) => {
         console.log(appointmentData);
 
         createAnAppointment(appointmentData);
-
-
       }}
     >
       {({ values, errors, touched, handleSubmit, isValid, dirty }) => (

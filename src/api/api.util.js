@@ -1,15 +1,18 @@
 import { api } from "./api";
 
+const OFFSET = 0;
+const LIMIT = 100;
+
 export const register = (userData) =>
   api
     .post("auth/registration", userData)
-    .then((responce) => ({ responce }))
+    .then((response) => ({ response }))
     .catch((error) => ({ error }));
 
 export const login = (userData) =>
   api
     .post("auth/login", userData)
-    .then((responce) => ({ responce }))
+    .then((response) => ({ response }))
     .catch((error) => ({ error }));
 
 export const getUserProfile = (accessToken) =>
@@ -19,7 +22,7 @@ export const getUserProfile = (accessToken) =>
         Authorization: `Bearer ${accessToken}`,
       },
     })
-    .then((responce) => ({ responce }))
+    .then((response) => ({ response }))
     .catch((error) => ({ error }));
 
 export const getDoctorsSpecializations = () => api.get("specializations");
@@ -35,32 +38,32 @@ export const getAvailableTime = (date, doctorId) =>
     },
   });
 
-export const getAllPatientAppointments = ([limit, offset, token]) =>
+export const getAllPatientAppointments = (token) =>
   api
     .get("/appointments/patient/me", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
       params: {
-        offset: offset,
-        limit: limit,
+        offset: OFFSET,
+        limit: LIMIT,
       },
     })
-    .then((responce) => ({ responce }))
+    .then((response) => ({ response }))
     .catch((error) => ({ error }));
 
-export const getAllDoctorAppointments = ([limit, offset, token]) =>
+export const getAllDoctorAppointments = (token) =>
   api
     .get("/appointments/doctor/me", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
       params: {
-        offset: offset,
-        limit: limit,
+        offset: OFFSET,
+        limit: LIMIT,
       },
     })
-    .then((responce) => ({ responce }))
+    .then((response) => ({ response }))
     .catch((error) => ({ error }));
 
 export const createAnAppointment = ([data, token]) =>
@@ -70,5 +73,5 @@ export const createAnAppointment = ([data, token]) =>
         Authorization: `Bearer ${token}`,
       },
     })
-    .then((responce) => ({ responce }))
+    .then((response) => ({ response }))
     .catch((error) => ({ error }));

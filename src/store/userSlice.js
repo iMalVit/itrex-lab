@@ -18,7 +18,7 @@ const userSlice = createSlice({
     id: "",
     photo: "",
     role_name: "",
-    isLogged: false,
+    isLogged: null,
   },
   reducers: {
     setCurrentUser(state, action) {
@@ -29,6 +29,12 @@ const userSlice = createSlice({
         photo: action.payload.photo,
         role_name: action.payload.role_name,
         isLogged: true,
+      };
+    },
+    setLoginStatus(state, action) {
+      return {
+        ...state,
+        isLogged: action.payload,
       };
     },
   },
