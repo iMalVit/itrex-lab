@@ -34,6 +34,7 @@ const RestorePasswordSuccessed = () => {
           </FormDescription>
         </Form>
       </Content>
+      //{" "}
     </BackgroundWrapper>
   );
 };

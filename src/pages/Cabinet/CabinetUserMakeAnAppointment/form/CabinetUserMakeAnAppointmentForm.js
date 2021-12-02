@@ -28,7 +28,7 @@ import { getDoctorsSpecializations } from "../../../../api/api.util";
 import { useCreateAnAppointment } from "../../../../store/hooks/useCreateAnAppointment";
 
 const CabinetUserMakeAnAppointmentForm = (props) => {
-  const { createAnAppointment } = useCreateAnAppointment();
+  const { createAppointment } = useCreateAnAppointment();
   const [doctorsSpecializations, setDoctorsSpecializations] = useState(null);
 
   const convertTime = (time) => {
@@ -41,6 +41,12 @@ const CabinetUserMakeAnAppointmentForm = (props) => {
     if (afterNumber === "AM" && convertedTime < 12) return `0${convertedTime}`;
     if (afterNumber === "PM" && convertedTime < 12)
       return `${Number(convertedTime) + 12}`;
+  };
+
+  const convertDate = (day) => {
+    if (day.toString().length === 1) {
+      return 0 + day.toString();
+    } else return day;
   };
 
   useEffect(() => {
@@ -72,9 +78,9 @@ const CabinetUserMakeAnAppointmentForm = (props) => {
         console.log(values);
         const { doctorName: doctorID, reason, note, date, time } = values;
         const appointmentData = {
-          date: `${date.getFullYear()}-${
-            date.getMonth() + 1
-          }-${date.getDate()}T${convertTime(time)}:00:00.000Z`,
+          date: `${date.getFullYear()}-${date.getMonth() + 1}-${convertDate(
+            date.getDate()
+          )}T${convertTime(time)}:00:00.000Z`,
           doctorID,
           reason,
           note,
@@ -82,7 +88,7 @@ const CabinetUserMakeAnAppointmentForm = (props) => {
 
         console.log(appointmentData);
 
-        createAnAppointment(appointmentData);
+        createAppointment(appointmentData);
       }}
     >
       {({ values, errors, touched, handleSubmit, isValid, dirty }) => (

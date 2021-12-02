@@ -16,7 +16,7 @@ import { Button } from "../../../../components/Button/Button.style";
 import { useLogin } from "../../../../store/hooks/useLogin";
 
 const SignInForm = () => {
-  const { login } = useLogin();
+  const { signIn } = useLogin();
   const [isShowPassword, setIsShowPassword] = useState(false);
 
   return (
@@ -27,7 +27,7 @@ const SignInForm = () => {
       }}
       validateOnBlur
       onSubmit={(values) => {
-        login(values);
+        signIn(values);
       }}
       validationSchema={SignInFormValidationsSchema}
     >

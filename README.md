@@ -5,4 +5,4 @@ It was created for ITRex Group.
 
 # Deploy
 
-You can try this project on [Netlify](https://romantic-swirles-a055cd.netlify.app/).
+You can try this project on [Netlify](https://thirsty-nightingale-881680.netlify.app/).

@@ -26,7 +26,11 @@ const TimeBoard = (props) => {
   }, [selectedTime]);
 
   useEffect(() => {
-    getAvailableTime(values.date, values.doctorName).then((responce) => {
+    console.log();
+    getAvailableTime(
+      new Date(values.date.getTime() + 9 * 1200000),
+      values.doctorName
+    ).then((responce) => {
       SetAvailibleTime(
         responce.data.map((backend) =>
           convertTime(Number(new Date(backend).getHours()))

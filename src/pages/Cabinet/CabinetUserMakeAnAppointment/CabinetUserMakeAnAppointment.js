@@ -11,10 +11,10 @@ import {
   PageTitle,
 } from "./CabinetUserMakeAnAppointment.style.";
 import CabinetUserMakeAnAppointmentForm from "./form/CabinetUserMakeAnAppointmentForm";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../../hooks";
 
 const CabinetUserMakeAnAppointment = () => {
-  const userInfo = useSelector((state) => state.user);
+  const userInfo = useAppSelector((state) => state.profile);
   return (
     <Content>
       <Header userInfo={userInfo}></Header>

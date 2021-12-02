@@ -7,18 +7,18 @@ import { Button } from "../../../components/Button/Button.style";
 
 import { Content, Board, BoardTitle, BoardBox } from "../common/common.style";
 import { ButtonsWrapper, ToolBox } from "./CabinetUser.style";
-
+import { useAppSelector } from "../../../hooks";
 import { useHistory } from "react-router";
 import { PATH } from "../../../routes/routes";
 import { useDispatch, useSelector } from "react-redux";
 import SuccessMessage from "../../../components/StatusMessages/SuccessMessage";
 import ErrorMessage from "../../../components/StatusMessages/ErrorMessage";
 import { MessageBox } from "../../../components/StatusMessages/MessageBox.style";
-import { statusMessageActions } from "../../../store/statusMessageSlice";
+import { statusMessageActions } from "../../../store/statusMessageSlice.js";
 
 const PatientsUserView = (props) => {
   const history = useHistory();
-  const userInfo = useSelector((state) => state.user);
+  const userInfo = useSelector((state) => state.profile);
 
   const handleClick = () => {
     history.push(PATH.CABINET_USER_MAKE_AN_APPOINTMENT);
@@ -26,7 +26,7 @@ const PatientsUserView = (props) => {
 
   const dispatch = useDispatch();
 
-  const messageStatus = useSelector((state) => state.statusMessage);
+  const messageStatus = useAppSelector((state) => state.statusMessage);
 
   const timeout = () =>
     setTimeout(() => {

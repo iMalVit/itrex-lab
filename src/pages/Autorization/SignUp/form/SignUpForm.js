@@ -18,7 +18,7 @@ import { Button } from "../../../../components/Button/Button.style";
 import { useRegister } from "../../../../store/hooks/useRegister";
 
 const SignUpForm = () => {
-  const { register } = useRegister();
+  const { signUp } = useRegister();
   const [isShowPassword, setIsShowPassword] = useState(false);
 
   const [isShowConfirmPassword, setIsShowConfirmPassword] = useState(false);
@@ -36,7 +36,7 @@ const SignUpForm = () => {
       onSubmit={(values) => {
         console.log(values);
         const { confirmPassword, ...userData } = values;
-        register(userData);
+        signUp(userData);
       }}
       validationSchema={SignUpFormValidationsSchema}
     >

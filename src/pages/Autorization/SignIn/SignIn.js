@@ -9,6 +9,7 @@ import {
 import { Content } from "./SignIn.style";
 
 const SignIn = () => {
+  console.log("Sign In");
   return (
     <BackgroundWrapper page="SignIn">
       <Content>
