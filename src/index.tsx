@@ -2,13 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { GlobalStyle } from "./index.style";
-import { BrowserRouter } from 'react-router-dom';
+import { ConnectedRouter } from "connected-react-router";
 import { Provider } from 'react-redux';
 import store from "./store/store"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-
+import { history } from "./store/store"
 
 
 
@@ -17,9 +16,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
     <GlobalStyle />
-    <BrowserRouter>
+    <ConnectedRouter history={history}>
     <App />
-    </BrowserRouter>
+    </ConnectedRouter>
     <ToastContainer
             position="bottom-left"
             autoClose={5000}
