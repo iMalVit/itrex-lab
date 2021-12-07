@@ -6,7 +6,6 @@ import appointmentsSlice from "./slices/appointments.slice";
 import { rootSaga } from "./saga/rootSaga";
 import loginSlice from "./slices/login.slice";
 import profileSlice from "./slices/profile.slice";
-import statusMessageSlice from "./statusMessageSlice.js";
 import registrationSlice from "./slices/registration.slice";
 import createAnAppointmentSlice from "./slices/createAnAppointment.slice";
 
@@ -19,7 +18,6 @@ const store = configureStore({
     profile: profileSlice.reducer,
     appointments: appointmentsSlice.reducer,
     createAnAppointment: createAnAppointmentSlice.reducer,
-    statusMessage: statusMessageSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => [
     ...getDefaultMiddleware(),

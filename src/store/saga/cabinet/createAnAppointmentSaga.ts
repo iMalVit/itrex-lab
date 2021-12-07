@@ -7,7 +7,7 @@ import { appointments } from '../../actions/appointments.actions';
 import { makeAnAppointment } from '../../../api/api.util'
 import { AppointmentsResponseType } from '../../../api/auth/auth.types';
 import { createAnAppointment } from '../../actions/createAnAppointment.actions';
-import { statusMessageActions } from '../../statusMessageSlice';
+import { errorNotify, successNotify } from '../../../utils/tosify';
 
 
 function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>):any {
@@ -15,6 +15,7 @@ function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction
     const result = yield saga(pendingAction);
     yield put(action.success(result));
     yield put(appointments.pending(result))
+    successNotify("The appointment has been successfully added")
 
   } catch (error:any) {
     const errorSerialized = {
@@ -22,8 +23,7 @@ function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction
       stack: error.stack,
     };
     yield put(action.failed(errorSerialized));
-    yield put(statusMessageActions.setFailedStatus(error.message))
-
+    errorNotify(error.response.data)
     throw error;
   }
 }

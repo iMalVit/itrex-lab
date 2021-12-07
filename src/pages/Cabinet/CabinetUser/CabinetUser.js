@@ -10,10 +10,6 @@ import { ButtonsWrapper, ToolBox } from "./CabinetUser.style";
 import { useAppSelector, useAppDispatch } from "../../../hooks";
 import { useHistory } from "react-router";
 import { PATH } from "../../../routes/routes";
-import SuccessMessage from "../../../components/StatusMessages/SuccessMessage";
-import ErrorMessage from "../../../components/StatusMessages/ErrorMessage";
-import { MessageBox } from "../../../components/StatusMessages/MessageBox.style";
-import { statusMessageActions } from "../../../store/statusMessageSlice.js";
 import { Link } from "react-router-dom";
 
 const PatientsUserView = (props) => {
@@ -26,25 +22,8 @@ const PatientsUserView = (props) => {
 
   const dispatch = useAppDispatch();
 
-  const messageStatus = useAppSelector((state) => state.statusMessage);
-
-  const timeout = () =>
-    setTimeout(() => {
-      dispatch(statusMessageActions.setUndefinedStatus());
-    }, 3000);
-
   return (
     <Content>
-      {messageStatus.status && timeout() && (
-        <MessageBox>
-          <SuccessMessage></SuccessMessage>
-        </MessageBox>
-      )}
-      {messageStatus.status === false && timeout() && (
-        <MessageBox>
-          <ErrorMessage errorMessage={messageStatus.error}></ErrorMessage>
-        </MessageBox>
-      )}
       <Header userInfo={userInfo}></Header>
       <Board>
         <ButtonsWrapper>

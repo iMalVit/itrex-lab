@@ -9,6 +9,7 @@ import { LoginResponseType } from '../../../api/auth/auth.types';
 import { AnyFunction, AsyncActionType } from '../saga.types';
 import { signIn } from '../../../api/auth/auth';
 import { profile } from '../../actions/profile.actions';
+import { errorNotify } from '../../../utils/tosify';
 
 
 function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>):any {
@@ -32,6 +33,7 @@ function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction
     };
 
     yield put(action.failed(errorSerialized));
+    errorNotify(error.response.data)   
     
 
   }

@@ -51,4 +51,24 @@ input:focus {
   outline: none;
   border: 1px solid #7297FF
 }
+
+.Toastify__toast {
+  width: 457px;
+  height: 122px;
+  border-radius: 12px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 24px;
+}
+
+.Toastify__toast-theme--colored.Toastify__toast--success {
+  background-color: #34c197;
+}
+
+.Toastify__toast-theme--colored.Toastify__toast--error {
+  background-color: #ff2567;
+}
+
 `;
