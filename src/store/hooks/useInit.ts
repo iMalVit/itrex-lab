@@ -1,28 +1,28 @@
-import { useAppDispatch } from "../../hooks";
-import { getToken } from "../token";
-import { profile } from "../actions/profile.actions";
-import { login } from "../actions/login.actions";
+import { useAppDispatch } from '../../hooks';
+import { getToken } from '../token';
+import profile from '../actions/profile.actions';
+import login from '../actions/login.actions';
 
-export const useInit = () => {
+const useInit = () => {
   const dispatch = useAppDispatch();
 
   const fetch = async () => {
     await dispatch(
       profile.pending({
-        id: "",
-        first_name: "",
-        last_name: "",
-        photo: "",
-        role_name: "",
-      })
+        id: '',
+        first_name: '',
+        last_name: '',
+        photo: '',
+        role_name: '',
+      }),
     );
   };
 
   const start = () => {
     if (getToken()) {
       dispatch(login.success({
-        access_token: "",
-        refresh_token: ""
+        access_token: '',
+        refresh_token: '',
       }));
       fetch();
     }
@@ -30,3 +30,5 @@ export const useInit = () => {
 
   return { start };
 };
+
+export default useInit;

@@ -1,23 +1,23 @@
-import React from "react";
+import React from 'react';
 import {
   PatientBox,
   MainInfo,
   Avatar,
   DescriptionBox,
   PatientName,
-  PaitentInfo,
+  PatientInfo,
   PatientTimeText,
   DescriptionBoxDocument,
   PatientDocumentText,
   PatientDocumentIcon,
-} from "../../CabinetDoctor/PatientCabinetDoctor/PatientCabinetDoctor.style";
-import { Profession } from "./DoctorCabinetUser.style";
+} from '../../CabinetDoctor/PatientCabinetDoctor/PatientCabinetDoctor.style';
+import Profession from './DoctorCabinetUser.style';
 
-const DoctorCabinetUser = (props) => {
+const DoctorCabinetUser = (props: any) => {
   const displayFlex = {
-    display: "flex",
+    display: 'flex',
   };
-  const timeHelper = (param) => {
+  const timeHelper = (param: any) => {
     const date = new Date(param);
     return date.toString().substr(0, 16);
   };
@@ -29,19 +29,28 @@ const DoctorCabinetUser = (props) => {
 
         <DescriptionBox>
           <PatientName>
-            {props.firstName} {props.lastName}
+            {props.firstName}
+            {' '}
+            {props.lastName}
           </PatientName>
           <Profession>{props.occupation}</Profession>
         </DescriptionBox>
       </MainInfo>
-      <PaitentInfo>
+      <PatientInfo>
         <div style={displayFlex}>
           <img src="/assets/icons/time.svg" alt="patients__time-icon" />
           <PatientTimeText>
-            {timeHelper(props.date)} {props.time - 3}{" "}
-            {Number(props.time) - 3 < 12 ? "am" : "pm"} –{" "}
-            {Number(props.time - 3) + 1}{" "}
-            {Number(props.time) - 3 + 1 < 12 ? "am" : "pm"}
+            {timeHelper(props.date)}
+            {' '}
+            {props.time - 3}
+            {' '}
+            {Number(props.time) - 3 < 12 ? 'am' : 'pm'}
+            {' '}
+            –
+            {' '}
+            {Number(props.time - 3) + 1}
+            {' '}
+            {Number(props.time) - 3 + 1 < 12 ? 'am' : 'pm'}
           </PatientTimeText>
         </div>
         <DescriptionBoxDocument>
@@ -51,7 +60,7 @@ const DoctorCabinetUser = (props) => {
           />
           <PatientDocumentText>{props.description}</PatientDocumentText>
         </DescriptionBoxDocument>
-      </PaitentInfo>
+      </PatientInfo>
     </PatientBox>
   );
 };

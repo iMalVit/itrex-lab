@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   PatientBox,
   Avatar,
@@ -11,13 +11,13 @@ import {
   PatientName,
   DescriptionBox,
   StatusIcon,
-  PaitentInfo,
+  PatientInfo,
   DescriptionBoxDocument,
-} from "./PatientCabinetDoctor.style";
+} from './PatientCabinetDoctor.style';
 
-const PatientCabinetDoctor: React.FC<{imageSrc: any, firstName: any, lastName: any, status: any, time: any, description: any}> = (props) => {
+const PatientCabinetDoctor: React.FC<{ imageSrc: any, firstName: any, lastName: any, status: any, time: any, description: any }> = (props) => {
   const displayFlex = {
-    display: "flex",
+    display: 'flex',
   };
   const timeHelper = (param: any) => {
     const date = new Date(param);
@@ -31,19 +31,23 @@ const PatientCabinetDoctor: React.FC<{imageSrc: any, firstName: any, lastName: a
 
         <DescriptionBox>
           <PatientName>
-            {props.firstName} {props.lastName}
+            {props.firstName}
+            {' '}
+            {props.lastName}
           </PatientName>
           <Status>
-            <StatusIcon status={props.status}></StatusIcon>
+            <StatusIcon status={props.status} />
             <StatusText>Appointment is confirmed</StatusText>
           </Status>
         </DescriptionBox>
       </MainInfo>
-      <PaitentInfo>
+      <PatientInfo>
         <div style={displayFlex}>
           <img src="/assets/icons/time.svg" alt="time icon" />
           <PatientTimeText>
-            {timeHelper(props.time)} 4 pm – 5 pm
+            {timeHelper(props.time)}
+            {' '}
+            4 pm – 5 pm
           </PatientTimeText>
         </div>
         <DescriptionBoxDocument>
@@ -53,7 +57,7 @@ const PatientCabinetDoctor: React.FC<{imageSrc: any, firstName: any, lastName: a
           />
           <PatientDocumentText>{props.description}</PatientDocumentText>
         </DescriptionBoxDocument>
-      </PaitentInfo>
+      </PatientInfo>
     </PatientBox>
   );
 };

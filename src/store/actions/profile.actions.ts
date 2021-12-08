@@ -1,5 +1,6 @@
-import { createSagaActions } from "./main";
-import { ProfileResponseType } from "../../api/auth/auth.types";
+import createSagaActions from './main';
+import { ProfileResponseType } from '../../api/auth/auth.types';
 
+const profile = createSagaActions<ProfileResponseType>('profile');
 
-export const profile = createSagaActions<ProfileResponseType>('profile');
+export default profile;

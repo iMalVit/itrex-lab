@@ -1,4 +1,4 @@
-export const validation = {
+const validation = {
   // name: /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/,
   name: /.{2,}/,
   email:
@@ -6,3 +6,5 @@ export const validation = {
   // password: /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{8,}$/i,
   password: /.{2,}/,
 };
+
+export default validation;

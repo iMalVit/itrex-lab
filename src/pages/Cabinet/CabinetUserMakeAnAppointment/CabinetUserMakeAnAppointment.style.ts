@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Field } from "formik";
+import styled from 'styled-components';
+import { Field } from 'formik';
 
 type TimeSlotPropsType = {
   selected?: boolean,
@@ -134,10 +134,7 @@ export const ChooseTimeContainer = styled.ul`
   }
 `;
 
-export const TimeSlot =
-  styled.li <
-  TimeSlotPropsType >
-  `
+export const TimeSlot = styled.li<TimeSlotPropsType >`
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -145,10 +142,10 @@ export const TimeSlot =
   height: 40px;
   box-sizing: border-box;
 
-  background: ${(props) => (props.selected ? "#7297FF" : "#ffffff")};
+  background: ${(props) => (props.selected ? '#7297FF' : '#ffffff')};
 
   font-family: "Poppins", sans-serif;
-  color: ${(props) => (props.selected ? "#ffffff" : "#202225")};
+  color: ${(props) => (props.selected ? '#ffffff' : '#202225')};
   font-style: normal;
   font-weight: 600;
   font-size: 15px;

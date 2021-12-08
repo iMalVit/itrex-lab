@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const ButtonsWrapper = styled.div`
+const ButtonsWrapper = styled.div`
   width: 332px;
   display: flex;
   justify-content: space-between;
@@ -10,3 +10,5 @@ export const ButtonsWrapper = styled.div`
     width: 264px;
   }
 `;
+
+export default ButtonsWrapper;

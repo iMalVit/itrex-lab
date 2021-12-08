@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { InputErrorTextPropsType } from "./common.types";
+import styled from 'styled-components';
+import { InputErrorTextPropsType } from './common.types';
 
 export const Content = styled.div`
   position: relative;
@@ -83,7 +83,7 @@ export const InputErrorText = styled.div<InputErrorTextPropsType>`
   font-weight: normal;
   font-size: 10px;
   line-height: 120%;
-  bottom: ${(props) =>
-    props.type === "password" || props.type === "text" ? "-23px" : "-16px"};
+  bottom: ${(props) => (props
+    .type === 'password' || props.type === 'text' ? '-23px' : '-16px')};
   color: #f6657f;
 `;

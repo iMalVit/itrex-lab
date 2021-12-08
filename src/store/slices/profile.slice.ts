@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { profile } from '../actions/profile.actions';
+import profile from '../actions/profile.actions';
 import { ProfileResponseType } from '../../api/auth/auth.types';
 import { ProfileStateType } from './slices.types';
 
@@ -19,15 +19,13 @@ export const profileSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(profile.success, (state, { payload }: { payload :ProfileResponseType}) => { 
-    
-          state.id = payload.id;
-          state.first_name = payload.first_name;
-          state.last_name = payload.last_name;
-          state.photo = payload.photo;
-          state.role_name = payload.role_name;
-          state.status = 'success';
-        
+      .addCase(profile.success, (state, { payload }: { payload: ProfileResponseType }) => {
+        state.id = payload.id;
+        state.first_name = payload.first_name;
+        state.last_name = payload.last_name;
+        state.photo = payload.photo;
+        state.role_name = payload.role_name;
+        state.status = 'success';
       });
     builder
       .addCase(profile.pending, (state) => {

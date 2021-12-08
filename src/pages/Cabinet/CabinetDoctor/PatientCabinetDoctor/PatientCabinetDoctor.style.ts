@@ -1,5 +1,4 @@
-import styled from "styled-components";
-
+import styled from 'styled-components';
 
 type StatusIconPropsType = {
   status: string
@@ -115,10 +114,10 @@ export const StatusIcon = styled.div<StatusIconPropsType>`
     height: 5px;
   }
 
-  background-color: ${(props) => (props.status ? "#34c197" : "#ff2567")};
+  background-color: ${(props) => (props.status ? '#34c197' : '#ff2567')};
 `;
 
-export const PaitentInfo = styled.div`
+export const PatientInfo = styled.div`
   border-top: solid #dce0ec 1px;
   max-height: 145px;
   padding-top: 24px;

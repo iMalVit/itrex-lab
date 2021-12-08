@@ -1,5 +1,5 @@
 export type BackgroundWrapperPropsType = {
- page: string
+    page: string
 }
 
 export type QuestionLinkWrapperPropsType = {
@@ -7,7 +7,7 @@ export type QuestionLinkWrapperPropsType = {
 }
 
 export type InputErrorTextPropsType = {
-    type?: string 
+    type?: string
 }
 
 export type ShowPasswordIconPropsType = {

@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { createAnAppointment } from '../actions/createAnAppointment.actions';
+import createAnAppointment from '../actions/createAppointment.actions';
 import { CreateAnAppointmentState } from './slices.types';
 
 const initialState: CreateAnAppointmentState = {
-  status: "idle"
+  status: 'idle',
 };
 
 export const createAnAppointmentSlice = createSlice({
@@ -12,8 +12,8 @@ export const createAnAppointmentSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(createAnAppointment.success, (state, { payload }) => {
-        state.status = 'success'
+      .addCase(createAnAppointment.success, (state) => {
+        state.status = 'success';
       });
 
     builder

@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 type ButtonPropsType = {
   leftArrow?: any
@@ -71,27 +71,27 @@ export const Day = styled.li<DayPropsType>`
 
   color: #202225;
 
-  ${(props) =>
-    props.selected &&
-    css`
+  ${(props) => props
+    .selected
+    && css`
       background: #7297ff;
       border-radius: 12px;
       color: #ffffff;
     `}
 
-  ${(props) =>
-    props.today &&
-    !props.selected &&
-    css`
+  ${(props) => props
+    .today
+    && !props.selected
+    && css`
       border: 1px solid #7297ff;
       box-sizing: border-box;
       border-radius: 12px;
       color: #7297ff;
     `}
 
-    ${(props) =>
-    !props.isCurrentMonth &&
-    css`
+    ${(props) => !props
+    .isCurrentMonth
+    && css`
       color: #dce0ec;
       cursor: default;
     `}
@@ -109,16 +109,15 @@ export const MonthTitle = styled.div`
 export const Button = styled.button<ButtonPropsType>`
   border: none;
   cursor: pointer;
-  ${(props) =>
-    props.leftArrow &&
-    css`
+  ${(props) => props
+    .leftArrow
+    && css`
       background: url("/assets/icons/angle-left-b.svg");
       width: 24px;
       height: 24px;
     `}
-  ${(props) =>
-    props.rightArrow &&
-    css`
+  ${(props) => props
+    .rightArrow && css`
       background: url("/assets/icons/angle-right-b.svg");
       width: 24px;
       height: 24px;

@@ -1,8 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { login } from '../actions/login.actions';
+import login from '../actions/login.actions';
 import { LoginState } from './slices.types';
-
-
 
 const initialState: LoginState = {
   status: 'idle',
@@ -15,22 +13,20 @@ export const loginSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(login.success, (state, { payload }) => {
+      .addCase(login.success, (state) => {
         state.status = 'success';
         state.isLogged = true;
       });
 
     builder
-      .addCase(login.pending, (state, { payload }) => {
+      .addCase(login.pending, (state) => {
         state.status = 'loading';
       });
-    
     builder
-      .addCase(login.failed, (state, { payload }) => {
+      .addCase(login.failed, (state) => {
         state.status = 'failed';
       });
   },
 });
-;
 
 export default loginSlice;

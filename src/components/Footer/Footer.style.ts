@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const PatientsFooter = styled.footer`
+const PatientsFooter = styled.footer`
   background: #e4ebff;
   height: 4%;
   min-height: 48px;
@@ -10,3 +10,5 @@ export const PatientsFooter = styled.footer`
     height: 0;
   }
 `;
+
+export default PatientsFooter;

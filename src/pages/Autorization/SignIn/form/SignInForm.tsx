@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { Formik } from "formik";
-import { SignInFormValidationsSchema } from "./SignInFormValidationsSchema";
-import { PATH } from "../../../../routes/routes";
+/* eslint-disable no-unused-vars */
+import React, { useState } from 'react';
+import { Formik } from 'formik';
+import SignInFormValidationsSchema from './SignInFormValidationsSchema';
+import PATH from '../../../../routes/routes';
 import {
   QuestionLink,
   InputErrorText,
@@ -10,10 +11,10 @@ import {
   FormInputWrapperEmail,
   FormInputWrapperPassword,
   ShowPasswordIcon,
-} from "../../common/common.style";
-import { Form, FormTitle, QuestionLinkForgotWrapper } from "../SignIn.style";
-import { Button } from "../../../../components/Button/Button.style";
-import { useLogin } from "../../../../store/hooks/useLogin";
+} from '../../common/common.style';
+import { Form, FormTitle, QuestionLinkForgotWrapper } from '../SignIn.style';
+import Button from '../../../../components/Button/Button.style';
+import { useLogin } from '../../../../store/hooks/useLogin';
 
 const SignInForm = () => {
   const { signIn } = useLogin();
@@ -22,8 +23,8 @@ const SignInForm = () => {
   return (
     <Formik
       initialValues={{
-        userName: "",
-        password: "",
+        userName: '',
+        password: '',
       }}
       validateOnBlur
       onSubmit={(values) => {
@@ -31,16 +32,18 @@ const SignInForm = () => {
       }}
       validationSchema={SignInFormValidationsSchema}
     >
-      {({ values, errors, touched, handleSubmit, dirty, isValid }) => (
+      {({
+        values, errors, touched, handleSubmit, dirty, isValid,
+      }) => (
         <Form>
           <FormTitle>Sign In</FormTitle>
 
           <FormInputWrapperEmail>
             <FormInput
-              placeholder={"Email"}
+              placeholder="Email"
               isvalid={touched.userName && errors.userName}
-              name={"userName"}
-              type={"text"}
+              name="userName"
+              type="text"
             />
             {touched.userName && errors.userName && (
               <InputErrorText type="">{errors.userName}</InputErrorText>
@@ -50,9 +53,9 @@ const SignInForm = () => {
           <FormInputWrapperPassword>
             <FormInput
               isvalid={touched.password && errors.password}
-              name={"password"}
-              placeholder={"Password"}
-              type={isShowPassword ? "text" : "password"}
+              name="password"
+              placeholder="Password"
+              type={isShowPassword ? 'text' : 'password'}
               maxLength="30"
             />
             {touched.password && errors.password && (
@@ -61,7 +64,7 @@ const SignInForm = () => {
             <ShowPasswordIcon
               isShow={isShowPassword}
               onClick={() => setIsShowPassword(!isShowPassword)}
-            ></ShowPasswordIcon>
+            />
           </FormInputWrapperPassword>
           <FormButtonWrapper>
             <Button
@@ -71,7 +74,8 @@ const SignInForm = () => {
               iconRight="arrow"
               disabled={!isValid && dirty}
               onClick={handleSubmit}
-              type={"submit"}
+              type="submit"
+              // eslint-disable-next-line jsx-a11y/aria-role
               role="submit-button"
             >
               Sign In

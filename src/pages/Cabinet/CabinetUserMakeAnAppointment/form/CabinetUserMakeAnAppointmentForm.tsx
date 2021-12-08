@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
-import Calendar from "../components/Calendar/Calendar";
-import { CabinetUserMakeAnAppointmentFormValidationSchema } from "./CabinetUserMakeAnAppointmentFormValidationSchema";
+import React, { useState, useEffect } from 'react';
+import { Formik, Field } from 'formik';
+import Calendar from '../components/Calendar/Calendar';
+import CabinetUserMakeAnAppointmentFormValidationSchema from './CabinetUserMakeAnAppointmentFormValidationSchema';
 import {
   MakeAnAppointmentForm,
   ChooseDay,
@@ -17,84 +18,82 @@ import {
   ChooseTimeError,
   ButtonWrapper,
   LoadingIndicator,
-} from "../CabinetUserMakeAnAppointment.style";
-import { Button } from "../../../../components/Button/Button.style";
-import { SelectList } from "../components/SelectList/SelectList";
-import { InputErrorText } from "../../common/common.style";
+} from '../CabinetUserMakeAnAppointment.style';
+import Button from '../../../../components/Button/Button.style';
+import SelectList from '../components/SelectList/SelectList';
+import { InputErrorText } from '../../common/common.style';
 
-import { Formik, Field } from "formik";
-import TimeBoard from "../components/TimeBoard/TimeBoard";
-import { getDoctorsSpecializations } from "../../../../api/api.util";
-import { useCreateAnAppointment } from "../../../../store/hooks/useCreateAnAppointment";
+import TimeBoard from '../components/TimeBoard/TimeBoard';
+import { getDoctorsSpecializations } from '../../../../api/api.util';
+import useCreateAnAppointment from '../../../../store/hooks/useCreateAnAppointment';
 
 const CabinetUserMakeAnAppointmentForm = () => {
   const { createAppointment } = useCreateAnAppointment();
   const [doctorsSpecializations, setDoctorsSpecializations] = useState<any>(null);
 
+  // eslint-disable-next-line consistent-return
   const convertTime = (time: any) => {
     const convertedTime = time.slice(0, -8);
     const afterNumber = time.slice(6, 8);
 
-    if (convertedTime === "12") return `${convertedTime}`;
-    if (afterNumber === " A" && convertedTime < 12) return `${convertedTime}`;
-    if (afterNumber === "AM" && convertedTime < 12) return `0${convertedTime}`;
-    if (afterNumber === "PM" && convertedTime < 12)
-      return `${Number(convertedTime) + 12}`;
+    if (convertedTime === '12') return `${convertedTime}`;
+    if (afterNumber === ' A' && convertedTime < 12) return `${convertedTime}`;
+    if (afterNumber === 'AM' && convertedTime < 12) return `0${convertedTime}`;
+    if (afterNumber === 'PM' && convertedTime < 12) return `${Number(convertedTime) + 12}`;
   };
 
   const convertDate = (day: any) => {
     if (day.toString().length === 1) {
       return 0 + day.toString();
-    } else return day;
+    } return day;
   };
 
   useEffect(() => {
-    getDoctorsSpecializations().then((responce) => {
-      setDoctorsSpecializations(responce.data);
+    getDoctorsSpecializations().then((response) => {
+      setDoctorsSpecializations(response.data);
     });
   }, []);
 
-  const getSpezialisationsOptions = () => {
-    return doctorsSpecializations.map(({ id, specialization_name }: any) => ({
-      value: id,
-      label: specialization_name,
-    }));
-  };
+  const getSpecializationsOptions = () => doctorsSpecializations.map(({ id, specialization_name }: any) => ({
+    value: id,
+    label: specialization_name,
+  }));
 
   return doctorsSpecializations ? (
     <Formik
       initialValues={{
         date: new Date(),
-        time: "",
-        occupation: "",
-        doctorName: "",
-        reason: "",
-        note: "",
+        time: '',
+        occupation: '',
+        doctorName: '',
+        reason: '',
+        note: '',
       }}
       validationSchema={CabinetUserMakeAnAppointmentFormValidationSchema}
       validateOnBlur={false}
       onSubmit={(values) => {
-
-        const { doctorName: doctorID, reason, note, date, time } = values;
+        const {
+          doctorName: doctorID, reason, note, date, time,
+        } = values;
         const appointmentData = {
           date: `${date.getFullYear()}-${date.getMonth() + 1}-${convertDate(
-            date.getDate()
+            date.getDate(),
           )}T${convertTime(time)}:00:00.000Z`,
           doctorID,
           reason,
           note,
         };
 
-      
-
         createAppointment(appointmentData);
       }}
     >
-      {({ values, errors, touched, handleSubmit, isValid, dirty }) => (
+      {({
+        values, errors, touched, handleSubmit, isValid, dirty,
+      }) => (
         <MakeAnAppointmentForm onSubmit={handleSubmit}>
           <ChooseAdditionalInfo>
             <StepInfo>
-              <StepIcon src="/assets/icons/1.svg"></StepIcon>
+              <StepIcon src="/assets/icons/1.svg" />
               <StepText>
                 Select a doctor and define the reason of your visit
               </StepText>
@@ -105,7 +104,7 @@ const CabinetUserMakeAnAppointmentForm = () => {
                 component={SelectList}
                 name="occupation"
                 id="occupation"
-                options={getSpezialisationsOptions()}
+                options={getSpecializationsOptions()}
               />
               {errors.occupation && touched.occupation ? (
                 <InputErrorText type="text">{errors.occupation}</InputErrorText>
@@ -143,7 +142,7 @@ const CabinetUserMakeAnAppointmentForm = () => {
 
           <ChooseDay>
             <StepInfo>
-              <StepIcon src="/assets/icons/2.svg"></StepIcon>
+              <StepIcon src="/assets/icons/2.svg" />
               <StepText>Choose a day for an appointment</StepText>
             </StepInfo>
             {values.doctorName && values.occupation ? (
@@ -155,12 +154,12 @@ const CabinetUserMakeAnAppointmentForm = () => {
 
           <ChooseTime>
             <StepInfo>
-              <StepIcon src="/assets/icons/3.svg"></StepIcon>
+              <StepIcon src="/assets/icons/3.svg" />
               <StepText>Select an available timeslot</StepText>
             </StepInfo>
             {values.doctorName && values.occupation && values.date ? (
               <ChooseTimeContainer>
-                <Field name="time" id="time" component={TimeBoard}></Field>
+                <Field name="time" id="time" component={TimeBoard} />
               </ChooseTimeContainer>
             ) : (
               <ChooseTimeError>

@@ -1,12 +1,13 @@
-import { render, screen, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import configureStore from "redux-mock-store";
-import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
-import SignUpForm from "../SignUp/form/SignUpForm";
-import * as useRegister from "../../../store/hooks/useRegister";
+import React from 'react';
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import configureStore from 'redux-mock-store';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import SignUpForm from '../SignUp/form/SignUpForm';
+import * as useRegister from '../../../store/hooks/useRegister';
 
-describe("SignUp form", () => {
+describe('SignUp form', () => {
   const initialState = {};
   const mockStore = configureStore();
   const store = mockStore(initialState);
@@ -17,21 +18,21 @@ describe("SignUp form", () => {
   let confirmPasswordInput;
   let button;
 
-  it("inputs and button are in the document", () => {
+  it('inputs and button are in the document', () => {
     render(
       <Provider store={store}>
         <BrowserRouter>
           <SignUpForm />
         </BrowserRouter>
-      </Provider>
+      </Provider>,
     );
 
-    firstNameInput = screen.getByPlaceholderText("First Name");
-    lastNameInput = screen.getByPlaceholderText("Last Name");
-    emailInput = screen.getByPlaceholderText("Email");
-    passwordInput = screen.getByPlaceholderText("Password");
-    confirmPasswordInput = screen.getByPlaceholderText("Confirm Password");
-    button = screen.getByRole("submit-button");
+    firstNameInput = screen.getByPlaceholderText('First Name');
+    lastNameInput = screen.getByPlaceholderText('Last Name');
+    emailInput = screen.getByPlaceholderText('Email');
+    passwordInput = screen.getByPlaceholderText('Password');
+    confirmPasswordInput = screen.getByPlaceholderText('Confirm Password');
+    button = screen.getByRole('submit-button');
 
     expect(firstNameInput).toBeInTheDocument();
     expect(lastNameInput).toBeInTheDocument();
@@ -41,42 +42,40 @@ describe("SignUp form", () => {
     expect(button).toBeInTheDocument();
   });
 
-  it("should take correct parameters", async () => {
+  it('should take correct parameters', async () => {
     const registrationMock = jest.fn();
-    jest.spyOn(useRegister, "useRegister").mockImplementation(() => {
-      return {
-        signUp: (values) => registrationMock(values),
-      };
-    });
+    jest.spyOn(useRegister, 'useRegister').mockImplementation(() => ({
+      signUp: (values) => registrationMock(values),
+    }));
 
     render(
       <Provider store={store}>
         <BrowserRouter>
           <SignUpForm />
         </BrowserRouter>
-      </Provider>
+      </Provider>,
     );
 
-    firstNameInput = screen.getByPlaceholderText("First Name");
-    lastNameInput = screen.getByPlaceholderText("Last Name");
-    emailInput = screen.getByPlaceholderText("Email");
-    passwordInput = screen.getByPlaceholderText("Password");
-    confirmPasswordInput = screen.getByPlaceholderText("Confirm Password");
-    button = screen.getByRole("submit-button");
+    firstNameInput = screen.getByPlaceholderText('First Name');
+    lastNameInput = screen.getByPlaceholderText('Last Name');
+    emailInput = screen.getByPlaceholderText('Email');
+    passwordInput = screen.getByPlaceholderText('Password');
+    confirmPasswordInput = screen.getByPlaceholderText('Confirm Password');
+    button = screen.getByRole('submit-button');
 
-    userEvent.type(firstNameInput, "Test");
-    userEvent.type(lastNameInput, "Test");
-    userEvent.type(emailInput, "test@test.com");
-    userEvent.type(passwordInput, "test123456");
-    userEvent.type(confirmPasswordInput, "test123456");
+    userEvent.type(firstNameInput, 'Test');
+    userEvent.type(lastNameInput, 'Test');
+    userEvent.type(emailInput, 'test@test.com');
+    userEvent.type(passwordInput, 'test123456');
+    userEvent.type(confirmPasswordInput, 'test123456');
     userEvent.click(button);
 
     await waitFor(() => {
       expect(registrationMock).toHaveBeenCalledWith({
-        firstName: "Test",
-        lastName: "Test",
-        userName: "test@test.com",
-        password: "test123456",
+        firstName: 'Test',
+        lastName: 'Test',
+        userName: 'test@test.com',
+        password: 'test123456',
       });
     });
   });

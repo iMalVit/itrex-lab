@@ -1,6 +1,3 @@
-
-
-
 export type LoginResponseType = {
   access_token: string
   refresh_token: string
@@ -26,27 +23,25 @@ export type ProfileResponseType = {
   role_name: string
 }
 
-
 export type AppointmentsResponseType = {
 
-    appointments: [
-      {
+  appointments: [
+    {
+      id: string,
+      reason: string,
+      note: string,
+      patient_id: string,
+      doctor_id: string,
+      visit_date: string,
+      status: string,
+      doctor: {
+        last_name: string,
+        first_name: string,
         id: string,
-        reason: string,
-        note: string,
-        patient_id: string,
-        doctor_id: string,
-        visit_date: string,
-        status: string,
-        doctor: {
-          last_name: string,
-          first_name: string,
-          id: string,
-          photo: string,
-          specialization_name: string
-        }
+        photo: string,
+        specialization_name: string
       }
-    ],
-    total: any
-
+    }
+  ],
+  total: any
 }

@@ -1,16 +1,16 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
-import { PATH } from "./routes";
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import PATH from './routes';
 
-import SignUp from "../pages/Autorization/SignUp/SignUp";
-import SignIn from "../pages/Autorization/SignIn/SignIn";
-import RestorePassword from "../pages/Autorization/RestorePassword/RestorePassword";
-import RestorePasswordSuccessed from "../pages/Autorization/RestorePasswordSuccessed/RestorePasswordSuccessed";
-import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
-import CabinetUserMakeAnAppointment from "../pages/Cabinet/CabinetUserMakeAnAppointment/CabinetUserMakeAnAppointment";
-import PrivateRoute from "./PrivateRoute";
-import { useAppSelector } from "../hooks";
-import Cabinet from "../pages/Cabinet/Cabinet";
+import SignUp from '../pages/Autorization/SignUp/SignUp';
+import SignIn from '../pages/Autorization/SignIn/SignIn';
+import RestorePassword from '../pages/Autorization/RestorePassword/RestorePassword';
+import RestorePasswordSuccessed from '../pages/Autorization/RestorePasswordSuccessed/RestorePasswordSuccessed';
+import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
+import CabinetUserMakeAnAppointment from '../pages/Cabinet/CabinetUserMakeAnAppointment/CabinetUserMakeAnAppointment';
+import PrivateRoute from './PrivateRoute';
+import { useAppSelector } from '../hooks';
+import Cabinet from '../pages/Cabinet/Cabinet';
 
 const AppRoutes = () => {
   const isAuth = useAppSelector((state) => state.login.isLogged);

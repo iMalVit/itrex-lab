@@ -1,6 +1,6 @@
-import React from "react";
-import DoctorCabinetUser from "./DoctorCabinetUser/DoctorCabinetUser";
-import { useAppSelector } from "../../../hooks";
+import React from 'react';
+import DoctorCabinetUser from './DoctorCabinetUser/DoctorCabinetUser';
+import { useAppSelector } from '../../../hooks';
 
 const BoardOfDoctorsCabinetUser = () => {
   const appointments = useAppSelector((state) => state.appointments.appointments);

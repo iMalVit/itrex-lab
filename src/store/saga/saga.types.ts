@@ -10,4 +10,5 @@ export type ProfileActionType = {
   me: PayloadActionCreator<any>;
 };
 
-export type AnyFunction = (...rest:any) => any;
+// eslint-disable-next-line no-unused-vars
+export type AnyFunction = (...rest: any) => any;

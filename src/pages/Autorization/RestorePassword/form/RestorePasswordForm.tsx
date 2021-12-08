@@ -1,22 +1,23 @@
-import React from "react";
-import { Formik } from "formik";
-import { useHistory } from "react-router-dom";
-import { RestorePasswordFormValidationsSchema } from "./RestorePasswordFormValidationsSchema";
-import { PATH } from "../../../../routes/routes";
+/* eslint-disable no-unused-vars */
+import React from 'react';
+import { Formik } from 'formik';
+import { useHistory } from 'react-router-dom';
+import RestorePasswordFormValidationsSchema from './RestorePasswordFormValidationsSchema';
+import PATH from '../../../../routes/routes';
 import {
   FormButtonWrapper,
   InputErrorText,
   FormInput,
   FormInputWrapperEmail,
-} from "../../common/common.style";
+} from '../../common/common.style';
 import {
   BackLink,
   FormLabel,
   FormTitle,
   FormDescription,
   Form,
-} from "../RestorePassword.style";
-import { Button } from "../../../../components/Button/Button.style";
+} from '../RestorePassword.style';
+import Button from '../../../../components/Button/Button.style';
 
 const RestorePasswordForm = () => {
   const history = useHistory();
@@ -24,16 +25,17 @@ const RestorePasswordForm = () => {
   return (
     <Formik
       initialValues={{
-        email: "",
+        email: '',
       }}
       validateOnBlur
       onSubmit={(values) => {
-
         history.push(PATH.RESTORE_PASSWORD_SUCCESSED);
       }}
       validationSchema={RestorePasswordFormValidationsSchema}
     >
-      {({ values, errors, touched, handleSubmit, dirty, isValid }) => (
+      {({
+        values, errors, touched, handleSubmit, dirty, isValid,
+      }) => (
         <Form>
           <FormLabel>
             <BackLink to={PATH.SIGN_IN}>
@@ -50,10 +52,10 @@ const RestorePasswordForm = () => {
 
           <FormInputWrapperEmail>
             <FormInput
-              placeholder={"Email"}
+              placeholder="Email"
               isvalid={touched.email && errors.email}
-              name={"email"}
-              type={"text"}
+              name="email"
+              type="text"
             />
             {touched.email && errors.email && (
               <InputErrorText>{errors.email}</InputErrorText>
@@ -68,7 +70,7 @@ const RestorePasswordForm = () => {
               iconRight="arrow"
               disabled={!isValid && dirty}
               onClick={handleSubmit}
-              type={"submit"}
+              type="submit"
             >
               Send Reset Link
             </Button>

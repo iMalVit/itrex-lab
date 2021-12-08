@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { appointments } from '../actions/appointments.actions';
+import appointments from '../actions/appointments.actions';
 import { AppointmentsStateType } from './slices.types';
 
 const initialState: AppointmentsStateType = {
   appointments: [],
-  status: "idle"
+  status: 'idle',
 };
 
 export const appointmentsSlice = createSlice({
@@ -14,8 +14,8 @@ export const appointmentsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(appointments.success, (state, { payload }) => {
-        state.appointments = [...payload.appointments]
-        state.status = 'success'
+        state.appointments = [...payload.appointments];
+        state.status = 'success';
       });
 
     builder

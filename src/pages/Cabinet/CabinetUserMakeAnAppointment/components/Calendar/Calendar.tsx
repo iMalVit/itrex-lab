@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
+import { useField } from 'formik';
+
 import {
   CalendarBody,
   CalendarContainer,
@@ -9,12 +11,12 @@ import {
   WeekDaysContainer,
   MonthTitle,
   Button,
-} from "./Calendar.style";
-import * as calendar from "../../../../../utils/calendar.util";
-import { useField } from "formik";
+} from './Calendar.style';
+import * as calendar from '../../../../../utils/calendar.util';
 
 const Calendar = (props: any) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line no-unused-vars
   const [field, state, { setValue, setTouched }] = useField(props.field);
 
   const todayDate = new Date();
@@ -31,7 +33,6 @@ const Calendar = (props: any) => {
 
   useEffect(() => {
     setValue(selectedDate);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedDate]);
 
   const handlePrevMonthButtonClick = () => {
@@ -52,7 +53,7 @@ const Calendar = (props: any) => {
 
   const calendarMonthData = calendar.getMonthData(
     displayedYear,
-    displayedMonth
+    displayedMonth,
   );
 
   return (
@@ -60,17 +61,19 @@ const Calendar = (props: any) => {
       <CalendarHeader>
         <Button
           leftArrow
-          type={"button"}
+          type="button"
           onClick={handlePrevMonthButtonClick}
-        ></Button>
+        />
         <MonthTitle>
-          {date.toLocaleString("default", { month: "long" })} {displayedYear}
+          {date.toLocaleString('default', { month: 'long' })}
+          {' '}
+          {displayedYear}
         </MonthTitle>
         <Button
           rightArrow
-          type={"button"}
+          type="button"
           onClick={handleNextMonthButtonClick}
-        ></Button>
+        />
       </CalendarHeader>
       <CalendarBody>
         <WeekDaysContainer>
@@ -84,10 +87,11 @@ const Calendar = (props: any) => {
               key={index}
               today={calendar.areEqual(date, todayDate)}
               selected={
-                calendar.areEqual(date, selectedDate) &&
-                date.getMonth() === displayedMonth
+                calendar.areEqual(date, selectedDate)
+                && date.getMonth() === displayedMonth
               }
               isCurrentMonth={date.getMonth() === displayedMonth}
+              // eslint-disable-next-line react/jsx-no-bind
               onClick={handleDayClick.bind(null, date)}
             >
               {date.getDate()}

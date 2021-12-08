@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Formik } from "formik";
+import React, { useState } from 'react';
+import { Formik } from 'formik';
 
-import { SignUpFormValidationsSchema } from "./SignUpFormValidationsSchema";
+import SignUpFormValidationsSchema from './SignUpFormValidationsSchema';
 import {
   InputErrorText,
   FormButtonWrapper,
@@ -10,12 +10,12 @@ import {
   FormInputWrapperLastName,
   FormInputWrapperEmail,
   FormInputWrapperPassword,
-  FormInputWrapperConfirmPasword,
+  FormInputWrapperConfirmPassword,
   ShowPasswordIcon,
-} from "../../common/common.style";
-import { Form, FormTitle } from "../SignUp.style";
-import { Button } from "../../../../components/Button/Button.style";
-import { useRegister } from "../../../../store/hooks/useRegister";
+} from '../../common/common.style';
+import { Form, FormTitle } from '../SignUp.style';
+import Button from '../../../../components/Button/Button.style';
+import { useRegister } from '../../../../store/hooks/useRegister';
 
 const SignUpForm = () => {
   const { signUp } = useRegister();
@@ -26,29 +26,31 @@ const SignUpForm = () => {
   return (
     <Formik
       initialValues={{
-        firstName: "",
-        lastName: "",
-        userName: "",
-        password: "",
-        confirmPassword: "",
+        firstName: '',
+        lastName: '',
+        userName: '',
+        password: '',
+        confirmPassword: '',
       }}
       validateOnBlur
       onSubmit={(values) => {
-  
         const { confirmPassword, ...userData } = values;
         signUp(userData);
       }}
       validationSchema={SignUpFormValidationsSchema}
     >
-      {({ values, errors, touched, handleSubmit, dirty, isValid }) => (
+      {({
+        // eslint-disable-next-line no-unused-vars
+        values, errors, touched, handleSubmit, dirty, isValid,
+      }) => (
         <Form>
           <FormTitle>Sign Up</FormTitle>
           <FormInputWrapperFirstName>
             <FormInput
-              placeholder={"First Name"}
+              placeholder="First Name"
               isvalid={touched.firstName && errors.firstName}
-              name={"firstName"}
-              type={"text"}
+              name="firstName"
+              type="text"
             />
             {touched.firstName && errors.firstName && (
               <InputErrorText>{errors.firstName}</InputErrorText>
@@ -56,10 +58,10 @@ const SignUpForm = () => {
           </FormInputWrapperFirstName>
           <FormInputWrapperLastName>
             <FormInput
-              placeholder={"Last Name"}
+              placeholder="Last Name"
               isvalid={touched.lastName && errors.lastName}
-              name={"lastName"}
-              type={"text"}
+              name="lastName"
+              type="text"
             />
             {touched.lastName && errors.lastName && (
               <InputErrorText>{errors.lastName}</InputErrorText>
@@ -67,10 +69,10 @@ const SignUpForm = () => {
           </FormInputWrapperLastName>
           <FormInputWrapperEmail>
             <FormInput
-              placeholder={"Email"}
+              placeholder="Email"
               isvalid={touched.userName && errors.userName}
-              name={"userName"}
-              type={"text"}
+              name="userName"
+              type="text"
             />
             {touched.userName && errors.userName && (
               <InputErrorText>{errors.userName}</InputErrorText>
@@ -79,9 +81,9 @@ const SignUpForm = () => {
           <FormInputWrapperPassword>
             <FormInput
               isvalid={touched.password && errors.password}
-              name={"password"}
-              placeholder={"Password"}
-              type={isShowPassword ? "text" : "password"}
+              name="password"
+              placeholder="Password"
+              type={isShowPassword ? 'text' : 'password'}
               maxLength="30"
             />
             {touched.password && errors.password && (
@@ -90,14 +92,14 @@ const SignUpForm = () => {
             <ShowPasswordIcon
               isShow={isShowPassword}
               onClick={() => setIsShowPassword(!isShowPassword)}
-            ></ShowPasswordIcon>
+            />
           </FormInputWrapperPassword>
-          <FormInputWrapperConfirmPasword>
+          <FormInputWrapperConfirmPassword>
             <FormInput
               isvalid={touched.confirmPassword && errors.confirmPassword}
-              name={"confirmPassword"}
-              placeholder={"Confirm Password"}
-              type={isShowConfirmPassword ? "text" : "password"}
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              type={isShowConfirmPassword ? 'text' : 'password'}
               maxLength="30"
             />
             {touched.confirmPassword && errors.confirmPassword && (
@@ -106,9 +108,9 @@ const SignUpForm = () => {
             <ShowPasswordIcon
               isShow={isShowConfirmPassword}
               onClick={() => setIsShowConfirmPassword(!isShowConfirmPassword)}
-            ></ShowPasswordIcon>
-            <div id="inputDescription"></div>
-          </FormInputWrapperConfirmPasword>
+            />
+            <div id="inputDescription" />
+          </FormInputWrapperConfirmPassword>
           <FormButtonWrapper>
             <Button
               variant="primary"
@@ -117,7 +119,8 @@ const SignUpForm = () => {
               iconRight="arrow"
               disabled={!isValid && dirty}
               onClick={handleSubmit}
-              type={"submit"}
+              type="submit"
+              // eslint-disable-next-line jsx-a11y/aria-role
               role="submit-button"
 
             >

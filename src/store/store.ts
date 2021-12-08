@@ -1,21 +1,17 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit';
 
-import createSagaMiddleware from "redux-saga";
-import appointmentsSlice from "./slices/appointments.slice";
-
-import { rootSaga } from "./saga/rootSaga";
-import loginSlice from "./slices/login.slice";
-import profileSlice from "./slices/profile.slice";
-import registrationSlice from "./slices/registration.slice";
-import createAnAppointmentSlice from "./slices/createAnAppointment.slice";
-import { createBrowserHistory, History } from 'history';
+import createSagaMiddleware from 'redux-saga';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
-
-
+import { createBrowserHistory, History } from 'history';
+import appointmentsSlice from './slices/appointments.slice';
+import rootSaga from './saga/rootSaga';
+import loginSlice from './slices/login.slice';
+import profileSlice from './slices/profile.slice';
+import registrationSlice from './slices/registration.slice';
+import createAnAppointmentSlice from './slices/createAnAppointment.slice';
 
 const sagaMiddleware = createSagaMiddleware();
 export const history = createBrowserHistory();
-
 
 const createRootReducer = (history: History<unknown>) => ({
   router: connectRouter(history),
@@ -26,14 +22,12 @@ const createRootReducer = (history: History<unknown>) => ({
   createAnAppointment: createAnAppointmentSlice.reducer,
 });
 
-
-
 const store = configureStore({
   reducer: createRootReducer(history),
   middleware: (getDefaultMiddleware) => [
     ...getDefaultMiddleware(),
     sagaMiddleware,
-    routerMiddleware(history)
+    routerMiddleware(history),
   ],
 });
 
@@ -43,4 +37,3 @@ export default store;
 
 export type AppDispatchType = typeof store.dispatch;
 export type RootStateType = ReturnType<typeof store.getState>;
-

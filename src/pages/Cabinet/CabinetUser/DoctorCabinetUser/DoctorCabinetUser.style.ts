@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const Profession = styled.div`
+const Profession = styled.div`
   font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -9,3 +9,5 @@ export const Profession = styled.div`
 
   color: #a1abc9;
 `;
+
+export default Profession;

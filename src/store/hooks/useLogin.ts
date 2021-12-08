@@ -1,18 +1,16 @@
-import { useHistory } from "react-router";
-import { useDispatch } from "react-redux";
-import { useCallback } from "react";
-import { login } from "../actions/login.actions";
+import { useDispatch } from 'react-redux';
+import { useCallback } from 'react';
+import login from '../actions/login.actions';
 
+// eslint-disable-next-line import/prefer-default-export
 export const useLogin = () => {
-  const history = useHistory();
   const dispatch = useDispatch();
 
   const signIn = useCallback(
     (userData) => {
       dispatch(login.pending(userData));
-
     },
-    [dispatch, history]
+    [dispatch],
   );
 
   return { signIn };

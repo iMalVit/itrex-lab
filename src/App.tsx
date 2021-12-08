@@ -1,8 +1,7 @@
-import React from "react";
-import AppRoutes from "./routes/AppRoutes";
+import React, { useEffect } from 'react';
+import AppRoutes from './routes/AppRoutes';
 
-import { useEffect } from "react";
-import { useInit } from "./store/hooks/useInit";
+import useInit from './store/hooks/useInit';
 
 const App = () => {
   const { start } = useInit();

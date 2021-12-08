@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { FormikValues, useField, useFormikContext } from "formik";
+import React, { useEffect, useState } from 'react';
+import { FormikValues, useField, useFormikContext } from 'formik';
 
-import { SelectStyled } from "./SelectList.style";
-import { getDoctorsBySpezialisation } from "../../../../../api/api.util";
+import SelectStyled from './SelectList.style';
+import { getDoctorsBySpecialization } from '../../../../../api/api.util';
 
-export const SelectList = ({ id, options, ...props }: any) => {
+const SelectList = ({ id, options, ...props }: any) => {
   const [doctors, setDoctors] = useState<any>(null);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line no-unused-vars
   const [field, state, { setValue, setTouched }] = useField(props.field);
   const { values } = useFormikContext<FormikValues>();
 
@@ -17,25 +18,24 @@ export const SelectList = ({ id, options, ...props }: any) => {
 
   useEffect(() => {
     if (values.occupation) {
-      getDoctorsBySpezialisation(values.occupation)
-        .then((responce) => setDoctors(responce.data))
+      getDoctorsBySpecialization(values.occupation)
+        .then((response) => setDoctors(response.data))
         .then(() => calculateOptions());
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values.occupation]);
 
   const calculateOptions = () => {
     switch (id) {
-      case "occupation":
+      case 'occupation':
         return options;
 
-      case "doctorName":
+      case 'doctorName':
         if (doctors) {
           return doctors.map(
             ({ id, first_name: firstName, last_name: lastName }: any) => ({
               label: `${firstName} ${lastName}`,
               value: id,
-            })
+            }),
           );
         }
         break;
@@ -52,3 +52,5 @@ export const SelectList = ({ id, options, ...props }: any) => {
     />
   );
 };
+
+export default SelectList;

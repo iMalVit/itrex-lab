@@ -1,5 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
-export const api = axios.create({
-  baseURL: "https://reactlabapi.herokuapp.com/api/",
+const api = axios.create({
+  baseURL: 'https://reactlabapi.herokuapp.com/api/',
 });
+
+export default api;

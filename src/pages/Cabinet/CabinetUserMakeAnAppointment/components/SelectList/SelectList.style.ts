@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import Select from "react-select";
+import styled from 'styled-components';
+import Select from 'react-select';
 
-export const SelectStyled = styled(Select)`
+const SelectStyled = styled(Select)`
   & .ReactSelect {
     &__value-container {
       padding: 8px 24px;
@@ -105,3 +105,5 @@ export const SelectStyled = styled(Select)`
     }
   }
 `;
+
+export default SelectStyled;

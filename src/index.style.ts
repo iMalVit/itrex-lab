@@ -1,6 +1,6 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
-export const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
 body {
   margin: 0;
   background-color: #F9FAFF;
@@ -72,3 +72,5 @@ input:focus {
 }
 
 `;
+
+export default GlobalStyle;

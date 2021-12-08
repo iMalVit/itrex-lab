@@ -1,7 +1,9 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { Field } from "formik";
-import { BackgroundWrapperPropsType, QuestionLinkWrapperPropsType, InputErrorTextPropsType, ShowPasswordIconPropsType } from "./common.types";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { Field } from 'formik';
+import {
+  BackgroundWrapperPropsType, QuestionLinkWrapperPropsType, InputErrorTextPropsType, ShowPasswordIconPropsType,
+} from './common.types';
 
 export const BackgroundWrapper = styled.div<BackgroundWrapperPropsType>`
   display: flex;
@@ -24,16 +26,15 @@ export const BackgroundWrapper = styled.div<BackgroundWrapperPropsType>`
   }
 
   @media (max-height: 667px) {
-    min-height: ${(props) =>
-      props.page === "RestorePassword" || props.page === "SignIn"
-        ? "100vh"
-        : "none"};
+    min-height: ${(props) => (props.page === 'RestorePassword' || props.page === 'SignIn'
+    ? '100vh'
+    : 'none')};
   }
 `;
 
 export const QuestionLinkWrapper = styled.div<QuestionLinkWrapperPropsType>`
   margin-left: 96px;
-  width: ${(props) => (props.page === "SignIn" ? "270px" : "262px")};
+  width: ${(props) => (props.page === 'SignIn' ? '270px' : '262px')};
   display: flex;
   justify-content: space-between;
 
@@ -87,8 +88,8 @@ export const InputErrorText = styled.div<InputErrorTextPropsType>`
   font-weight: normal;
   font-size: 10px;
   line-height: 120%;
-  bottom: ${(props) =>
-    props.type === "password" || props.type === "text" ? "-23px" : "-16px"};
+  bottom: ${(props) => (props
+    .type === 'password' || props.type === 'text' ? '-23px' : '-16px')};
   color: #f6657f;
 `;
 
@@ -119,8 +120,8 @@ export const FormInput = styled(Field)`
   width: 368px;
   height: 56px;
   color: #202225;
-  border: 1px solid ${(props) => (props.isvalid ? "red" : "#dce0ec")};
-  outline: ${(props) => (props.isvalid ? "none" : "")};
+  border: 1px solid ${(props) => (props.isvalid ? 'red' : '#dce0ec')};
+  outline: ${(props) => (props.isvalid ? 'none' : '')};
   border-radius: 8px;
   box-sizing: border-box;
   position: relative;
@@ -229,7 +230,7 @@ export const FormInputWrapperPassword = styled.div`
     }
   }
 `;
-export const FormInputWrapperConfirmPasword = styled.div`
+export const FormInputWrapperConfirmPassword = styled.div`
   position: relative;
 
   &:before {
@@ -257,10 +258,9 @@ export const FormInputWrapperConfirmPasword = styled.div`
 export const ShowPasswordIcon = styled.span<ShowPasswordIconPropsType>`
   width: 24px;
   height: 24px;
-  background: ${(props) =>
-    props.isShow
-      ? 'url("../../../assets/icons/visibility_off.svg") no-repeat'
-      : 'url("../../../assets/icons/visibility.svg") no-repeat'};
+  background: ${(props) => (props.isShow
+    ? 'url("../../../assets/icons/visibility_off.svg") no-repeat'
+    : 'url("../../../assets/icons/visibility.svg") no-repeat')};
   background-size: contain;
   position: absolute;
   top: 18px;

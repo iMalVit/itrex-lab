@@ -1,11 +1,11 @@
-export const WEEK_DAYS = ["M", "T", "W", "T", "F", "S", "S"];
+export const WEEK_DAYS = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
 const AMOUNT_DAYS_IN_WEEK = 7;
 
 const DaysInMonths = (month: number, year: number) => {
   if (isLeapYear(year) && month === 1) {
     return [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-  } else return [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  } return [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 };
 
 const AMOUNT_WEEK_DAYS_FROM_MONDAY = [6, 0, 1, 2, 3, 4, 5];
@@ -13,9 +13,9 @@ const AMOUNT_WEEK_DAYS_FROM_MONDAY = [6, 0, 1, 2, 3, 4, 5];
 export function areEqual(date: Date, comparableDate: Date) {
   if (!date || !comparableDate) return false;
   return (
-    date.getFullYear() === comparableDate.getFullYear() &&
-    date.getMonth() === comparableDate.getMonth() &&
-    date.getDate() === comparableDate.getDate()
+    date.getFullYear() === comparableDate.getFullYear()
+    && date.getMonth() === comparableDate.getMonth()
+    && date.getDate() === comparableDate.getDate()
   );
 }
 
@@ -43,7 +43,7 @@ export function getMonthData(year: number, month: number) {
   const daysOnCalendarPerMonth = 35;
   const monthStartsFromMonday = getDayOfWeek(firstDateInMonth);
   let day = 1;
-  let prevMonth = new Date(year, month - 1);
+  const prevMonth = new Date(year, month - 1);
   let AmountDaysInPrevMonth = getDaysInMonth(prevMonth);
 
   for (let i = 0; i < daysOnCalendarPerMonth / AMOUNT_DAYS_IN_WEEK; i++) {
@@ -53,7 +53,7 @@ export function getMonthData(year: number, month: number) {
         rowsOfDays[i][monthStartsFromMonday - 1 - j] = new Date(
           year,
           month - 1,
-          AmountDaysInPrevMonth--
+          AmountDaysInPrevMonth--,
         );
       } else {
         rowsOfDays[i][j] = new Date(year, month, day++);
@@ -65,7 +65,7 @@ export function getMonthData(year: number, month: number) {
     rowsOfDays[1],
     rowsOfDays[2],
     rowsOfDays[3],
-    rowsOfDays[4]
+    rowsOfDays[4],
   );
   return Result;
 }

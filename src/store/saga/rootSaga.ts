@@ -1,16 +1,18 @@
-import { all } from "redux-saga/effects";
-import { loginSaga } from "./login/loginSaga";
-import { profileSaga } from "./cabinet/profileSaga";
-import { appointmentsSaga } from "./cabinet/appointmentsSaga";
-import { registrationSaga } from "./register/registrationSaga";
-import { createAnAppointmentSaga } from "./cabinet/createAnAppointmentSaga";
+import { all } from 'redux-saga/effects';
+import loginSaga from './login/loginSaga';
+import profileSaga from './cabinet/profile.saga';
+import appointmentsSaga from './cabinet/appointments.saga';
+import registrationSaga from './register/registrationSaga';
+import createAppointmentSaga from './cabinet/createAppointment.saga';
 
-export function* rootSaga() {
+function* rootSaga() {
   yield all([
     registrationSaga(),
     loginSaga(),
     profileSaga(),
     appointmentsSaga(),
-    createAnAppointmentSaga(),
+    createAppointmentSaga(),
   ]);
 }
+
+export default rootSaga;

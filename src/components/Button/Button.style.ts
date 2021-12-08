@@ -1,13 +1,13 @@
-import styled, { css } from "styled-components";
-import { ButtonPropsType } from "./Button.types";
+import styled, { css } from 'styled-components';
+import { ButtonPropsType } from './Button.types';
 
-export const Button = styled.button<ButtonPropsType>`
+const Button = styled.button<ButtonPropsType>`
   box-sizing: border-box;
   position: relative;
 
-  ${(props) =>
-    props.variant === "primary" &&
-    css`
+  ${(props) => props
+    .variant === 'primary'
+    && css`
       background-color: #7297ff;
       color: #ffffff;
       font-family: "Poppins", sans-serif;
@@ -33,9 +33,9 @@ export const Button = styled.button<ButtonPropsType>`
       }
     `}
 
-  ${(props) =>
-    props.variant === "secondary" &&
-    css`
+  ${(props) => props
+    .variant === 'secondary'
+    && css`
       background-color: #ffffff;
       color: #7297ff;
       font-family: "Poppins", sans-serif;
@@ -55,9 +55,9 @@ export const Button = styled.button<ButtonPropsType>`
       }
     `}
 
-  ${(props) =>
-    props.size === "small" &&
-    css`
+  ${(props) => props
+    .size === 'small'
+    && css`
       width: 160px;
       height: 40px;
       font-size: 15px;
@@ -68,23 +68,23 @@ export const Button = styled.button<ButtonPropsType>`
       }
     `}
 
-    ${(props) =>
-    props.noneOnMobile &&
-    css`
+    ${(props) => props
+    .noneOnMobile
+    && css`
       @media (max-width: 768px) {
         display: none;
       }
     `}
 
-    ${(props) =>
-    props.size === "medium" &&
-    css`
+    ${(props) => props
+    .size === 'medium'
+    && css`
       padding: 16px 24px;
     `}
 
-    ${(props) =>
-    props.iconRight === "arrow" &&
-    css`
+    ${(props) => props
+    .iconRight === 'arrow'
+    && css`
       text-align: start;
       &:after {
         position: absolute;
@@ -97,9 +97,9 @@ export const Button = styled.button<ButtonPropsType>`
       }
     `}
 
-    ${(props) =>
-    props.iconLeft === "plus" &&
-    css`
+    ${(props) => props
+    .iconLeft === 'plus'
+    && css`
       text-align: end;
       padding-right: 16px;
       &:after {
@@ -120,3 +120,5 @@ export const Button = styled.button<ButtonPropsType>`
   margin-left: ${(props) => props.marginLeft};
   width: ${(props) => props.width};
 `;
+
+export default Button;

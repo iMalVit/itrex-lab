@@ -1,20 +1,22 @@
-import { useHistory } from "react-router";
-import { useDispatch } from "react-redux";
-import { useCallback } from "react";
-import { PATH } from "../../routes/routes";
-import { createAnAppointment } from "../actions/createAnAppointment.actions";
-export const useCreateAnAppointment = () => {
+import { useCallback } from 'react';
+import { useHistory } from 'react-router';
+import { useAppDispatch } from '../../hooks';
+import createAnAppointment from '../actions/createAppointment.actions';
+import PATH from '../../routes/routes';
+
+const useCreateAnAppointment = () => {
+  const dispatch = useAppDispatch();
   const history = useHistory();
-  const dispatch = useDispatch();
 
   const createAppointment = useCallback(
     (appointmentData) => {
-
-        dispatch(createAnAppointment.pending(appointmentData))
+      dispatch(createAnAppointment.pending(appointmentData));
       history.push(PATH.CABINET);
     },
-    [dispatch, history]
+    [dispatch],
   );
 
   return { createAppointment };
 };
+
+export default useCreateAnAppointment;

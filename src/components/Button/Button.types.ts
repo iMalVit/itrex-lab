@@ -11,6 +11,4 @@ export type ButtonPropsType = {
     marginLeft?: any
     width?: any
     onClick?: any
-
-
 }
