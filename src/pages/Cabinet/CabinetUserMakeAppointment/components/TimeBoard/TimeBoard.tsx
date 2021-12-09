@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FormikValues, useField, useFormikContext } from 'formik';
-import { TimeSlot } from '../../CabinetUserMakeAnAppointment.style';
+import { TimeSlot } from '../../CabinetUserMakeAppointment.style';
 
 import { getAvailableTime } from '../../../../../api/api.util';
 

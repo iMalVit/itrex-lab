@@ -7,7 +7,7 @@ import { ProfileResponseType } from '../../../api/auth/auth.types';
 import profile from '../../actions/profile.actions';
 import { getUserProfile } from '../../../api/auth/auth';
 import appointments from '../../actions/appointments.actions';
-import { successNotify } from '../../../utils/tosify';
+import { successNotify } from '../../../utils/tosify.util';
 
 // eslint-disable-next-line max-len
 function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>): any {

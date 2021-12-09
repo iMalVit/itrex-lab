@@ -82,7 +82,7 @@ export const PageTitle = styled.div`
   color: #202225;
 `;
 
-export const MakeAnAppointmentForm = styled.form`
+export const MakeAppointmentForm = styled.form`
   display: flex;
   justify-content: space-between;
   margin-top: 40px;

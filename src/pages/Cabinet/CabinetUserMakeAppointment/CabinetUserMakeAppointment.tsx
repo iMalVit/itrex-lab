@@ -9,11 +9,11 @@ import {
   SubTitle,
   Board,
   PageTitle,
-} from './CabinetUserMakeAnAppointment.style';
-import CabinetUserMakeAnAppointmentForm from './form/CabinetUserMakeAnAppointmentForm';
+} from './CabinetUserMakeAppointment.style';
+import CabinetUserMakeAppointmentForm from './form/CabinetUserMakeAppointmentForm';
 import { useAppSelector } from '../../../hooks';
 
-const CabinetUserMakeAnAppointment = () => {
+const CabinetUserMakeAppointment = () => {
   const userInfo = useAppSelector((state) => state.profile);
   return (
     <Content>
@@ -25,11 +25,11 @@ const CabinetUserMakeAnAppointment = () => {
           <SubTitle>Make an appointment</SubTitle>
         </Navigation>
         <PageTitle>Make an appointment</PageTitle>
-        <CabinetUserMakeAnAppointmentForm />
+        <CabinetUserMakeAppointmentForm />
       </Board>
       <Footer />
     </Content>
   );
 };
 
-export default CabinetUserMakeAnAppointment;
+export default CabinetUserMakeAppointment;

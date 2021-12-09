@@ -13,7 +13,7 @@ const SignIn = () => (
     <Content>
       <SignInForm />
       <QuestionLinkWrapper page="SignIn">
-        <QuestionLinkText>Don t have an account?</QuestionLinkText>
+        <QuestionLinkText>Don&apos;t have an account?</QuestionLinkText>
         <QuestionLink to="sign_up">Sign up</QuestionLink>
       </QuestionLinkWrapper>
     </Content>

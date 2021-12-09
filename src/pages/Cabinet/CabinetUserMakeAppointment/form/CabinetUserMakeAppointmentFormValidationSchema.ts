@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-const CabinetUserMakeAnAppointmentFormValidationSchema = Yup.object().shape({
+const CabinetUserMakeAppointmentFormValidationSchema = Yup.object().shape({
   date: Yup.string().required('This field is required!'),
   time: Yup.string().required('This field is required!'),
   doctorName: Yup.string().required('This field is required!'),
@@ -9,4 +9,4 @@ const CabinetUserMakeAnAppointmentFormValidationSchema = Yup.object().shape({
   note: Yup.string(),
 });
 
-export default CabinetUserMakeAnAppointmentFormValidationSchema;
+export default CabinetUserMakeAppointmentFormValidationSchema;

@@ -15,13 +15,7 @@ function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction
   try {
     const result = yield saga(pendingAction);
     yield put(action.success(result));
-    yield put(profile.pending({
-      id: '',
-      first_name: '',
-      last_name: '',
-      photo: '',
-      role_name: '',
-    }));
+    yield put(profile.pending(''));
   } catch (error: any) {
     const errorSerialized = {
       message: error.message,

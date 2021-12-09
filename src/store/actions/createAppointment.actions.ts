@@ -1,5 +1,5 @@
 import createSagaActions from './main';
 
-const createAppointment = createSagaActions('createAnAppointment');
+const createAppointment = createSagaActions('createAppointment');
 
 export default createAppointment;

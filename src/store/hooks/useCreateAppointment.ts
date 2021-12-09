@@ -1,22 +1,22 @@
 import { useCallback } from 'react';
 import { useHistory } from 'react-router';
 import { useAppDispatch } from '../../hooks';
-import createAnAppointment from '../actions/createAppointment.actions';
+import createAppointment from '../actions/createAppointment.actions';
 import PATH from '../../routes/routes';
 
-const useCreateAnAppointment = () => {
+const useCreateAppointment = () => {
   const dispatch = useAppDispatch();
   const history = useHistory();
 
-  const createAppointment = useCallback(
+  const makeAppointment = useCallback(
     (appointmentData) => {
-      dispatch(createAnAppointment.pending(appointmentData));
+      dispatch(createAppointment.pending(appointmentData));
       history.push(PATH.CABINET);
     },
     [dispatch],
   );
 
-  return { createAppointment };
+  return { makeAppointment };
 };
 
-export default useCreateAnAppointment;
+export default useCreateAppointment;

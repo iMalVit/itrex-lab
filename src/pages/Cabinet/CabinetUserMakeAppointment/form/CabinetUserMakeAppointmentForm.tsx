@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Formik, Field } from 'formik';
 import Calendar from '../components/Calendar/Calendar';
-import CabinetUserMakeAnAppointmentFormValidationSchema from './CabinetUserMakeAnAppointmentFormValidationSchema';
+import CabinetUserMakeAppointmentFormValidationSchema from './CabinetUserMakeAppointmentFormValidationSchema';
 import {
-  MakeAnAppointmentForm,
+  MakeAppointmentForm,
   ChooseDay,
   ChooseTime,
   StepInfo,
@@ -18,17 +18,17 @@ import {
   ChooseTimeError,
   ButtonWrapper,
   LoadingIndicator,
-} from '../CabinetUserMakeAnAppointment.style';
+} from '../CabinetUserMakeAppointment.style';
 import Button from '../../../../components/Button/Button.style';
 import SelectList from '../components/SelectList/SelectList';
 import { InputErrorText } from '../../common/common.style';
 
 import TimeBoard from '../components/TimeBoard/TimeBoard';
 import { getDoctorsSpecializations } from '../../../../api/api.util';
-import useCreateAnAppointment from '../../../../store/hooks/useCreateAnAppointment';
+import useCreateAppointment from '../../../../store/hooks/useCreateAppointment';
 
-const CabinetUserMakeAnAppointmentForm = () => {
-  const { createAppointment } = useCreateAnAppointment();
+const CabinetUserMakeAppointmentForm = () => {
+  const { makeAppointment } = useCreateAppointment();
   const [doctorsSpecializations, setDoctorsSpecializations] = useState<any>(null);
 
   // eslint-disable-next-line consistent-return
@@ -69,7 +69,7 @@ const CabinetUserMakeAnAppointmentForm = () => {
         reason: '',
         note: '',
       }}
-      validationSchema={CabinetUserMakeAnAppointmentFormValidationSchema}
+      validationSchema={CabinetUserMakeAppointmentFormValidationSchema}
       validateOnBlur={false}
       onSubmit={(values) => {
         const {
@@ -84,13 +84,13 @@ const CabinetUserMakeAnAppointmentForm = () => {
           note,
         };
 
-        createAppointment(appointmentData);
+        makeAppointment(appointmentData);
       }}
     >
       {({
         values, errors, touched, handleSubmit, isValid, dirty,
       }) => (
-        <MakeAnAppointmentForm onSubmit={handleSubmit}>
+        <MakeAppointmentForm onSubmit={handleSubmit}>
           <ChooseAdditionalInfo>
             <StepInfo>
               <StepIcon src="/assets/icons/1.svg" />
@@ -180,7 +180,7 @@ const CabinetUserMakeAnAppointmentForm = () => {
               </Button>
             </ButtonWrapper>
           </ChooseTime>
-        </MakeAnAppointmentForm>
+        </MakeAppointmentForm>
       )}
     </Formik>
   ) : (
@@ -188,4 +188,4 @@ const CabinetUserMakeAnAppointmentForm = () => {
   );
 };
 
-export default CabinetUserMakeAnAppointmentForm;
+export default CabinetUserMakeAppointmentForm;

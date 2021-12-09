@@ -8,22 +8,13 @@ const useInit = () => {
 
   const fetch = async () => {
     await dispatch(
-      profile.pending({
-        id: '',
-        first_name: '',
-        last_name: '',
-        photo: '',
-        role_name: '',
-      }),
+      profile.pending(''),
     );
   };
 
   const start = () => {
     if (getToken()) {
-      dispatch(login.success({
-        access_token: '',
-        refresh_token: '',
-      }));
+      dispatch(login.success(''));
       fetch();
     }
   };

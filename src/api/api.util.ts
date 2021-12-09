@@ -37,5 +37,5 @@ export const getAllDoctorAppointments = (token: string) => api
   .then((response) => ({ response }))
   .catch((error) => ({ error }));
 
-export const makeAnAppointment = (data: any) => api
+export const makeAppointment = (data: any) => api
   .post('appointments', data, {});

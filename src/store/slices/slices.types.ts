@@ -5,7 +5,7 @@ export interface LoginState {
 export interface RegistrationState {
   status: 'idle' | 'loading' | 'failed' | 'success';
 }
-export interface CreateAnAppointmentState {
+export interface CreateAppointmentState {
   status: 'idle' | 'loading' | 'failed' | 'success';
 }
 export interface ProfileStateType {

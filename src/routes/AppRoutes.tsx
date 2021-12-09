@@ -7,7 +7,7 @@ import SignIn from '../pages/Autorization/SignIn/SignIn';
 import RestorePassword from '../pages/Autorization/RestorePassword/RestorePassword';
 import RestorePasswordSuccessed from '../pages/Autorization/RestorePasswordSuccessed/RestorePasswordSuccessed';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
-import CabinetUserMakeAnAppointment from '../pages/Cabinet/CabinetUserMakeAnAppointment/CabinetUserMakeAnAppointment';
+import CabinetUserMakeAppointment from '../pages/Cabinet/CabinetUserMakeAppointment/CabinetUserMakeAppointment';
 import PrivateRoute from './PrivateRoute';
 import { useAppSelector } from '../hooks';
 import Cabinet from '../pages/Cabinet/Cabinet';
@@ -63,7 +63,7 @@ const AppRoutes = () => {
       <PrivateRoute
         isAuth={isAuth}
         path={PATH.CABINET_USER_MAKE_AN_APPOINTMENT}
-        component={CabinetUserMakeAnAppointment}
+        component={CabinetUserMakeAppointment}
         redirectPath={PATH.CABINET}
       />
 

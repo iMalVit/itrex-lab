@@ -3,10 +3,10 @@ import { PayloadActionCreator } from '@reduxjs/toolkit/src/createAction';
 import { AxiosResponse } from 'axios';
 import { AsyncActionType, AnyFunction } from '../saga.types';
 import appointments from '../../actions/appointments.actions';
-import { makeAnAppointment } from '../../../api/api.util';
+import { makeAppointment } from '../../../api/api.util';
 import { AppointmentsResponseType } from '../../../api/auth/auth.types';
 import createAppointment from '../../actions/createAppointment.actions';
-import { errorNotify, successNotify } from '../../../utils/tosify';
+import { errorNotify, successNotify } from '../../../utils/tosify.util';
 
 function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>): any {
   try {
@@ -25,22 +25,22 @@ function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction
   }
 }
 
-function* createAnAppointmentPost(action: ReturnType<typeof createAppointment.pending>) {
+function* createAppointmentPost(action: ReturnType<typeof createAppointment.pending>) {
   const { payload } = action;
 
-  const response: AxiosResponse<AppointmentsResponseType> = yield call(makeAnAppointment, payload);
+  const response: AxiosResponse<AppointmentsResponseType> = yield call(makeAppointment, payload);
 
   return response.data;
 }
 
-const createAnAppointmentPostSaga = runAsyncSaga.bind(null, createAppointment, createAnAppointmentPost);
+const createAppointmentPostSaga = runAsyncSaga.bind(null, createAppointment, createAppointmentPost);
 
-function* createAnAppointmentWatcher() {
-  yield takeEvery(createAppointment.pending, createAnAppointmentPostSaga);
+function* createAppointmentWatcher() {
+  yield takeEvery(createAppointment.pending, createAppointmentPostSaga);
 }
 
 function* createAppointmentSaga() {
-  yield createAnAppointmentWatcher();
+  yield createAppointmentWatcher();
 }
 
 export default createAppointmentSaga;

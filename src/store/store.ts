@@ -4,11 +4,11 @@ import createSagaMiddleware from 'redux-saga';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { createBrowserHistory, History } from 'history';
 import appointmentsSlice from './slices/appointments.slice';
-import rootSaga from './saga/rootSaga';
+import rootSaga from './saga/root.saga';
 import loginSlice from './slices/login.slice';
 import profileSlice from './slices/profile.slice';
 import registrationSlice from './slices/registration.slice';
-import createAnAppointmentSlice from './slices/createAnAppointment.slice';
+import createAppointmentSlice from './slices/createAppointment.slice';
 
 const sagaMiddleware = createSagaMiddleware();
 export const history = createBrowserHistory();
@@ -19,7 +19,7 @@ const createRootReducer = (history: History<unknown>) => ({
   login: loginSlice.reducer,
   profile: profileSlice.reducer,
   appointments: appointmentsSlice.reducer,
-  createAnAppointment: createAnAppointmentSlice.reducer,
+  createAppointment: createAppointmentSlice.reducer,
 });
 
 const store = configureStore({
