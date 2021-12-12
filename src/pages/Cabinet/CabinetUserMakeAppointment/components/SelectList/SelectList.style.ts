@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Select from 'react-select';
+import { colors } from '../../../../../components/common/theme';
 
 const SelectStyled = styled(Select)`
   & .ReactSelect {
@@ -11,7 +12,7 @@ const SelectStyled = styled(Select)`
     }
 
     &__single-value {
-      color: #202225;
+      color: ${colors.black};
     }
 
     &__placeholder {
@@ -20,7 +21,7 @@ const SelectStyled = styled(Select)`
       font-weight: "400";
       font-size: "17px";
       line-height: "24px";
-      color: "#A1ABC9";
+      color: ${colors.gray_medium};
     }
 
     &__menu {
@@ -54,38 +55,38 @@ const SelectStyled = styled(Select)`
       cursor: pointer;
       &--is-focused,
       &--is-selected {
-        background-color: #f9faff;
+        background-color: ${colors.gray_light};
         border-radius: 6px;
         color: black;
       }
       &:active {
-        background-color: #f9faff;
+        background-color: ${colors.gray_light};
         color: black;
       }
     }
     &__control {
       margin-top: 16px;
       height: 56px;
-      border: 1px solid #dce0ec;
+      border: 1px solid ${colors.gray_solid};
       border-radius: 8px;
 
       &:hover {
         cursor: pointer;
-        border: 1px solid #dce0ec;
+        border: 1px solid ${colors.gray_solid};
       }
 
       &--is-focused {
         box-shadow: none;
-        border: 1px solid #7297ff;
+        border: 1px solid ${colors.blue};
 
         &:hover {
-          border: 1px solid #7297ff;
+          border: 1px solid ${colors.blue};
         }
       }
       &--menu-is-open {
         svg {
           transform: rotate(-180deg);
-          color: #7297ff;
+          color: ${colors.blue};
         }
       }
 

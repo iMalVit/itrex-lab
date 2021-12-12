@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { colors } from '../../../components/common/theme';
 
 export const Content = styled.main`
   height: 100%;
   width: 560px;
-  background: #f9faff;
+  background: ${colors.gray_light};
   min-height: 680px;
 
   @media (max-width: 700px) {
@@ -34,7 +35,7 @@ export const FormTitle = styled.label`
   font-style: normal;
   font-size: 24px;
   line-height: 26px;
-  color: #202225;
+  color: ${colors.black};
 
   width: 328px;
 
@@ -58,7 +59,7 @@ export const FormDescription = styled.div`
   line-height: 19px;
   font-style: normal;
   font-weight: 400;
-  color: #a1abc9;
+  color: ${colors.gray_medium};
 
   @media (max-width: 400px) {
     width: 256px;
@@ -83,12 +84,12 @@ export const FormButtonSubmit = styled.button`
   font-size: 17px;
   line-height: 24px;
   position: relative;
-  color: #ffffff;
+  color: ${colors.white};
   text-align: start;
   padding: 16px 24px;
   width: 214px;
   height: 56px;
-  background: #7297ff;
+  background: ${colors.blue};
   border-radius: 8px;
   border: none;
 

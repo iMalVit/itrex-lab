@@ -1,4 +1,5 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
+import { colors } from '../common/theme';
 
 export const MessageContainer = styled.div`
   position: relative;
@@ -10,16 +11,14 @@ export const MessageContainer = styled.div`
   padding-top: 24px;
   padding-left: 72px;
 
-  ${(props) =>
-    props.error &&
-    css`
-      background: #ff2567;
+  ${(props) => props
+    .error && css`
+      background: ${colors.red};
     `}
 
-  ${(props) =>
-    props.success &&
-    css`
-      background: #34c197;
+  ${(props) => props.success
+     && css`
+      background: ${colors.green};
     `}
 `;
 
@@ -29,7 +28,7 @@ export const MessageTitle = styled.div`
   font-weight: 600;
   font-size: 17px;
   line-height: 24px;
-  color: #ffffff;
+  color: ${colors.white};
   margin-bottom: 8px;
 `;
 
@@ -41,7 +40,7 @@ export const MessageDescription = styled.div`
   font-size: 13px;
   line-height: 130%;
 
-  color: #ffffff;
+  color: ${colors.white};
 `;
 
 export const AttentionIcon = styled.div`

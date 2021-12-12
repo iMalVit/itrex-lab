@@ -11,9 +11,10 @@ import CabinetUserMakeAppointment from '../pages/Cabinet/CabinetUserMakeAppointm
 import PrivateRoute from './PrivateRoute';
 import { useAppSelector } from '../hooks';
 import Cabinet from '../pages/Cabinet/Cabinet';
+import { selectLoginIsLogged } from '../store/slices/login.slice';
 
 const AppRoutes = () => {
-  const isAuth = useAppSelector((state) => state.login.isLogged);
+  const isAuth = useAppSelector(selectLoginIsLogged);
 
   return (
     <Switch>

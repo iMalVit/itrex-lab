@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { colors } from '../common/theme';
 
 type ButtonPropsType = {
   leftArrow?: any
@@ -14,8 +15,8 @@ type DayPropsType = {
 export const CalendarContainer = styled.div`
   width: 400px;
   height: 473px;
-  background: #ffffff;
-  box-shadow: 0 4px 32px rgba(218, 228, 255, 0.24);
+  background: ${colors.white};
+  box-shadow: 0 4px 32px ${colors.gray_opacity['024']};
   border-radius: 12px;
 `;
 
@@ -41,7 +42,7 @@ export const Weekday = styled.li`
   align-items: center;
   justify-content: center;
   list-style-type: none;
-  color: #a1abc9;
+  color: ${colors.gray_medium};
 `;
 
 export const DaysOnCalendar = styled.ul`
@@ -69,30 +70,30 @@ export const Day = styled.li<DayPropsType>`
   font-size: 17px;
   line-height: 24px;
 
-  color: #202225;
+  color: ${colors.black};
 
   ${(props) => props
     .selected
     && css`
-      background: #7297ff;
+      background: ${colors.blue};
       border-radius: 12px;
-      color: #ffffff;
+      color: ${colors.white};
     `}
 
   ${(props) => props
     .today
     && !props.selected
     && css`
-      border: 1px solid #7297ff;
+      border: 1px solid ${colors.blue};
       box-sizing: border-box;
       border-radius: 12px;
-      color: #7297ff;
+      color: ${colors.blue};
     `}
 
     ${(props) => !props
     .isCurrentMonth
     && css`
-      color: #dce0ec;
+      color: ${colors.gray_solid};
       cursor: default;
     `}
 `;
@@ -103,7 +104,7 @@ export const MonthTitle = styled.div`
   font-weight: 600;
   font-size: 17px;
   line-height: 24px;
-  color: #000000;
+  color: ${colors.black};
 `;
 
 export const Button = styled.button<ButtonPropsType>`
@@ -131,5 +132,5 @@ export const CalendarHeader = styled.div`
   padding-left: 32px;
   padding-right: 32px;
   height: 88px;
-  border-bottom: 1px #dce0ec solid;
+  border-bottom: 1px ${colors.gray_solid} solid;
 `;

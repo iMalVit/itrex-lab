@@ -4,6 +4,7 @@ import { Field } from 'formik';
 import {
   BackgroundWrapperPropsType, QuestionLinkWrapperPropsType, InputErrorTextPropsType, ShowPasswordIconPropsType,
 } from './common.types';
+import { colors } from '../../../components/common/theme';
 
 export const BackgroundWrapper = styled.div<BackgroundWrapperPropsType>`
   display: flex;
@@ -55,7 +56,7 @@ export const QuestionLinkWrapper = styled.div<QuestionLinkWrapperPropsType>`
 `;
 
 export const QuestionLinkText = styled.div`
-  color: #a1abc9;
+  color: ${colors.gray_medium};
   font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -73,7 +74,7 @@ export const QuestionLink = styled(Link)`
   font-weight: 600;
   font-size: 15px;
   line-height: 19px;
-  color: #7297ff;
+  color: ${colors.blue};
   text-decoration-line: underline;
 
   @media (max-width: 300px) {
@@ -90,7 +91,7 @@ export const InputErrorText = styled.div<InputErrorTextPropsType>`
   line-height: 120%;
   bottom: ${(props) => (props
     .type === 'password' || props.type === 'text' ? '-23px' : '-16px')};
-  color: #f6657f;
+  color: ${colors.brink_pink};
 `;
 
 export const FormButtonWrapper = styled.div`
@@ -119,19 +120,19 @@ export const FormInput = styled(Field)`
   line-height: 24px;
   width: 368px;
   height: 56px;
-  color: #202225;
-  border: 1px solid ${(props) => (props.isvalid ? 'red' : '#dce0ec')};
+  color: ${colors.black};
+  border: 1px solid ${(props) => (props.isvalid ? 'red' : `${colors.gray_solid}`)};
   outline: ${(props) => (props.isvalid ? 'none' : '')};
   border-radius: 8px;
   box-sizing: border-box;
   position: relative;
 
   &:focus::-webkit-input-placeholder {
-    color: transparent;
+    color: ${colors.transparent};
   }
 
   &::-webkit-input-placeholder {
-    color: #a1abc9;
+    color: ${colors.gray_medium};
   }
 
   @media (max-width: 400px) {
@@ -266,7 +267,7 @@ export const ShowPasswordIcon = styled.span<ShowPasswordIconPropsType>`
   top: 18px;
   right: 26px;
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: ${colors.transparent};
   @media (max-width: 400px) {
     top: 8px;
     right: 18px;

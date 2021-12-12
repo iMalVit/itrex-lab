@@ -5,15 +5,16 @@ import { useAppSelector } from '../../hooks';
 import { Content } from './common/common.style';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
+import { selectProfileData } from '../../store/slices/profile.slice';
 
 const Cabinet = () => {
-  const userInfo = useAppSelector((state) => state.profile);
+  const profileData = useAppSelector(selectProfileData);
 
   return (
     <Content>
-      <Header userInfo={userInfo} />
-      {userInfo.role_name === 'Patient' && <CabinetUser />}
-      {userInfo.role_name === 'Doctor' && <CabinetDoctor />}
+      <Header userInfo={profileData} />
+      {profileData.role_name === 'Patient' && <CabinetUser />}
+      {profileData.role_name === 'Doctor' && <CabinetDoctor />}
       <Footer />
     </Content>
   );

@@ -9,6 +9,9 @@ import loginSlice from './slices/login.slice';
 import profileSlice from './slices/profile.slice';
 import registrationSlice from './slices/registration.slice';
 import createAppointmentSlice from './slices/createAppointment.slice';
+import specializationsSlice from './slices/specializations.slice';
+import doctorsPerSpecializationSlice from './slices/doctorsPerSpecialization.slice';
+import availableTimeSlice from './slices/availableTime.slice';
 
 const sagaMiddleware = createSagaMiddleware();
 export const history = createBrowserHistory();
@@ -20,6 +23,9 @@ const createRootReducer = (history: History<unknown>) => ({
   profile: profileSlice.reducer,
   appointments: appointmentsSlice.reducer,
   createAppointment: createAppointmentSlice.reducer,
+  specializations: specializationsSlice.reducer,
+  doctorsPerSpecialization: doctorsPerSpecializationSlice.reducer,
+  availableTime: availableTimeSlice.reducer,
 });
 
 const store = configureStore({

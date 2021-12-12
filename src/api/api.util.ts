@@ -24,18 +24,13 @@ export const getAllPatientAppointments = () => api
     },
   });
 
-export const getAllDoctorAppointments = (token: string) => api
+export const getAllDoctorAppointments = () => api
   .get('/appointments/doctor/me', {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
     params: {
       offset: OFFSET,
       limit: LIMIT,
     },
-  })
-  .then((response) => ({ response }))
-  .catch((error) => ({ error }));
+  });
 
 export const makeAppointment = (data: any) => api
   .post('appointments', data, {});

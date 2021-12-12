@@ -4,6 +4,9 @@ import profileSaga from './cabinet/profile.saga';
 import appointmentsSaga from './cabinet/appointments.saga';
 import registrationSaga from './register/registration.saga';
 import createAppointmentSaga from './cabinet/createAppointment.saga';
+import specializationsSaga from './cabinet/specializations.saga';
+import doctorsPerSpecializationSaga from './cabinet/doctorsPerSpecialization.saga';
+import availableTimeSaga from './cabinet/availableTime.saga';
 
 function* rootSaga() {
   yield all([
@@ -12,6 +15,9 @@ function* rootSaga() {
     profileSaga(),
     appointmentsSaga(),
     createAppointmentSaga(),
+    specializationsSaga(),
+    doctorsPerSpecializationSaga(),
+    availableTimeSaga(),
   ]);
 }
 

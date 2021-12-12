@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   PatientBox,
   Avatar,
@@ -13,9 +13,11 @@ import {
   StatusIcon,
   PatientInfo,
   DescriptionBoxDocument,
+  SettingsButton,
 } from './PatientCabinetDoctor.style';
 
-const PatientCabinetDoctor: React.FC<{ imageSrc: any, firstName: any, lastName: any, status: any, time: any, description: any }> = (props) => {
+const PatientCabinetDoctor: React.FC<{ imageSrc: any, firstName: any, lastName: any, status: any, date: any, time: any, description: any }> = (props) => {
+  const [showControlCardPanel, setShowControlCardPanel] = useState<boolean>(false);
   const displayFlex = {
     display: 'flex',
   };
@@ -37,17 +39,28 @@ const PatientCabinetDoctor: React.FC<{ imageSrc: any, firstName: any, lastName: 
           </PatientName>
           <Status>
             <StatusIcon status={props.status} />
-            <StatusText>Appointment is confirmed</StatusText>
+            <StatusText>{props.status}</StatusText>
           </Status>
+          <SettingsButton onClick={() => setShowControlCardPanel(!showControlCardPanel)} />
+          {/* {showControlCardPanel && (<ControlCardPanel />)} */}
+
         </DescriptionBox>
       </MainInfo>
       <PatientInfo>
         <div style={displayFlex}>
           <img src="/assets/icons/time.svg" alt="time icon" />
           <PatientTimeText>
-            {timeHelper(props.time)}
+            {timeHelper(props.date)}
             {' '}
-            4 pm – 5 pm
+            {props.time - 3}
+            {' '}
+            {Number(props.time) - 3 < 12 ? 'am' : 'pm'}
+            {' '}
+            –
+            {' '}
+            {Number(props.time - 3) + 1}
+            {' '}
+            {Number(props.time) - 3 + 1 < 12 ? 'am' : 'pm'}
           </PatientTimeText>
         </div>
         <DescriptionBoxDocument>

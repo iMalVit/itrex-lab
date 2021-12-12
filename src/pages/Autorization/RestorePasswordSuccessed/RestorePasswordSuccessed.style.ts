@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { colors } from '../../../components/common/theme';
 
 export const BackgroundWrapper = styled.div`
   display: flex;
@@ -29,7 +30,7 @@ export const BackgroundWrapper = styled.div`
 export const Content = styled.main`
   height: 100%;
   width: 560px;
-  background: #f9faff;
+  background: ${colors.gray_light};
   min-height: 680px;
 
   @media (max-width: 700px) {
@@ -91,7 +92,7 @@ export const FormTitle = styled.label`
   font-style: normal;
   font-size: 24px;
   line-height: 26px;
-  color: #202225;
+  color: ${colors.black};
 
   width: 328px;
 
@@ -115,7 +116,7 @@ export const FormDescription = styled.div`
   line-height: 19px;
   font-style: normal;
   font-weight: 400;
-  color: #a1abc9;
+  color: ${colors.gray_medium};
 
   @media (max-width: 400px) {
     width: 256px;
@@ -143,5 +144,5 @@ export const EnteredEmail = styled.a`
 
   text-decoration-line: underline;
 
-  color: #7297ff;
+  color: ${colors.blue};
 `;

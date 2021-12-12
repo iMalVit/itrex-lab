@@ -72,7 +72,7 @@ const SignInForm = () => {
               size="medium"
               width="138px"
               iconRight="arrow"
-              disabled={!isValid && dirty}
+              disabled={!(isValid && dirty)}
               onClick={handleSubmit}
               type="submit"
               // eslint-disable-next-line jsx-a11y/aria-role

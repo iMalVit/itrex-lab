@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { colors } from '../common/theme';
 import { ButtonPropsType } from './Button.types';
 
 const Button = styled.button<ButtonPropsType>`
@@ -8,8 +9,8 @@ const Button = styled.button<ButtonPropsType>`
   ${(props) => props
     .variant === 'primary'
     && css`
-      background-color: #7297ff;
-      color: #ffffff;
+      background-color: ${colors.blue};
+      color: ${colors.white};
       font-family: "Poppins", sans-serif;
       font-style: normal;
       font-weight: 600;
@@ -20,24 +21,24 @@ const Button = styled.button<ButtonPropsType>`
       cursor: pointer;
 
       &:hover {
-        background-color: #476cd3;
+        background-color: ${colors.dark_blue};
       }
 
       &:disabled {
-        background-color: #dce0ec;
+        background-color: ${colors.gray_solid};
         cursor: default;
       }
 
       &:active {
-        background-color: #7297ff;
+        background-color: ${colors.blue};
       }
     `}
 
   ${(props) => props
     .variant === 'secondary'
     && css`
-      background-color: #ffffff;
-      color: #7297ff;
+      background-color: ${colors.white};
+      color: ${colors.blue};
       font-family: "Poppins", sans-serif;
       font-style: normal;
       font-weight: normal;
@@ -46,11 +47,11 @@ const Button = styled.button<ButtonPropsType>`
       cursor: pointer;
 
       &:hover {
-        background-color: #f9faff;
+        background-color: ${colors.gray_light};
       }
 
       &:disabled {
-        background-color: #dce0ec;
+        background-color: ${colors.gray_solid};
         cursor: default;
       }
     `}

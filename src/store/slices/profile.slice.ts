@@ -1,15 +1,18 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSelector, createSlice } from '@reduxjs/toolkit';
 
 import profile from '../actions/profile.actions';
 import { ProfileResponseType } from '../../api/auth/auth.types';
 import { ProfileStateType } from './slices.types';
+import { RootStateType } from '../store';
 
 const initialState: ProfileStateType = {
-  id: '',
-  first_name: '',
-  last_name: '',
-  photo: '',
-  role_name: '',
+  data: {
+    id: '',
+    first_name: '',
+    last_name: '',
+    photo: '',
+    role_name: '',
+  },
   status: 'idle',
 };
 
@@ -20,11 +23,7 @@ export const profileSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(profile.success, (state, { payload }: { payload: ProfileResponseType }) => {
-        state.id = payload.id;
-        state.first_name = payload.first_name;
-        state.last_name = payload.last_name;
-        state.photo = payload.photo;
-        state.role_name = payload.role_name;
+        state.data = payload;
         state.status = 'success';
       });
     builder
@@ -38,4 +37,12 @@ export const profileSlice = createSlice({
   },
 });
 
+const getProfileState = (state: RootStateType) => state.profile;
+export const selectProfileData = createSelector(getProfileState, (state) => state.data);
+export const selectProfileDataId = createSelector(getProfileState, (state) => state.data.id);
+export const selectProfileDataFirstName = createSelector(getProfileState, (state) => state.data.first_name);
+export const selectProfileDataLastName = createSelector(getProfileState, (state) => state.data.last_name);
+export const selectProfileDataPhoto = createSelector(getProfileState, (state) => state.data.photo);
+export const selectProfileDataRoleName = createSelector(getProfileState, (state) => state.data.role_name);
+export const selectProfileStatus = createSelector(getProfileState, (state) => state.status);
 export default profileSlice;

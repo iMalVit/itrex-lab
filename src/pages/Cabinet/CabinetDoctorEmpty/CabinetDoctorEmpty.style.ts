@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from '../../../components/common/theme';
 
 export const EmptyBox = styled.div`
   margin-top: 256px;
@@ -27,7 +28,7 @@ export const EmptyBoxLogo = styled.div`
 export const EmptyBoxText = styled.div`
   width: 461px;
   font-family: "Poppins", sans-serif;
-  color: #a1abc9;
+  color: ${colors.gray_medium};
   font-style: normal;
   font-weight: normal;
   font-size: 15px;

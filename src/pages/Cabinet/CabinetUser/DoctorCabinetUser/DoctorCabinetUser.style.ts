@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from '../../../../components/common/theme';
 
 const Profession = styled.div`
   font-family: "Poppins", sans-serif;
@@ -7,7 +8,7 @@ const Profession = styled.div`
   font-size: 13px;
   line-height: 130%;
 
-  color: #a1abc9;
+  color: ${colors.gray_medium};
 `;
 
 export default Profession;

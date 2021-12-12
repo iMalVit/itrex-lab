@@ -6,8 +6,12 @@ import {
 const OFFSET = 0;
 const LIMIT = 100;
 
+const URL = {
+  appointmentsPatientMe: () => '/appointments/patient/me',
+};
+
 const getAllPatientAppointments = () => api
-  .get<AppointmentsResponseType>('/appointments/patient/me', {
+  .get<AppointmentsResponseType>(URL.appointmentsPatientMe(), {
     params: {
       offset: OFFSET,
       limit: LIMIT,

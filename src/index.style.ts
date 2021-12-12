@@ -1,9 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
+import { colors } from './components/common/theme';
 
 const GlobalStyle = createGlobalStyle`
 body {
   margin: 0;
-  background-color: #F9FAFF;
+  background-color: ${colors.gray_light};
   font-family: "Poppins", sans-serif;
 }
 
@@ -29,11 +30,11 @@ textarea {
 }
 
 input:focus::-webkit-input-placeholder {
-  color: transparent;
+  color: ${colors.transparent};
 }
 
 input::-webkit-input-placeholder {
-  color: #a1abc9;
+  color: ${colors.gray_medium};
 }
 
 .form__show-password-icon_show {
@@ -49,7 +50,7 @@ input::-webkit-input-placeholder {
 
 input:focus {
   outline: none;
-  border: 1px solid #7297FF
+  border: 1px solid ${colors.blue}
 }
 
 .Toastify__toast {
@@ -64,11 +65,11 @@ input:focus {
 }
 
 .Toastify__toast-theme--colored.Toastify__toast--success {
-  background-color: #34c197;
+  background-color: ${colors.green};
 }
 
 .Toastify__toast-theme--colored.Toastify__toast--error {
-  background-color: #ff2567;
+  background-color: ${colors.red};
 }
 
 `;

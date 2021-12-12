@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import { colors } from '../../../components/common/theme';
 import { InputErrorTextPropsType } from './common.types';
 
 export const Content = styled.div`
   position: relative;
   min-width: 270px;
-  background: #e4ebff;
+  background: ${colors.blue_sky};
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,8 +23,8 @@ export const Board = styled.main`
   min-height: 400px;
   margin: 0 auto;
   height: 89%;
-  background: #f9faff;
-  box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.32);
+  background: ${colors.gray_light};
+  box-shadow: 0px 4px 32px ${colors.gray_opacity['032']};
 
   @media (max-width: 460px) {
     width: 100%;
@@ -85,5 +86,5 @@ export const InputErrorText = styled.div<InputErrorTextPropsType>`
   line-height: 120%;
   bottom: ${(props) => (props
     .type === 'password' || props.type === 'text' ? '-23px' : '-16px')};
-  color: #f6657f;
+  color: ${colors.brink_pink};
 `;

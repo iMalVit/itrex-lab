@@ -12,9 +12,10 @@ import {
 } from './CabinetUserMakeAppointment.style';
 import CabinetUserMakeAppointmentForm from './form/CabinetUserMakeAppointmentForm';
 import { useAppSelector } from '../../../hooks';
+import { selectProfileData } from '../../../store/slices/profile.slice';
 
 const CabinetUserMakeAppointment = () => {
-  const userInfo = useAppSelector((state) => state.profile);
+  const userInfo = useAppSelector(selectProfileData);
   return (
     <Content>
       <Header userInfo={userInfo} />

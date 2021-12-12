@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useField } from 'formik';
 
 import {
   CalendarBody,
@@ -12,13 +11,9 @@ import {
   MonthTitle,
   Button,
 } from './Calendar.style';
-import * as calendar from '../../../../../utils/calendar.util';
+import * as calendar from '../../utils/calendar.util';
 
 const Calendar = (props: any) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // eslint-disable-next-line no-unused-vars
-  const [field, state, { setValue, setTouched }] = useField(props.field);
-
   const todayDate = new Date();
 
   const [date, setDate] = useState(todayDate);
@@ -32,7 +27,9 @@ const Calendar = (props: any) => {
   }, [date]);
 
   useEffect(() => {
-    setValue(selectedDate);
+    if (props.setValue) {
+      props.setValue(selectedDate);
+    }
   }, [selectedDate]);
 
   const handlePrevMonthButtonClick = () => {

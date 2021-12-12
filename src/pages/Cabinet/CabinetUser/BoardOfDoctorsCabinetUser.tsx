@@ -1,22 +1,23 @@
 import React from 'react';
 import DoctorCabinetUser from './DoctorCabinetUser/DoctorCabinetUser';
 import { useAppSelector } from '../../../hooks';
+import { selectAppointmentsAppointments } from '../../../store/slices/appointments.slice';
 
 const BoardOfDoctorsCabinetUser = () => {
-  const appointments = useAppSelector((state) => state.appointments.appointments);
+  const appointments = useAppSelector(selectAppointmentsAppointments);
 
   return (
     <>
-      {appointments.map((doctor: any) => (
+      {appointments.map((appointment: any) => (
         <DoctorCabinetUser
-          firstName={doctor.doctor.first_name}
-          lastName={doctor.doctor.last_name}
-          date={new Date(doctor.visit_date)}
-          time={new Date(doctor.visit_date).getHours()}
-          imageSrc={doctor.doctor.photo}
-          occupation={doctor.doctor.specialization_name}
-          description={doctor.reason}
-          key={doctor.id}
+          firstName={appointment.doctor.first_name}
+          lastName={appointment.doctor.last_name}
+          date={new Date(appointment.visit_date)}
+          time={new Date(appointment.visit_date).getHours()}
+          imageSrc={appointment.doctor.photo}
+          occupation={appointment.doctor.specialization_name}
+          description={appointment.reason}
+          key={appointment.id}
         />
       ))}
     </>

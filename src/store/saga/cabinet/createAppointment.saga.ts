@@ -12,7 +12,8 @@ function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction
   try {
     const result = yield saga(pendingAction);
     yield put(action.success(result));
-    yield put(appointments.pending(result));
+    const payload = { role_name: 'Patient' };
+    yield put(appointments.pending(payload));
     successNotify('The appointment has been successfully added');
   } catch (error: any) {
     const errorSerialized = {
@@ -20,7 +21,7 @@ function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction
       stack: error.stack,
     };
     yield put(action.failed(errorSerialized));
-    errorNotify(error.response.data);
+    errorNotify(error.response);
     throw error;
   }
 }

@@ -1,6 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSelector, createSlice } from '@reduxjs/toolkit';
 import appointments from '../actions/appointments.actions';
 import { AppointmentsStateType } from './slices.types';
+import { RootStateType } from '../store';
 
 const initialState: AppointmentsStateType = {
   appointments: [],
@@ -29,4 +30,6 @@ export const appointmentsSlice = createSlice({
   },
 });
 
+const getAppointmentsState = (state: RootStateType) => state.appointments;
+export const selectAppointmentsAppointments = createSelector(getAppointmentsState, (state) => state.appointments);
 export default appointmentsSlice;

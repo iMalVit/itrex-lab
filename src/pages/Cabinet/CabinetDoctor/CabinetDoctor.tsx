@@ -21,7 +21,7 @@ const Patients = () => (
     </ButtonsWrapper>
     <BoardTitle>My Patients</BoardTitle>
     <BoardBox>
-      <BoardOfPatientsCabinetDoctor patients={[]} />
+      <BoardOfPatientsCabinetDoctor />
     </BoardBox>
   </Board>
 );

@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { colors } from '../../../components/common/theme';
 
 export const Content = styled.main`
   height: 100%;
   width: 560px;
-  background: #f9faff;
+  background: ${colors.gray_light};
   min-height: 680px;
 
   @media (max-width: 700px) {
@@ -28,12 +29,12 @@ export const FormButtonSubmit = styled.button`
   font-size: 17px;
   line-height: 24px;
   position: relative;
-  color: #ffffff;
+  color: ${colors.white};
   text-align: start;
   padding: 16px 24px;
   width: 138px;
   height: 56px;
-  background: #7297ff;
+  background: ${colors.blue};
   border-radius: 8px;
   border: none;
 
@@ -150,7 +151,7 @@ export const FormTitle = styled.label`
   font-style: normal;
   font-size: 24px;
   line-height: 26px;
-  color: #202225;
+  color: ${colors.black};
 
   &_size_restore-password {
     width: 328px;

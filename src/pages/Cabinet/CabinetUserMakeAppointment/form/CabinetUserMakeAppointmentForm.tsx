@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Formik, Field } from 'formik';
-import Calendar from '../components/Calendar/Calendar';
 import CabinetUserMakeAppointmentFormValidationSchema from './CabinetUserMakeAppointmentFormValidationSchema';
 import {
   MakeAppointmentForm,
@@ -17,19 +16,18 @@ import {
   ChooseADayError,
   ChooseTimeError,
   ButtonWrapper,
-  LoadingIndicator,
 } from '../CabinetUserMakeAppointment.style';
 import Button from '../../../../components/Button/Button.style';
-import SelectList from '../components/SelectList/SelectList';
 import { InputErrorText } from '../../common/common.style';
 
 import TimeBoard from '../components/TimeBoard/TimeBoard';
-import { getDoctorsSpecializations } from '../../../../api/api.util';
 import useCreateAppointment from '../../../../store/hooks/useCreateAppointment';
+import CalendarFormik from '../components/CalendarFormik/CalendarFormik';
+import SpecializationsSelect from '../components/SpecializationsSelect/SpecializationsSelect';
+import DoctorsSelect from '../components/DoctorsSelect/DoctorsSelect';
 
 const CabinetUserMakeAppointmentForm = () => {
   const { makeAppointment } = useCreateAppointment();
-  const [doctorsSpecializations, setDoctorsSpecializations] = useState<any>(null);
 
   // eslint-disable-next-line consistent-return
   const convertTime = (time: any) => {
@@ -48,18 +46,7 @@ const CabinetUserMakeAppointmentForm = () => {
     } return day;
   };
 
-  useEffect(() => {
-    getDoctorsSpecializations().then((response) => {
-      setDoctorsSpecializations(response.data);
-    });
-  }, []);
-
-  const getSpecializationsOptions = () => doctorsSpecializations.map(({ id, specialization_name }: any) => ({
-    value: id,
-    label: specialization_name,
-  }));
-
-  return doctorsSpecializations ? (
+  return (
     <Formik
       initialValues={{
         date: new Date(),
@@ -88,7 +75,7 @@ const CabinetUserMakeAppointmentForm = () => {
       }}
     >
       {({
-        values, errors, touched, handleSubmit, isValid, dirty,
+        values, errors, touched, handleSubmit, setFieldValue, isValid, dirty,
       }) => (
         <MakeAppointmentForm onSubmit={handleSubmit}>
           <ChooseAdditionalInfo>
@@ -101,10 +88,10 @@ const CabinetUserMakeAppointmentForm = () => {
             <SelectWrapper>
               <InputLabel>Occupation</InputLabel>
               <Field
-                component={SelectList}
+                component={SpecializationsSelect}
                 name="occupation"
                 id="occupation"
-                options={getSpecializationsOptions()}
+                handleReset={setFieldValue}
               />
               {errors.occupation && touched.occupation ? (
                 <InputErrorText type="text">{errors.occupation}</InputErrorText>
@@ -113,7 +100,7 @@ const CabinetUserMakeAppointmentForm = () => {
 
             <SelectWrapper>
               <InputLabel>Doctors name</InputLabel>
-              <Field component={SelectList} name="doctorName" id="doctorName" />
+              <Field component={DoctorsSelect} name="doctorName" id="doctorName" />
               {errors.doctorName && touched.doctorName ? (
                 <InputErrorText type="text">{errors.doctorName}</InputErrorText>
               ) : null}
@@ -146,7 +133,7 @@ const CabinetUserMakeAppointmentForm = () => {
               <StepText>Choose a day for an appointment</StepText>
             </StepInfo>
             {values.doctorName && values.occupation ? (
-              <Field name="date" id="date" component={Calendar} />
+              <Field name="date" id="date" component={CalendarFormik} />
             ) : (
               <ChooseADayError>Choose a doctor first</ChooseADayError>
             )}
@@ -183,8 +170,6 @@ const CabinetUserMakeAppointmentForm = () => {
         </MakeAppointmentForm>
       )}
     </Formik>
-  ) : (
-    <LoadingIndicator>LOADING</LoadingIndicator>
   );
 };
 

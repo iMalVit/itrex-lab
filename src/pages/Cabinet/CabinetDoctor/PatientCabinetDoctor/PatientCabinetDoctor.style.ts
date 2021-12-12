@@ -1,14 +1,16 @@
 import styled from 'styled-components';
+import { colors } from '../../../../components/common/theme';
 
 type StatusIconPropsType = {
   status: string
 }
 
 export const PatientBox = styled.div`
-  background: #ffffff;
+  position: relative;
+  background: ${colors.white};
   border-radius: 12px;
   padding-bottom: 40px;
-  box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.24);
+  box-shadow: 0px 4px 32px ${colors.gray_opacity['024']};
 
   @media (max-width: 460px) {
     min-width: 207px;
@@ -44,7 +46,7 @@ export const StatusText = styled.div`
   font-weight: 500;
   font-size: 13px;
   line-height: 130%;
-  color: #a1abc9;
+  color: ${colors.gray_medium};
   margin-left: 8px;
 `;
 
@@ -55,7 +57,7 @@ export const PatientDocumentText = styled.div`
   font-weight: normal;
   font-size: 15px;
   line-height: 140%;
-  color: #202225;
+  color: ${colors.black};
 
   @media (max-width: 1000px) {
     width: auto;
@@ -74,7 +76,7 @@ export const PatientTimeText = styled.div`
   font-weight: 600;
   font-size: 15px;
   line-height: 130%;
-  color: #202225;
+  color: ${colors.black};
 
   @media (max-width: 550px) {
     width: auto;
@@ -114,11 +116,11 @@ export const StatusIcon = styled.div<StatusIconPropsType>`
     height: 5px;
   }
 
-  background-color: ${(props) => (props.status ? '#34c197' : '#ff2567')};
+  background-color: ${(props) => (props.status ? `${colors.green}` : `${colors.red}`)};
 `;
 
 export const PatientInfo = styled.div`
-  border-top: solid #dce0ec 1px;
+  border-top: solid ${colors.gray_solid} 1px;
   max-height: 145px;
   padding-top: 24px;
   padding-left: 32px;
@@ -143,5 +145,22 @@ export const DescriptionBoxDocument = styled.div`
 
   @media (max-width: 1000px) {
     width: auto;
+  }
+`;
+
+export const SettingsButton = styled.div`
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  width: 40px;
+  height: 40px;
+  background: url("./assets/icons/settings-dots.svg") no-repeat center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 6px;
+
+  &:hover {
+    background:$ ${colors.gray_light} url("./assets/icons/settings-dots-blue.svg") no-repeat center;
   }
 `;

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Field } from 'formik';
+import { colors } from '../../../components/common/theme';
 
 type TimeSlotPropsType = {
   selected?: boolean,
@@ -16,8 +17,8 @@ export const Board = styled.main`
   min-height: 400px;
   margin: 0 auto;
   height: 89%;
-  background: #f9faff;
-  box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.32);
+  background: ${colors.gray_light};
+  box-shadow: 0px 4px 32px ${colors.gray_opacity['032']};
   @media (max-height: 976px) {
     overflow-y: scroll;
   }
@@ -41,7 +42,7 @@ export const MainTitle = styled.div`
   font-weight: normal;
   font-size: 17px;
   line-height: 24px;
-  color: #7297ff;
+  color: ${colors.blue};
 `;
 
 export const ArrowNavigationIcon = styled.div`
@@ -59,15 +60,15 @@ export const SubTitle = styled.div`
   font-size: 17px;
   line-height: 24px;
 
-  color: #a1abc9;
+  color: ${colors.gray_medium};
 `;
 
 export const ChooseADayError = styled.div`
-  color: #f6657f;
+  color: ${colors.brink_pink};
 `;
 
 export const ChooseTimeError = styled.div`
-  color: #f6657f;
+  color: ${colors.brink_pink};
   width: 464px;
 `;
 
@@ -79,7 +80,7 @@ export const PageTitle = styled.div`
   font-size: 24px;
   line-height: 110%;
 
-  color: #202225;
+  color: ${colors.black};
 `;
 
 export const MakeAppointmentForm = styled.form`
@@ -116,7 +117,7 @@ export const StepText = styled.div`
   font-size: 17px;
   line-height: 24px;
 
-  color: #a1abc9;
+  color: ${colors.gray_medium};
 `;
 
 export const ChooseTimeContainer = styled.ul`
@@ -142,16 +143,16 @@ export const TimeSlot = styled.li<TimeSlotPropsType >`
   height: 40px;
   box-sizing: border-box;
 
-  background: ${(props) => (props.selected ? '#7297FF' : '#ffffff')};
+  background: ${(props) => (props.selected ? `${colors.blue}` : `${colors.white}`)};
 
   font-family: "Poppins", sans-serif;
-  color: ${(props) => (props.selected ? '#ffffff' : '#202225')};
+  color: ${(props) => (props.selected ? `${colors.white}` : `${colors.black}`)};
   font-style: normal;
   font-weight: 600;
   font-size: 15px;
   line-height: 19px;
 
-  box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.24);
+  box-shadow: 0px 4px 32px ${colors.gray_opacity['024']};
   border-radius: 8px;
 
   cursor: pointer;
@@ -173,7 +174,7 @@ export const InputLabel = styled.div`
   font-size: 13px;
   line-height: 130%;
 
-  color: #000000;
+  color: ${colors.black};
   margin-bottom: 16px;
 `;
 
@@ -208,7 +209,7 @@ export const Input = styled(Field)`
   width: 624px;
   height: 56px;
   border-radius: 8px;
-  border: 1px solid #dce0ec;
+  border: 1px solid ${colors.gray_solid};
 
   font-family: "Poppins", sans-serif;
   font-style: normal;
@@ -216,7 +217,7 @@ export const Input = styled(Field)`
   font-size: 17px;
   line-height: 24px;
 
-  box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.16);
+  box-shadow: 0px 4px 32px ${colors.gray_opacity['016']};
 
   @media (max-width: 1790px) {
     width: 400px;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from '../common/theme';
 
 export const HeaderWrapper = styled.header`
   max-width: 2560px;
@@ -7,7 +8,7 @@ export const HeaderWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #e4ebff;
+  background: ${colors.blue_sky};
   height: 7%;
   min-height: 80px;
 
@@ -53,7 +54,7 @@ export const LoggedPersonProfession = styled.div`
   font-weight: 500;
   font-size: 13px;
   line-height: 17px;
-  color: #a1abc9;
+  color: ${colors.gray_medium};
   text-align: right;
 `;
 
@@ -66,14 +67,14 @@ export const IndicatorBox = styled.div`
   width: 11px;
   height: 11px;
   border-radius: 100%;
-  background-color: #e4ebff;
+  background-color: ${colors.blue_sky};
 `;
 
 export const Indicator = styled.div`
   width: 8px;
   height: 8px;
   border-radius: 100%;
-  background-color: #34c197;
+  background-color: ${colors.green};
 `;
 
 export const HeaderLogoBox = styled.div`

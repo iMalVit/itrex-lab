@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { colors } from '../common/theme';
 
 const PatientsFooter = styled.footer`
-  background: #e4ebff;
+  background: ${colors.blue_sky};
   height: 4%;
   min-height: 48px;
 
