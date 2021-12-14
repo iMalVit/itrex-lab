@@ -26,6 +26,7 @@ export const loginSlice = createSlice({
     builder
       .addCase(login.failed, (state) => {
         state.status = 'failed';
+        state.isLogged = false;
       });
   },
 });

@@ -148,6 +148,10 @@ export const DescriptionBoxDocument = styled.div`
   }
 `;
 
+export const Wrapper = styled.div`
+display: flex;
+`;
+
 export const SettingsButton = styled.div`
   position: absolute;
   top: 28px;
@@ -161,6 +165,6 @@ export const SettingsButton = styled.div`
   border-radius: 6px;
 
   &:hover {
-    background:$ ${colors.gray_light} url("./assets/icons/settings-dots-blue.svg") no-repeat center;
+    background: ${colors.gray_light} url("./assets/icons/settings-dots-blue.svg") no-repeat center;
   }
 `;

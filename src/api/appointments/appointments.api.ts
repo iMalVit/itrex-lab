@@ -8,6 +8,7 @@ const LIMIT = 100;
 
 const URL = {
   appointmentsPatientMe: () => '/appointments/patient/me',
+  appointments: (id: string) => `/appointments/${id}`,
 };
 
 const getAllPatientAppointments = () => api
@@ -17,5 +18,7 @@ const getAllPatientAppointments = () => api
       limit: LIMIT,
     },
   });
+
+export const deleteAppointmentByDoctor = (id: string) => api.delete(URL.appointments(id));
 
 export default getAllPatientAppointments;

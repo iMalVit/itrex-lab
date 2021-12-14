@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import ControlCardPanel from './components/ControlCardPanel/ControlCardPanel';
 import {
   PatientBox,
   Avatar,
@@ -13,14 +14,14 @@ import {
   StatusIcon,
   PatientInfo,
   DescriptionBoxDocument,
-  SettingsButton,
+  Wrapper,
 } from './PatientCabinetDoctor.style';
 
-const PatientCabinetDoctor: React.FC<{ imageSrc: any, firstName: any, lastName: any, status: any, date: any, time: any, description: any }> = (props) => {
-  const [showControlCardPanel, setShowControlCardPanel] = useState<boolean>(false);
-  const displayFlex = {
-    display: 'flex',
-  };
+const PatientCabinetDoctor: React.FC<{ imageSrc: any, firstName: any, lastName: any, status: any, date: any, time: any, description: any, appointmentId:any }> = (props) => {
+  const UTC_DIFF = 3;
+  const HOURS_IN_DAY = 12;
+  const HOURS_DIFF = 1;
+
   const timeHelper = (param: any) => {
     const date = new Date(param);
     return date.toString().substr(0, 16);
@@ -41,28 +42,29 @@ const PatientCabinetDoctor: React.FC<{ imageSrc: any, firstName: any, lastName: 
             <StatusIcon status={props.status} />
             <StatusText>{props.status}</StatusText>
           </Status>
-          <SettingsButton onClick={() => setShowControlCardPanel(!showControlCardPanel)} />
-          {/* {showControlCardPanel && (<ControlCardPanel />)} */}
-
+          <ControlCardPanel appointmentData={{
+            firstName: props.firstName, lastName: props.lastName, id: props.appointmentId, photo: props.imageSrc,
+          }}
+          />
         </DescriptionBox>
       </MainInfo>
       <PatientInfo>
-        <div style={displayFlex}>
+        <Wrapper>
           <img src="/assets/icons/time.svg" alt="time icon" />
           <PatientTimeText>
             {timeHelper(props.date)}
             {' '}
-            {props.time - 3}
+            {props.time - UTC_DIFF}
             {' '}
-            {Number(props.time) - 3 < 12 ? 'am' : 'pm'}
+            {Number(props.time) - UTC_DIFF < HOURS_IN_DAY ? 'am' : 'pm'}
             {' '}
             –
             {' '}
-            {Number(props.time - 3) + 1}
+            {Number(props.time - UTC_DIFF) + HOURS_DIFF}
             {' '}
-            {Number(props.time) - 3 + 1 < 12 ? 'am' : 'pm'}
+            {Number(props.time) - UTC_DIFF + HOURS_DIFF < HOURS_IN_DAY ? 'am' : 'pm'}
           </PatientTimeText>
-        </div>
+        </Wrapper>
         <DescriptionBoxDocument>
           <PatientDocumentIcon
             src="/assets/icons/document.svg"

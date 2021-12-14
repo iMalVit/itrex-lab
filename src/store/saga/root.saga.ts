@@ -7,6 +7,7 @@ import createAppointmentSaga from './cabinet/createAppointment.saga';
 import specializationsSaga from './cabinet/specializations.saga';
 import doctorsPerSpecializationSaga from './cabinet/doctorsPerSpecialization.saga';
 import availableTimeSaga from './cabinet/availableTime.saga';
+import deleteAppointmentSaga from './cabinet/deleteAppointment.saga';
 
 function* rootSaga() {
   yield all([
@@ -18,6 +19,7 @@ function* rootSaga() {
     specializationsSaga(),
     doctorsPerSpecializationSaga(),
     availableTimeSaga(),
+    deleteAppointmentSaga(),
   ]);
 }
 

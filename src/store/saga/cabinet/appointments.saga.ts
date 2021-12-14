@@ -16,8 +16,6 @@ function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction
       stack: error.stack,
     };
     yield put(action.failed(errorSerialized));
-
-    throw error;
   }
 }
 

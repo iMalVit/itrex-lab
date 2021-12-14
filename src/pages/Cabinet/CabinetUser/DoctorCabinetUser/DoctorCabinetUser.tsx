@@ -10,13 +10,15 @@ import {
   DescriptionBoxDocument,
   PatientDocumentText,
   PatientDocumentIcon,
+  Wrapper,
 } from '../../CabinetDoctor/PatientCabinetDoctor/PatientCabinetDoctor.style';
 import Profession from './DoctorCabinetUser.style';
 
 const DoctorCabinetUser = (props: any) => {
-  const displayFlex = {
-    display: 'flex',
-  };
+  const UTC_DIFF = 3;
+  const HOURS_IN_DAY = 12;
+  const HOURS_DIFF = 1;
+
   const timeHelper = (param: any) => {
     const date = new Date(param);
     return date.toString().substr(0, 16);
@@ -37,22 +39,22 @@ const DoctorCabinetUser = (props: any) => {
         </DescriptionBox>
       </MainInfo>
       <PatientInfo>
-        <div style={displayFlex}>
+        <Wrapper>
           <img src="/assets/icons/time.svg" alt="patients__time-icon" />
           <PatientTimeText>
             {timeHelper(props.date)}
             {' '}
-            {props.time - 3}
+            {props.time - UTC_DIFF}
             {' '}
-            {Number(props.time) - 3 < 12 ? 'am' : 'pm'}
+            {Number(props.time) - UTC_DIFF < HOURS_IN_DAY ? 'am' : 'pm'}
             {' '}
             –
             {' '}
-            {Number(props.time - 3) + 1}
+            {Number(props.time - UTC_DIFF) + HOURS_DIFF}
             {' '}
-            {Number(props.time) - 3 + 1 < 12 ? 'am' : 'pm'}
+            {Number(props.time) - UTC_DIFF + HOURS_DIFF < HOURS_IN_DAY ? 'am' : 'pm'}
           </PatientTimeText>
-        </div>
+        </Wrapper>
         <DescriptionBoxDocument>
           <PatientDocumentIcon
             src="/assets/icons/Illness.svg"

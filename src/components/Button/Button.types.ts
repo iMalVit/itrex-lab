@@ -1,5 +1,5 @@
 export type ButtonPropsType = {
-    size: 'medium' | 'small'
+    size: 'medium' | 'small' | 'large'
     variant: 'primary' | 'secondary'
     iconLeft?: any
     iconRight?: any

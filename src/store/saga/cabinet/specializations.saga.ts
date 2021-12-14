@@ -7,7 +7,6 @@ import { ProfileResponseType } from '../../../api/auth/auth.types';
 import specializations from '../../actions/specializations.actions';
 import { getDoctorsSpecializations } from '../../../api/api.util';
 
-// eslint-disable-next-line max-len
 function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>): any {
   try {
     const result = yield saga(pendingAction);
@@ -18,7 +17,6 @@ function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction
       stack: error.stack,
     };
     yield put(action.failed(errorSerialized));
-    throw error;
   }
 }
 

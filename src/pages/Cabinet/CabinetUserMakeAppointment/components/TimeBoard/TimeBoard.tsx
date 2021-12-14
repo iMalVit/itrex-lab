@@ -7,9 +7,7 @@ import fetchAvailableTime from '../../../../../store/actions/availableTime.actio
 import { selectAvailableTimeTime } from '../../../../../store/slices/availableTime.slice';
 
 const TimeBoard = (props: any) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // eslint-disable-next-line no-unused-vars
-  const [field, state, { setValue, setTouched }] = useField(props.field);
+  const [, , { setValue }] = useField(props.field);
   const [selectedTime, SetSelectedTime] = useState<any>(null);
 
   const dispatch = useAppDispatch();

@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Header from '../../../components/Header/Header';
 import Footer from '../../../components/Footer/Footer';
@@ -18,16 +17,12 @@ const EmptyPatients = () => (
     />
     <Board>
       <ButtonsWrapper>
-        <a>
-          <Button variant="primary" size="small">
-            Patients
-          </Button>
-        </a>
-        <a>
-          <Button variant="secondary" size="small">
-            Resolutions
-          </Button>
-        </a>
+        <Button variant="primary" size="small">
+          Patients
+        </Button>
+        <Button variant="secondary" size="small">
+          Resolutions
+        </Button>
       </ButtonsWrapper>
 
       <BoardTitle>My Patients</BoardTitle>

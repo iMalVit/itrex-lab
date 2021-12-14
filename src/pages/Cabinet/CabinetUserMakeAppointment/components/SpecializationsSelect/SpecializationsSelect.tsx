@@ -10,11 +10,9 @@ const SpecializationsSelect = ({
   id, options, handleReset, ...props
 }: any) => {
   const dispatch = useAppDispatch();
+  const specializationsData = useAppSelector(selectSpecializationsSpecializations);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // eslint-disable-next-line no-unused-vars
-  const [field, state, { setValue, setTouched }] = useField(props.field);
-  //   const { values } = useFormikContext<FormikValues>();
+  const [, , { setValue }] = useField(props.field);
 
   const onChange = ({ value }: any) => {
     handleReset('date', '');
@@ -24,10 +22,9 @@ const SpecializationsSelect = ({
   };
 
   useEffect(() => {
-    dispatch(specializations.pending(''));
+    if (specializationsData.length === 0) dispatch(specializations.pending(''));
   }, []);
 
-  const specializationsData = useAppSelector(selectSpecializationsSpecializations);
   const getSpecializationsOptions = () => {
     if (specializationsData) {
       return specializationsData.map(({ id, specialization_name }) => ({
@@ -39,7 +36,6 @@ const SpecializationsSelect = ({
   return (
     <SelectStyled
       onChange={onChange}
-      // onBlur={setTouched}
       options={getSpecializationsOptions()}
       classNamePrefix="ReactSelect"
     />

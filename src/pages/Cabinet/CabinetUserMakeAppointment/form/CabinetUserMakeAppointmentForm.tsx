@@ -29,7 +29,6 @@ import DoctorsSelect from '../components/DoctorsSelect/DoctorsSelect';
 const CabinetUserMakeAppointmentForm = () => {
   const { makeAppointment } = useCreateAppointment();
 
-  // eslint-disable-next-line consistent-return
   const convertTime = (time: any) => {
     const convertedTime = time.slice(0, -8);
     const afterNumber = time.slice(6, 8);

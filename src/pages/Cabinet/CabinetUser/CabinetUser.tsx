@@ -1,6 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
 
 import BoardOfDoctorsCabinetUser from './BoardOfDoctorsCabinetUser';
@@ -20,29 +18,22 @@ const PatientsUserView = () => {
   return (
     <Board>
       <ButtonsWrapper>
-        <Link to="">
-          <Button variant="secondary" size="small">
-            Profile
-          </Button>
-        </Link>
-        <Link to="">
-          <Button variant="primary" size="small">
-            Appointments
-          </Button>
-        </Link>
-        <Link to="">
-          <Button variant="secondary" size="small" noneOnMobile>
-            Resolutions
-          </Button>
-        </Link>
+        <Button variant="secondary" size="small">
+          Profile
+        </Button>
+        <Button variant="primary" size="small">
+          Appointments
+        </Button>
+        <Button variant="secondary" size="small">
+          Resolutions
+        </Button>
       </ButtonsWrapper>
       <ToolBox>
         <BoardTitle>My Appointments</BoardTitle>
         <Button
           variant="primary"
           iconLeft="plus"
-          size="medium"
-          width="244px"
+          size="large"
           onClick={handleClick}
         >
           Create an appointment

@@ -10,6 +10,7 @@ const BoardOfPatientsCabinetDoctor = () => {
     <>
       {appointments.map((appointment: any) => (
         <PatientCabinetDoctor
+          appointmentId={appointment.id}
           firstName={appointment.patient.first_name}
           lastName={appointment.patient.last_name}
           date={new Date(appointment.visit_date)}

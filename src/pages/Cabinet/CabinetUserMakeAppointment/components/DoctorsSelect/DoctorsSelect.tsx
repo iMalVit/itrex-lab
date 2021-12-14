@@ -36,7 +36,6 @@ const DoctorsSelect = ({ id, options, ...props }: any) => {
   return (
     <SelectStyled
       onChange={onChange}
-      // onBlur={setTouched}
       options={getDoctorsById()}
       classNamePrefix="ReactSelect"
     />

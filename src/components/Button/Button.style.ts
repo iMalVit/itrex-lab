@@ -70,17 +70,16 @@ const Button = styled.button<ButtonPropsType>`
     `}
 
     ${(props) => props
-    .noneOnMobile
-    && css`
-      @media (max-width: 768px) {
-        display: none;
-      }
-    `}
-
-    ${(props) => props
     .size === 'medium'
     && css`
       padding: 16px 24px;
+    `}
+
+    ${(props) => props
+    .size === 'large'
+    && css`
+      padding: 12px 16px 12px 48px;
+      font-size: 15px;
     `}
 
     ${(props) => props
@@ -107,7 +106,7 @@ const Button = styled.button<ButtonPropsType>`
         position: absolute;
         width: 24px;
         height: 24px;
-        top: 16px;
+        top: 12px;
         left: 16px;
         background: url(../../../assets/icons/plus.svg);
         content: "";

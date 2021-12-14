@@ -12,6 +12,7 @@ import createAppointmentSlice from './slices/createAppointment.slice';
 import specializationsSlice from './slices/specializations.slice';
 import doctorsPerSpecializationSlice from './slices/doctorsPerSpecialization.slice';
 import availableTimeSlice from './slices/availableTime.slice';
+import deleteAppointmentSlice from './slices/deleteAppointment.slice';
 
 const sagaMiddleware = createSagaMiddleware();
 export const history = createBrowserHistory();
@@ -26,12 +27,15 @@ const createRootReducer = (history: History<unknown>) => ({
   specializations: specializationsSlice.reducer,
   doctorsPerSpecialization: doctorsPerSpecializationSlice.reducer,
   availableTime: availableTimeSlice.reducer,
+  deleteAppointment: deleteAppointmentSlice.reducer,
 });
 
 const store = configureStore({
   reducer: createRootReducer(history),
   middleware: (getDefaultMiddleware) => [
-    ...getDefaultMiddleware(),
+    ...getDefaultMiddleware({
+      serializableCheck: false,
+    }),
     sagaMiddleware,
     routerMiddleware(history),
   ],

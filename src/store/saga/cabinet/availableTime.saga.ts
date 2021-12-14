@@ -7,7 +7,6 @@ import { ProfileResponseType } from '../../../api/auth/auth.types';
 import { getAvailableTime } from '../../../api/api.util';
 import fetchAvailableTime from '../../actions/availableTime.actions';
 
-// eslint-disable-next-line max-len
 function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>): any {
   try {
     const result = yield saga(pendingAction);

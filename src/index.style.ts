@@ -41,12 +41,6 @@ input::-webkit-input-placeholder {
   background: url("./assets/icons/visibility.svg") no-repeat !important;
 }
 
-@media (max-width: 560px) {
-  ::-webkit-scrollbar {
-    width: 0;
-  }
-}
-
 
 input:focus {
   outline: none;
@@ -64,12 +58,28 @@ input:focus {
   line-height: 24px;
 }
 
+
 .Toastify__toast-theme--colored.Toastify__toast--success {
   background-color: ${colors.green};
 }
 
 .Toastify__toast-theme--colored.Toastify__toast--error {
   background-color: ${colors.red};
+}
+
+@media (max-width: 560px) {
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+  
+}
+
+@media (max-width: 460px) {
+  .Toastify__toast {
+    width: 100vw;
+    height: 70px;
+    font-size: 15px;
+  }
 }
 
 `;

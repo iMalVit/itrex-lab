@@ -8,6 +8,9 @@ export interface RegistrationState {
 export interface CreateAppointmentState {
   status: 'idle' | 'loading' | 'failed' | 'success';
 }
+export interface DeleteAppointmentState {
+  status: 'idle' | 'loading' | 'failed' | 'success';
+}
 export interface ProfileStateType {
   data: {
     id: string
