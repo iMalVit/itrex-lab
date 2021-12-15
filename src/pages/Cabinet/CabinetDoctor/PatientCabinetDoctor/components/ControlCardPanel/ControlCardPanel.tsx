@@ -48,7 +48,7 @@ const ControlCardPanel = (props:any) => {
       <ControlCommand>Edit an appointment</ControlCommand>
         <ControlCommand onClick={() => dispatch(deleteAppointment.pending({ id: props.appointmentData.id }))}>Delete</ControlCommand>
       </CommandsList>)}
-      {isModalOpen && <Modal firstName={props.appointmentData.firstName} lastName={props.appointmentData.lastName} photo={props.appointmentData.photo} onClose={() => setIsModalOpen(false)} />}
+      {isModalOpen && <Modal firstName={props.appointmentData.firstName} lastName={props.appointmentData.lastName} photo={props.appointmentData.photo} appointmentID={props.appointmentData.id} onClose={() => setIsModalOpen(false)} />}
     </div>
   );
 };

@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import createAppointment from '../actions/createAppointment.actions';
-import { CreateAppointmentState } from './slices.types';
+import { Request } from './slices.types';
 
-const initialState: CreateAppointmentState = {
+const initialState: Request = {
   status: 'idle',
 };
 
 export const createAppointmentSlice = createSlice({
-  name: 'appointment',
+  name: 'createAppointment',
   initialState,
   reducers: {},
   extraReducers: (builder) => {

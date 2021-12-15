@@ -1,30 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit';
-import deleteAppointment from '../actions/deleteAppointment.actions';
+import createResolution from '../actions/createResolution.actions';
 import { Request } from './slices.types';
 
 const initialState: Request = {
   status: 'idle',
 };
 
-export const deleteAppointmentSlice = createSlice({
-  name: 'appointment',
+export const createResolutionSlice = createSlice({
+  name: 'createResolution',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(deleteAppointment.success, (state) => {
+      .addCase(createResolution.success, (state) => {
         state.status = 'success';
       });
 
     builder
-      .addCase(deleteAppointment.pending, (state) => {
+      .addCase(createResolution.pending, (state) => {
         state.status = 'loading';
       });
     builder
-      .addCase(deleteAppointment.failed, (state) => {
+      .addCase(createResolution.failed, (state) => {
         state.status = 'failed';
       });
   },
 });
 
-export default deleteAppointmentSlice;
+export default createResolutionSlice;

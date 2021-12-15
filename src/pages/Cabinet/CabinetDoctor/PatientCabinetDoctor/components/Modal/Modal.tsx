@@ -1,6 +1,8 @@
 /* eslint-disable arrow-body-style */
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
+import { useAppDispatch } from '../../../../../../hooks';
+import createResolution from '../../../../../../store/actions/createResolution.actions';
 import {
   ResolutionModalBody, ResolutionModalTextArea, ResolutionModalTitle, ResolutionTextareaTitle, SelectedPatientImage, SelectedPatientInfo,
 } from '../Modal/Modal.style';
@@ -8,6 +10,12 @@ import { ModalContent, ModalWrapper } from './Modal.style';
 
 const Modal = (props:any) => {
   const [resolutionText, setResolutionText] = useState<string>('');
+  const dispatch = useAppDispatch();
+
+  const handlerSubmit = () => {
+    dispatch(createResolution.pending({ resolution: resolutionText, appointmentID: props.appointmentID }));
+    props.onClose();
+  };
 
   return ReactDOM.createPortal(
     <ModalWrapper>
@@ -25,7 +33,7 @@ const Modal = (props:any) => {
           <ResolutionTextareaTitle>Resolution</ResolutionTextareaTitle>
           <ResolutionModalTextArea value={resolutionText} onChange={(event) => setResolutionText(event.target.value)} />
           <button type="submit" onClick={props.onClose}>Close</button>
-          <button type="submit">Submit</button>
+          <button type="submit" onClick={handlerSubmit}>Submit</button>
         </ResolutionModalBody>
       </ModalContent>
     </ModalWrapper>,

@@ -6,7 +6,7 @@ import login from '../actions/login.actions';
 const useInit = () => {
   const dispatch = useAppDispatch();
 
-  const fetch = async () => {
+  const fetchProfile = async () => {
     await dispatch(
       profile.pending(''),
     );
@@ -15,7 +15,7 @@ const useInit = () => {
   const start = () => {
     if (getToken()) {
       dispatch(login.success(''));
-      fetch();
+      fetchProfile();
     }
   };
 

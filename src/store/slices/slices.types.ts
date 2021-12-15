@@ -1,17 +1,10 @@
-export interface LoginState {
+export interface Request {
   status: 'idle' | 'loading' | 'failed' | 'success';
+}
+export interface LoginState extends Request {
   isLogged: boolean
 }
-export interface RegistrationState {
-  status: 'idle' | 'loading' | 'failed' | 'success';
-}
-export interface CreateAppointmentState {
-  status: 'idle' | 'loading' | 'failed' | 'success';
-}
-export interface DeleteAppointmentState {
-  status: 'idle' | 'loading' | 'failed' | 'success';
-}
-export interface ProfileStateType {
+export interface ProfileStateType extends Request {
   data: {
     id: string
     first_name: string
@@ -19,22 +12,21 @@ export interface ProfileStateType {
     photo: string
     role_name: string
   },
-  status: 'idle' | 'loading' | 'failed' | 'success';
 }
-export interface AppointmentsStateType {
+export interface AppointmentsStateType extends Request {
   appointments: any
-  status: 'idle' | 'loading' | 'failed' | 'success';
 
 }
-export interface SpecializationsState {
+export interface ResolutionsStateType extends Request {
+  resolutions: any
+
+}
+export interface SpecializationsState extends Request {
   specializations: any[],
-  status: 'idle' | 'loading' | 'failed' | 'success';
 }
-export interface DoctorsPerSpecializationState {
+export interface DoctorsPerSpecializationState extends Request {
   doctors: any,
-  status: 'idle' | 'loading' | 'failed' | 'success';
 }
-export interface AvailableTimeState {
+export interface AvailableTimeState extends Request {
   time: any,
-  status: 'idle' | 'loading' | 'failed' | 'success';
 }

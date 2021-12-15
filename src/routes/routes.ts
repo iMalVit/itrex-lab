@@ -9,6 +9,7 @@ const PATH = {
   CABINET_USER_MAKE_AN_APPOINTMENT: '/cabinet_user_make_an_appointment',
   // CABINET_DOCTOR: "/cabinet_doctor",
   CABINET_DOCTOR_EMPTY: '/cabinet_doctor_empty',
+  RESOLUTIONS_FOR_DOCTOR: '/cabinet_resolutions_doctor',
 };
 
 export default PATH;

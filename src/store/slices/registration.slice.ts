@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import registration from '../actions/registration.actions';
-import { RegistrationState } from './slices.types';
+import { Request } from './slices.types';
 
-const initialState: RegistrationState = {
+const initialState: Request = {
   status: 'idle',
 };
 

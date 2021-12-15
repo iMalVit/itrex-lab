@@ -12,6 +12,7 @@ import PrivateRoute from './PrivateRoute';
 import { useAppSelector } from '../hooks';
 import Cabinet from '../pages/Cabinet/Cabinet';
 import { selectLoginIsLogged } from '../store/slices/login.slice';
+import ResolutionsForDoctor from '../pages/Cabinet/ResolutionsForDoctor/ResolutionsForDoctor';
 
 const AppRoutes = () => {
   const isAuth = useAppSelector(selectLoginIsLogged);
@@ -65,6 +66,13 @@ const AppRoutes = () => {
         isAuth={isAuth}
         path={PATH.CABINET_USER_MAKE_AN_APPOINTMENT}
         component={CabinetUserMakeAppointment}
+        redirectPath={PATH.CABINET}
+      />
+
+      <PrivateRoute
+        isAuth={isAuth}
+        path={PATH.RESOLUTIONS_FOR_DOCTOR}
+        component={ResolutionsForDoctor}
         redirectPath={PATH.CABINET}
       />
 
