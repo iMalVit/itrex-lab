@@ -5,7 +5,7 @@ import { AnyFunction, AsyncActionType } from '../saga.types';
 import { ProfileResponseType } from '../../../api/auth/auth.types';
 
 import specializations from '../../actions/specializations.actions';
-import { getDoctorsSpecializations } from '../../../api/api.util';
+import { getDoctorsSpecializations } from '../../../api/specializations/specializations.api';
 
 function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>): any {
   try {

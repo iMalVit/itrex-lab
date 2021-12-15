@@ -4,7 +4,7 @@ import { AxiosResponse } from 'axios';
 import { AnyFunction, AsyncActionType } from '../saga.types';
 import { ProfileResponseType } from '../../../api/auth/auth.types';
 
-import { getDoctorsBySpecialization } from '../../../api/api.util';
+import { getDoctorsBySpecialization } from '../../../api/doctors/doctors.api';
 import doctorsPerSpecialization from '../../actions/doctorsPerSpecialization.actions';
 
 function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>): any {

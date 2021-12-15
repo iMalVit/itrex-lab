@@ -3,7 +3,7 @@ import { PayloadActionCreator } from '@reduxjs/toolkit/src/createAction';
 import { AxiosResponse } from 'axios';
 import { AsyncActionType, AnyFunction } from '../saga.types';
 import appointments from '../../actions/appointments.actions';
-import { makeAppointment } from '../../../api/api.util';
+import { makeAppointment } from '../../../api/appointments/appointments.api';
 import { AppointmentsResponseType } from '../../../api/auth/auth.types';
 import createAppointment from '../../actions/createAppointment.actions';
 import { errorNotify, successNotify } from '../../../utils/tosify.util';
@@ -21,7 +21,11 @@ function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction
       stack: error.stack,
     };
     yield put(action.failed(errorSerialized));
-    errorNotify(error.response.data);
+    if (error.response.status === 400) {
+      errorNotify(error.response.data.message);
+    } else {
+      errorNotify(error.response.data);
+    }
   }
 }
 

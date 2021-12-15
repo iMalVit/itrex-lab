@@ -5,4 +5,4 @@ It was created for ITRex Group.
 
 # Deploy
 
-You can try this project on [Netlify](https://stoic-swanson-21e434.netlify.app/).
+You can try this project on [Netlify](https://loving-fermat-ebe10a.netlify.app/).

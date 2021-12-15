@@ -3,7 +3,7 @@ import { PayloadActionCreator } from '@reduxjs/toolkit/src/createAction';
 import { AxiosResponse } from 'axios';
 import { AsyncActionType, AnyFunction } from '../saga.types';
 import appointments from '../../actions/appointments.actions';
-import { getAllDoctorAppointments, getAllPatientAppointments } from '../../../api/api.util';
+import { getAllDoctorAppointments, getAllPatientAppointments } from '../../../api/appointments/appointments.api';
 import { AppointmentsResponseType } from '../../../api/auth/auth.types';
 
 function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>): any {

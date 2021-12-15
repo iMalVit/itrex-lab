@@ -4,7 +4,7 @@ import { AxiosResponse } from 'axios';
 import { AnyFunction, AsyncActionType } from '../saga.types';
 import { ProfileResponseType } from '../../../api/auth/auth.types';
 
-import { getAvailableTime } from '../../../api/api.util';
+import { getAvailableTime } from '../../../api/appointments/appointments.api';
 import fetchAvailableTime from '../../actions/availableTime.actions';
 
 function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>): any {
