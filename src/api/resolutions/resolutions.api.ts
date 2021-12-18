@@ -1,22 +1,16 @@
+import { DEFAULT_LIMIT, DEFAULT_OFFSET } from '../../common/constants';
 import api from '../api';
+import ENDPOINTS from '../enpoints';
 
-const OFFSET = 0;
-const LIMIT = 100;
-
-const URL = {
-  resolutions: () => '/resolutions',
-  resolutionsDoctorMe: () => '/resolutions/doctor/me',
-};
-
-const getAllDoctorsResolutions = () => api
-  .get(URL.resolutionsDoctorMe(), {
+const getAllDoctorsResolutions = (offset = DEFAULT_OFFSET, limit = DEFAULT_LIMIT) => api
+  .get(ENDPOINTS.resolutionsDoctorMe(), {
     params: {
-      offset: OFFSET,
-      limit: LIMIT,
+      offset,
+      limit,
     },
   });
 
 export const makeResolution = (data: any) => api
-  .post(URL.resolutions(), data);
+  .post(ENDPOINTS.resolutions(), data);
 
 export default getAllDoctorsResolutions;

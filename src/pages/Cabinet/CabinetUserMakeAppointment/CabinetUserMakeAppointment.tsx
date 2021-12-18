@@ -9,10 +9,13 @@ import {
   SubTitle,
   Board,
   PageTitle,
+  StyledLink,
 } from './CabinetUserMakeAppointment.style';
 import CabinetUserMakeAppointmentForm from './form/CabinetUserMakeAppointmentForm';
 import { useAppSelector } from '../../../hooks';
 import { selectProfileData } from '../../../store/slices/profile.slice';
+import PATH from '../../../routes/routes';
+import dictionary from '../../../common/dictionary';
 
 const CabinetUserMakeAppointment = () => {
   const userInfo = useAppSelector(selectProfileData);
@@ -21,11 +24,13 @@ const CabinetUserMakeAppointment = () => {
       <Header userInfo={userInfo} />
       <Board>
         <Navigation>
-          <MainTitle>Doctors</MainTitle>
+          <MainTitle>
+            <StyledLink to={PATH.CABINET}>{dictionary.cabinetPatientPage.buttonDoctors}</StyledLink>
+          </MainTitle>
           <ArrowNavigationIcon />
-          <SubTitle>Make an appointment</SubTitle>
+          <SubTitle>{dictionary.cabinetPatientPage.makeAppointmentTitle}</SubTitle>
         </Navigation>
-        <PageTitle>Make an appointment</PageTitle>
+        <PageTitle>{dictionary.cabinetPatientPage.makeAppointmentTitle}</PageTitle>
         <CabinetUserMakeAppointmentForm />
       </Board>
       <Footer />

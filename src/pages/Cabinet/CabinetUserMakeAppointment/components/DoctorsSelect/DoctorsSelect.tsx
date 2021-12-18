@@ -5,7 +5,9 @@ import { selectDoctorsPerSpecializationDoctors } from '../../../../../store/slic
 import SelectStyled from '../SelectList/SelectList.style';
 import doctorsPerSpecialization from '../../../../../store/actions/doctorsPerSpecialization.actions';
 
-const DoctorsSelect = ({ id, options, ...props }: any) => {
+const DoctorsSelect = ({
+  id, options, handleReset, ...props
+}: any) => {
   const dispatch = useAppDispatch();
 
   const [, , { setValue }] = useField(props.field);
@@ -13,6 +15,8 @@ const DoctorsSelect = ({ id, options, ...props }: any) => {
 
   const onChange = ({ value }: any) => {
     setValue(value);
+    handleReset('date', '');
+    handleReset('time', '');
   };
 
   useEffect(() => {

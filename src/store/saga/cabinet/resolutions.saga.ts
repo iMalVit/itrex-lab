@@ -7,6 +7,7 @@ import getAllDoctorsResolutions from '../../../api/resolutions/resolutions.api';
 
 function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>): any {
   try {
+    console.log(pendingAction);
     const result = yield saga(pendingAction);
     yield put(action.success(result));
   } catch (error: any) {
@@ -18,8 +19,9 @@ function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction
   }
 }
 
-function* appointmentPost() {
-  const response: AxiosResponse = yield call(getAllDoctorsResolutions);
+function* appointmentPost(action: ReturnType<typeof resolutions.pending>) {
+  const { offset, limit } = action.payload;
+  const response: AxiosResponse = yield call(getAllDoctorsResolutions, offset, limit);
   return response.data;
 }
 

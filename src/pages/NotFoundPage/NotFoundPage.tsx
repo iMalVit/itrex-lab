@@ -1,5 +1,6 @@
 import React from 'react';
+import dictionary from '../../common/dictionary';
 
-const NotFoundPage = () => <div>404 NOT FOUND</div>;
+const NotFoundPage = () => <div>{dictionary.errorPage.errorMessage}</div>;
 
 export default NotFoundPage;

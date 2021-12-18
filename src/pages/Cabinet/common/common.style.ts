@@ -24,7 +24,6 @@ export const Board = styled.main`
   margin: 0 auto;
   height: 89%;
   background: ${colors.gray_light};
-  box-shadow: 0px 4px 32px ${colors.gray_opacity['032']};
 
   @media (max-width: 460px) {
     width: 100%;

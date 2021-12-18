@@ -12,8 +12,7 @@ function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction
   try {
     const result = yield saga(pendingAction);
     yield put(action.success(result));
-    const payload = { role_name: 'Patient' };
-    yield put(appointments.pending(payload));
+    yield put(appointments.pending({ role_name: result.payload.role_name }));
     successNotify('The appointment has been successfully added');
   } catch (error: any) {
     const errorSerialized = {
@@ -32,9 +31,9 @@ function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction
 function* createAppointmentPost(action: ReturnType<typeof createAppointment.pending>) {
   const { payload } = action;
 
-  const response: AxiosResponse<AppointmentsResponseType> = yield call(makeAppointment, payload);
+  const response: AxiosResponse<AppointmentsResponseType> = yield call(makeAppointment, payload.appointmentData);
 
-  return response.data;
+  return { response, payload };
 }
 
 const createAppointmentPostSaga = runAsyncSaga.bind(null, createAppointment, createAppointmentPost);

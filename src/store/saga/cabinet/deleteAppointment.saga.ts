@@ -15,9 +15,9 @@ function* runAsyncSaga(
 ): any {
   try {
     const result = yield saga(pendingAction);
+    console.log(result);
     yield put(action.success(result));
-    const payload = { role_name: 'Doctor' };
-    yield put(appointments.pending(payload));
+    yield put(appointments.pending({ role_name: result.payload.role_name }));
     successNotify('The  appointment has been successfully deleted');
   } catch (error: any) {
     const errorSerialized = {
@@ -33,7 +33,7 @@ function* deleteAppointmentPost(action: ReturnType<typeof deleteAppointment.pend
   const { payload } = action;
   const response: AxiosResponse = yield call(deleteAppointmentByDoctor, payload.id);
 
-  return response.data;
+  return { response, payload };
 }
 
 const deleteAppointmentPostSaga = runAsyncSaga.bind(null, deleteAppointment, deleteAppointmentPost);

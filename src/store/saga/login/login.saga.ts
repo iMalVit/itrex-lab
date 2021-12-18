@@ -7,13 +7,14 @@ import { LoginResponseType } from '../../../api/auth/auth.types';
 import { AnyFunction, AsyncActionType } from '../saga.types';
 import { signIn } from '../../../api/auth/auth';
 import profile from '../../actions/profile.actions';
-import { errorNotify } from '../../../utils/tosify.util';
+import { successNotify, errorNotify } from '../../../utils/tosify.util';
 
 function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>): any {
   try {
     const result = yield saga(pendingAction);
     yield put(action.success(result));
     yield put(profile.pending(''));
+    successNotify('Login successful');
   } catch (error: any) {
     const errorSerialized = {
       message: error.message,

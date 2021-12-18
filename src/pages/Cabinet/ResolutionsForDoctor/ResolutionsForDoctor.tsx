@@ -8,17 +8,17 @@ import ButtonsWrapper from '../CabinetDoctor/CabinetDoctor.style';
 import Button from '../../../components/Button/Button.style';
 import { ResolutionsTable, ResolutionsTableHeader, ResolutionsTableHeaderCell } from './ResolutionsForDoctor.style';
 import ResolutionRow from './components/ResolutionRow/ResolutionRow';
-import { columns } from './ResolutionsForDoctor.dictionary';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { selectProfileData } from '../../../store/slices/profile.slice';
 import PATH from '../../../routes/routes';
 import resolutions from '../../../store/actions/resolutions.actions';
 import { selectResolutionsArray } from '../../../store/slices/resolutions.slice';
+import dictionary from '../../../common/dictionary';
 
 const ResolutionsForDoctor = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(resolutions.pending(''));
+    dispatch(resolutions.pending({ offset: 0, limit: 100 }));
   }, []);
   const profileData = useAppSelector(selectProfileData);
 
@@ -31,18 +31,18 @@ const ResolutionsForDoctor = () => {
         <ButtonsWrapper>
           <Link to={PATH.CABINET}>
             <Button variant="secondary" size="small">
-              Patients
+              {dictionary.cabinetDoctorPage.buttonPatients}
             </Button>
           </Link>
           <Button variant="primary" size="small">
-            Resolutions
+            {dictionary.cabinetDoctorPage.buttonResolutions}
           </Button>
         </ButtonsWrapper>
-        <BoardTitle>Resolutions</BoardTitle>
+        <BoardTitle>{dictionary.cabinetDoctorPage.resolutionsTitle}</BoardTitle>
         <ResolutionsTable>
           <thead>
             <ResolutionsTableHeader>
-              {Object.entries(columns)
+              {Object.entries(dictionary.resolutionColumns)
                 .map(([key, value]) => <ResolutionsTableHeaderCell key={key}>{value}</ResolutionsTableHeaderCell>)}
             </ResolutionsTableHeader>
           </thead>

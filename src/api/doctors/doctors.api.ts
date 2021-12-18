@@ -1,8 +1,5 @@
 /* eslint-disable import/prefer-default-export */
 import api from '../api';
+import ENDPOINTS from '../enpoints';
 
-const URL = {
-  doctorsSpecialization: (id: string) => `/doctors/specialization/${id}`,
-};
-
-export const getDoctorsBySpecialization = (id:string) => api.get(URL.doctorsSpecialization(id));
+export const getDoctorsBySpecialization = (id:string) => api.get(ENDPOINTS.doctorsSpecialization(id));

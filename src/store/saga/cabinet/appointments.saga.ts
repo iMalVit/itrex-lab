@@ -8,6 +8,7 @@ import { AppointmentsResponseType } from '../../../api/auth/auth.types';
 
 function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>): any {
   try {
+    console.log(pendingAction);
     const result = yield saga(pendingAction);
     yield put(action.success(result));
   } catch (error: any) {
@@ -20,12 +21,12 @@ function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction
 }
 
 function* appointmentPost(action: ReturnType<typeof appointments.pending>) {
-  const { role_name } = action.payload;
+  const { role_name, offset, limit } = action.payload;
   if (role_name === 'Patient') {
-    const response: AxiosResponse<AppointmentsResponseType> = yield call(getAllPatientAppointments);
+    const response: AxiosResponse<AppointmentsResponseType> = yield call(getAllPatientAppointments, offset, limit);
     return response.data;
   } if (role_name === 'Doctor') {
-    const response: AxiosResponse<AppointmentsResponseType> = yield call(getAllDoctorAppointments);
+    const response: AxiosResponse<AppointmentsResponseType> = yield call(getAllDoctorAppointments, offset, limit);
     return response.data;
   }
 }

@@ -2,27 +2,28 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Board, BoardTitle, BoardBox } from '../common/common.style';
 import Button from '../../../components/Button/Button.style';
-import BoardOfPatientsCabinetDoctor from './BoardOfPatientsCabinetDoctor';
+import CabinetDoctorBoardsOfAppointments from './CabinetDoctorBoardsOfAppointments';
 import ButtonsWrapper from './CabinetDoctor.style';
 import PATH from '../../../routes/routes';
+import dictionary from '../../../common/dictionary';
 
-const Patients = () => (
+const CabinetDoctor = () => (
   <Board>
     <ButtonsWrapper>
       <Button variant="primary" size="small">
-        Patients
+        {dictionary.cabinetDoctorPage.buttonPatients}
       </Button>
       <Link to={PATH.RESOLUTIONS_FOR_DOCTOR}>
         <Button variant="secondary" size="small">
-          Resolutions
+          {dictionary.cabinetDoctorPage.buttonResolutions}
         </Button>
       </Link>
     </ButtonsWrapper>
-    <BoardTitle>My Patients</BoardTitle>
+    <BoardTitle>{dictionary.cabinetDoctorPage.patientsTitle}</BoardTitle>
     <BoardBox>
-      <BoardOfPatientsCabinetDoctor />
+      <CabinetDoctorBoardsOfAppointments />
     </BoardBox>
   </Board>
 );
 
-export default Patients;
+export default CabinetDoctor;

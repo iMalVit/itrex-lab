@@ -1,11 +1,12 @@
 import * as Yup from 'yup';
+import dictionary from '../../../../common/dictionary';
 
 const CabinetUserMakeAppointmentFormValidationSchema = Yup.object().shape({
-  date: Yup.string().required('This field is required!'),
-  time: Yup.string().required('This field is required!'),
-  doctorName: Yup.string().required('This field is required!'),
-  occupation: Yup.string().required('This field is required!'),
-  reason: Yup.string().required('This field is required!'),
+  date: Yup.string().required(dictionary.validation.commonRequired),
+  time: Yup.string().required(dictionary.validation.commonRequired),
+  doctorName: Yup.string().required(dictionary.validation.commonRequired),
+  occupation: Yup.string().required(dictionary.validation.commonRequired),
+  reason: Yup.string().required(dictionary.validation.commonRequired).min(2, 'Must not be shorter than 2 symbols'),
   note: Yup.string(),
 });
 

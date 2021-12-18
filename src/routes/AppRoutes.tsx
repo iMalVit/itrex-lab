@@ -2,10 +2,10 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PATH from './routes';
 
-import SignUp from '../pages/Autorization/SignUp/SignUp';
-import SignIn from '../pages/Autorization/SignIn/SignIn';
-import RestorePassword from '../pages/Autorization/RestorePassword/RestorePassword';
-import RestorePasswordSuccessed from '../pages/Autorization/RestorePasswordSuccessed/RestorePasswordSuccessed';
+import SignUp from '../pages/Authorization/SignUp/SignUp';
+import SignIn from '../pages/Authorization/SignIn/SignIn';
+import RestorePassword from '../pages/Authorization/RestorePassword/RestorePassword';
+import RestorePasswordSuccessed from '../pages/Authorization/RestorePasswordSuccessed/RestorePasswordSuccessed';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 import CabinetUserMakeAppointment from '../pages/Cabinet/CabinetUserMakeAppointment/CabinetUserMakeAppointment';
 import PrivateRoute from './PrivateRoute';

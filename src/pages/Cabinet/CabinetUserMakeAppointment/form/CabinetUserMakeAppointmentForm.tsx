@@ -21,57 +21,45 @@ import Button from '../../../../components/Button/Button.style';
 import { InputErrorText } from '../../common/common.style';
 
 import TimeBoard from '../components/TimeBoard/TimeBoard';
-import useCreateAppointment from '../../../../store/hooks/useCreateAppointment';
+import useCreateAppointment from '../../../../store/hooks/useAppointment';
 import CalendarFormik from '../components/CalendarFormik/CalendarFormik';
 import SpecializationsSelect from '../components/SpecializationsSelect/SpecializationsSelect';
 import DoctorsSelect from '../components/DoctorsSelect/DoctorsSelect';
+import dictionary from '../../../../common/dictionary';
+import { dateMakeAppointment } from '../../../../utils/convertTime.util';
 
 const CabinetUserMakeAppointmentForm = () => {
   const { makeAppointment } = useCreateAppointment();
 
-  const convertTime = (time: any) => {
-    const convertedTime = time.slice(0, -8);
-    const afterNumber = time.slice(6, 8);
-
-    if (convertedTime === '12') return `${convertedTime}`;
-    if (afterNumber === ' A' && convertedTime < 12) return `${convertedTime}`;
-    if (afterNumber === 'AM' && convertedTime < 12) return `0${convertedTime}`;
-    if (afterNumber === 'PM' && convertedTime < 12) return `${Number(convertedTime) + 12}`;
+  const formikInitialValues = {
+    date: new Date(),
+    time: '',
+    occupation: '',
+    doctorName: '',
+    reason: '',
+    note: '',
   };
 
-  const convertDate = (day: any) => {
-    if (day.toString().length === 1) {
-      return 0 + day.toString();
-    } return day;
+  const handlerSubmit = (values: any) => {
+    const {
+      doctorName: doctorID, reason, note, date, time,
+    } = values;
+    const appointmentData = {
+      date: dateMakeAppointment(date, time),
+      doctorID,
+      reason,
+      note,
+    };
+
+    makeAppointment(appointmentData);
   };
 
   return (
     <Formik
-      initialValues={{
-        date: new Date(),
-        time: '',
-        occupation: '',
-        doctorName: '',
-        reason: '',
-        note: '',
-      }}
+      initialValues={formikInitialValues}
       validationSchema={CabinetUserMakeAppointmentFormValidationSchema}
       validateOnBlur={false}
-      onSubmit={(values) => {
-        const {
-          doctorName: doctorID, reason, note, date, time,
-        } = values;
-        const appointmentData = {
-          date: `${date.getFullYear()}-${date.getMonth() + 1}-${convertDate(
-            date.getDate(),
-          )}T${convertTime(time)}:00:00.000Z`,
-          doctorID,
-          reason,
-          note,
-        };
-
-        makeAppointment(appointmentData);
-      }}
+      onSubmit={handlerSubmit}
     >
       {({
         values, errors, touched, handleSubmit, setFieldValue, isValid, dirty,
@@ -81,11 +69,11 @@ const CabinetUserMakeAppointmentForm = () => {
             <StepInfo>
               <StepIcon src="/assets/icons/1.svg" />
               <StepText>
-                Select a doctor and define the reason of your visit
+                {dictionary.cabinetPatientPage.step1Description}
               </StepText>
             </StepInfo>
             <SelectWrapper>
-              <InputLabel>Occupation</InputLabel>
+              <InputLabel>{dictionary.cabinetPatientPage.labelOccupatiuon}</InputLabel>
               <Field
                 component={SpecializationsSelect}
                 name="occupation"
@@ -98,25 +86,25 @@ const CabinetUserMakeAppointmentForm = () => {
             </SelectWrapper>
 
             <SelectWrapper>
-              <InputLabel>Doctors name</InputLabel>
-              <Field component={DoctorsSelect} name="doctorName" id="doctorName" />
+              <InputLabel>{dictionary.cabinetPatientPage.labelDoctorsName}</InputLabel>
+              <Field component={DoctorsSelect} name="doctorName" id="doctorName" handleReset={setFieldValue} />
               {errors.doctorName && touched.doctorName ? (
                 <InputErrorText type="text">{errors.doctorName}</InputErrorText>
               ) : null}
             </SelectWrapper>
 
             <SelectWrapper>
-              <InputLabel>Reason for the visit</InputLabel>
-              <Input placeholder="Reason for visit" name="reason" id="reason" />
+              <InputLabel>{dictionary.cabinetPatientPage.labelReasonForVisit}</InputLabel>
+              <Input placeholder={dictionary.placeholders.reasonForVisit} name="reason" id="reason" />
               {errors.reason && touched.reason ? (
                 <InputErrorText type="text">{errors.reason}</InputErrorText>
               ) : null}
             </SelectWrapper>
 
             <SelectWrapper>
-              <InputLabel>Note</InputLabel>
+              <InputLabel>{dictionary.cabinetPatientPage.labelNote}</InputLabel>
               <Input
-                placeholder="Leave a note if needed"
+                placeholder={dictionary.placeholders.leaveNote}
                 name="note"
                 id="note"
               />
@@ -129,19 +117,19 @@ const CabinetUserMakeAppointmentForm = () => {
           <ChooseDay>
             <StepInfo>
               <StepIcon src="/assets/icons/2.svg" />
-              <StepText>Choose a day for an appointment</StepText>
+              <StepText>{dictionary.cabinetPatientPage.step2Description}</StepText>
             </StepInfo>
             {values.doctorName && values.occupation ? (
               <Field name="date" id="date" component={CalendarFormik} />
             ) : (
-              <ChooseADayError>Choose a doctor first</ChooseADayError>
+              <ChooseADayError>{dictionary.cabinetPatientPage.chooseDayError}</ChooseADayError>
             )}
           </ChooseDay>
 
           <ChooseTime>
             <StepInfo>
               <StepIcon src="/assets/icons/3.svg" />
-              <StepText>Select an available timeslot</StepText>
+              <StepText>{dictionary.cabinetPatientPage.step3Description}</StepText>
             </StepInfo>
             {values.doctorName && values.occupation && values.date ? (
               <ChooseTimeContainer>
@@ -149,7 +137,7 @@ const CabinetUserMakeAppointmentForm = () => {
               </ChooseTimeContainer>
             ) : (
               <ChooseTimeError>
-                Choose a doctor and a date first
+                {dictionary.cabinetPatientPage.chooseTimeError}
               </ChooseTimeError>
             )}
 
@@ -162,7 +150,7 @@ const CabinetUserMakeAppointmentForm = () => {
                 onClick={handleSubmit}
                 disabled={!isValid && dirty}
               >
-                Submit
+                {dictionary.cabinetPatientPage.buttonSubmit}
               </Button>
             </ButtonWrapper>
           </ChooseTime>

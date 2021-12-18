@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { Field } from 'formik';
 import { colors } from '../../../components/common/theme';
 
@@ -6,7 +7,13 @@ type TimeSlotPropsType = {
   selected?: boolean,
 };
 
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: ${colors.blue};
+`;
+
 export const Board = styled.main`
+  position: relative;
   max-width: 2560px;
   box-sizing: border-box;
   flex-direction: column;
@@ -21,6 +28,9 @@ export const Board = styled.main`
   box-shadow: 0px 4px 32px ${colors.gray_opacity['032']};
   @media (max-height: 976px) {
     overflow-y: scroll;
+  }
+  @media (max-width: 1428px) {
+    overflow-x: scroll;
   }
 
   @media (max-width: 460px) {
@@ -70,6 +80,9 @@ export const ChooseADayError = styled.div`
 export const ChooseTimeError = styled.div`
   color: ${colors.brink_pink};
   width: 464px;
+  @media (max-width: 1550px) {
+    width: 300px;
+  }
 `;
 
 export const PageTitle = styled.div`
@@ -87,13 +100,24 @@ export const MakeAppointmentForm = styled.form`
   display: flex;
   justify-content: space-between;
   margin-top: 40px;
+  @media (min-width: 1000px) {
+    min-width: 1200px;
+  }
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
 `;
 
-export const ChooseDay = styled.div``;
+export const ChooseDay = styled.div`
+flex-shrink: 0;
+width: 400px`;
 
-export const ChooseTime = styled.div``;
+export const ChooseTime = styled.div`
+position: relative;
+flex-shrink: 0;`;
 
 export const ChooseAdditionalInfo = styled.div`
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
 `;
@@ -183,9 +207,9 @@ export const ButtonContainer = styled.div`
 `;
 
 export const ButtonWrapper = styled.div`
-  margin-top: 400px;
-  display: flex;
-  justify-content: flex-end;
+position: absolute;
+bottom: 50px;
+right: 0;
 `;
 
 export const LoadingIndicator = styled.div`

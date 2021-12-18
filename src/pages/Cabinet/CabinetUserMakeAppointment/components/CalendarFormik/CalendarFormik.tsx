@@ -2,7 +2,11 @@ import React from 'react';
 import { useField } from 'formik';
 import Calendar from '../../../../../components/Calendar/Calendar';
 
-const CalendarFormik = (props: any) => {
+interface CalendarFormikPropsType {
+  field: any
+}
+
+const CalendarFormik:React.FC<CalendarFormikPropsType> = (props) => {
   const [, , { setValue }] = useField(props.field);
 
   return (

@@ -1,36 +1,29 @@
+import { DEFAULT_LIMIT, DEFAULT_OFFSET } from '../../common/constants';
 import api from '../api';
+import ENDPOINTS from '../enpoints';
 import {
   AppointmentsResponseType,
 } from './appointments.types';
 
-const OFFSET = 0;
-const LIMIT = 100;
-
-const URL = {
-  appointmentsPatientMe: () => '/appointments/patient/me',
-  appointmentsDoctorMe: () => '/appointments/doctor/me',
-  appointments: (id: string) => `/appointments/${id}`,
-};
-
-export const getAllPatientAppointments = () => api
-  .get<AppointmentsResponseType>(URL.appointmentsPatientMe(), {
+export const getAllPatientAppointments = (offset: number = DEFAULT_OFFSET, limit: number = DEFAULT_LIMIT) => api
+  .get<AppointmentsResponseType>(ENDPOINTS.appointmentsPatientMe(), {
     params: {
-      offset: OFFSET,
-      limit: LIMIT,
+      offset,
+      limit,
     },
   });
-export const getAllDoctorAppointments = () => api
-  .get(URL.appointmentsDoctorMe(), {
+export const getAllDoctorAppointments = (offset: number = DEFAULT_OFFSET, limit: number = DEFAULT_LIMIT) => api
+  .get(ENDPOINTS.appointmentsDoctorMe(), {
     params: {
-      offset: OFFSET,
-      limit: LIMIT,
+      offset,
+      limit,
     },
   });
 
 export const makeAppointment = (data: any) => api
   .post('appointments', data, {});
 
-export const deleteAppointmentByDoctor = (id: string) => api.delete(URL.appointments(id));
+export const deleteAppointmentByDoctor = (id: string) => api.delete(ENDPOINTS.appointments(id));
 
 export const getAvailableTime = (date: any, doctorId: any) => api
   .get('appointments/time/free', {
