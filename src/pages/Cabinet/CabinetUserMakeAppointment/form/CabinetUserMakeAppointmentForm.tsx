@@ -17,7 +17,7 @@ import {
   ChooseTimeError,
   ButtonWrapper,
 } from '../CabinetUserMakeAppointment.style';
-import Button from '../../../../components/Button/Button.style';
+import Button from '../../../../components/Button/Button';
 import { InputErrorText } from '../../common/common.style';
 
 import TimeBoard from '../components/TimeBoard/TimeBoard';
@@ -144,9 +144,8 @@ const CabinetUserMakeAppointmentForm = () => {
             <ButtonWrapper>
               <Button
                 variant="primary"
-                size="medium"
+                size="medium-submit"
                 type="submit"
-                width="160px"
                 onClick={handleSubmit}
                 disabled={!isValid && dirty}
               >

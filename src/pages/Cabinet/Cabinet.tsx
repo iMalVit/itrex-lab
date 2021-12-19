@@ -6,6 +6,7 @@ import { Content } from './common/common.style';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import { selectProfileData } from '../../store/slices/profile.slice';
+import { ROLES } from '../../common/constants';
 
 const Cabinet = () => {
   const profileData = useAppSelector(selectProfileData);
@@ -13,8 +14,8 @@ const Cabinet = () => {
   return (
     <Content>
       <Header userInfo={profileData} />
-      {profileData.role_name === 'Patient' && <CabinetUser />}
-      {profileData.role_name === 'Doctor' && <CabinetDoctor />}
+      {profileData.role_name === ROLES[0] && <CabinetUser />}
+      {profileData.role_name === ROLES[1] && <CabinetDoctor />}
       <Footer />
     </Content>
   );

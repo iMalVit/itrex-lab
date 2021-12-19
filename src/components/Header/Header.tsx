@@ -11,7 +11,17 @@ import {
   UserLogo,
 } from './Header.style';
 
-const Header: React.FC<{ userInfo: any }> = (props) => (
+interface HeaderPropsType {
+  userInfo: {
+    id: string;
+    first_name: string;
+    last_name: string;
+    photo: string;
+    role_name: string;
+  }
+}
+
+const Header: React.FC<HeaderPropsType> = (props) => (
   <HeaderWrapper>
     <HeaderLogo />
     <LoggedPerson>

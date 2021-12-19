@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 import { useAppSelector } from '../../../hooks';
 import { selectAppointmentsAppointments } from '../../../store/slices/appointments.slice';
 import CabinetUserBoardsOfAppointments from './CabinetUserBoardsOfAppointments';
-import Button from '../../../components/Button/Button.style';
+import Button from '../../../components/Button/Button';
 
 import { Board, BoardTitle, BoardBox } from '../common/common.style';
 import { ButtonsWrapper, ToolBox } from './CabinetUser.style';

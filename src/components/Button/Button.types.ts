@@ -1,14 +1,10 @@
 export type ButtonPropsType = {
-    size: 'medium' | 'small' | 'large'
+    size: 'medium' | 'medium-submit' | 'small' | 'large'
     variant: 'primary' | 'secondary'
-    iconLeft?: any
-    iconRight?: any
-    noneOnMobile?: any
-    fontSize?: any
-    marginTop?: any
-    marginRight?: any
-    marginBottom?: any
-    marginLeft?: any
-    width?: any
+    disabled?: boolean
+    type?: 'button' | 'submit' | 'reset' | undefined
+    role?:string
+    iconLeft?: string
+    iconRight?: string
     onClick?: any
 }

@@ -5,7 +5,7 @@ import Header from '../../../components/Header/Header';
 import Footer from '../../../components/Footer/Footer';
 import { Content, Board, BoardTitle } from '../common/common.style';
 import ButtonsWrapper from '../CabinetDoctor/CabinetDoctor.style';
-import Button from '../../../components/Button/Button.style';
+import Button from '../../../components/Button/Button';
 import { ResolutionsTable, ResolutionsTableHeader, ResolutionsTableHeaderCell } from './ResolutionsForDoctor.style';
 import ResolutionRow from './components/ResolutionRow/ResolutionRow';
 import { useAppDispatch, useAppSelector } from '../../../hooks';

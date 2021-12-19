@@ -14,7 +14,7 @@ import {
   ShowPasswordIcon,
 } from '../../common/common.style';
 import { Form, FormTitle } from '../SignUp.style';
-import Button from '../../../../components/Button/Button.style';
+import Button from '../../../../components/Button/Button';
 import { useAuth } from '../../../../store/hooks/useAuth';
 import { SignUpSubmitValues } from '../../common/common.types';
 import dictionary from '../../../../common/dictionary';
@@ -120,9 +120,8 @@ const SignUpForm = () => {
             <Button
               variant="primary"
               size="medium"
-              width="146px"
               iconRight="arrow"
-              disabled={!isValid && dirty}
+              disabled={!(isValid && dirty)}
               onClick={handleSubmit}
               type="submit"
               role="submit-button"

@@ -145,6 +145,7 @@ export const StepText = styled.div`
 `;
 
 export const ChooseTimeContainer = styled.ul`
+  position: relative;
   padding: 0;
   width: 464px;
   height: 152px;
@@ -210,6 +211,13 @@ export const ButtonWrapper = styled.div`
 position: absolute;
 bottom: 50px;
 right: 0;
+`;
+
+export const DateErrorText = styled.div`
+color: ${colors.brink_pink};
+top:0;
+left: 0;
+position: absolute;
 `;
 
 export const LoadingIndicator = styled.div`

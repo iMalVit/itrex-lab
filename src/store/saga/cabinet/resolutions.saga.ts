@@ -7,7 +7,6 @@ import getAllDoctorsResolutions from '../../../api/resolutions/resolutions.api';
 
 function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>): any {
   try {
-    console.log(pendingAction);
     const result = yield saga(pendingAction);
     yield put(action.success(result));
   } catch (error: any) {

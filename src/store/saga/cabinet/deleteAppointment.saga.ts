@@ -15,7 +15,6 @@ function* runAsyncSaga(
 ): any {
   try {
     const result = yield saga(pendingAction);
-    console.log(result);
     yield put(action.success(result));
     yield put(appointments.pending({ role_name: result.payload.role_name }));
     successNotify('The  appointment has been successfully deleted');

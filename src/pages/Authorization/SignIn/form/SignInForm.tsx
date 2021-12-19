@@ -12,7 +12,7 @@ import {
   ShowPasswordIcon,
 } from '../../common/common.style';
 import { Form, FormTitle, QuestionLinkForgotWrapper } from '../SignIn.style';
-import Button from '../../../../components/Button/Button.style';
+import Button from '../../../../components/Button/Button';
 import { useAuth } from '../../../../store/hooks/useAuth';
 import { SignInSubmitValues } from '../../common/common.types';
 import dictionary from '../../../../common/dictionary';
@@ -75,7 +75,6 @@ const SignInForm = () => {
             <Button
               variant="primary"
               size="medium"
-              width="138px"
               iconRight="arrow"
               disabled={!(isValid && dirty)}
               onClick={handleSubmit}

@@ -58,6 +58,7 @@ const dictionary = {
     step1Description: 'Select a doctor and define the reason of your visit',
     step2Description: 'Choose a day for an appointment',
     step3Description: 'Select an available timeslot',
+    DateError: 'There is no available time. Please choose another date.',
   },
   resolutionModal: {
     resolutionTitle: 'Create a Resolution',
@@ -84,7 +85,7 @@ const dictionary = {
     firstNameValidation: 'First Name is not valid',
     lastNameValidation: 'Last Name is not valid',
     emailValidation: 'Email is not valid',
-    passwordValidation: 'Password must contain a capital letter, a number and be at least 8 characters',
+    passwordValidation: 'Password must start with a letter or a number be at least 7 characters',
     confirmPasswordValidation: "Passwords don't matched",
   },
   resolutionColumns: {

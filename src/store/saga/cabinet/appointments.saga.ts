@@ -5,10 +5,10 @@ import { AsyncActionType, AnyFunction } from '../saga.types';
 import appointments from '../../actions/appointments.actions';
 import { getAllDoctorAppointments, getAllPatientAppointments } from '../../../api/appointments/appointments.api';
 import { AppointmentsResponseType } from '../../../api/auth/auth.types';
+import { ROLES } from '../../../common/constants';
 
 function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>): any {
   try {
-    console.log(pendingAction);
     const result = yield saga(pendingAction);
     yield put(action.success(result));
   } catch (error: any) {
@@ -22,10 +22,10 @@ function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction
 
 function* appointmentPost(action: ReturnType<typeof appointments.pending>) {
   const { role_name, offset, limit } = action.payload;
-  if (role_name === 'Patient') {
+  if (role_name === ROLES[0]) {
     const response: AxiosResponse<AppointmentsResponseType> = yield call(getAllPatientAppointments, offset, limit);
     return response.data;
-  } if (role_name === 'Doctor') {
+  } if (role_name === ROLES[1]) {
     const response: AxiosResponse<AppointmentsResponseType> = yield call(getAllDoctorAppointments, offset, limit);
     return response.data;
   }

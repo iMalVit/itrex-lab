@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { colors } from '../common/theme';
 import { ButtonPropsType } from './Button.types';
 
-const Button = styled.button<ButtonPropsType>`
+const StyledButton = styled.button<ButtonPropsType>`
   box-sizing: border-box;
   position: relative;
 
@@ -15,7 +15,7 @@ const Button = styled.button<ButtonPropsType>`
       font-style: normal;
       font-weight: 600;
       font-size: 17px;
-      line-height: 24px;
+      line-height: 141%;
       border-radius: 8px;
       border: none;
       cursor: pointer;
@@ -72,15 +72,24 @@ const Button = styled.button<ButtonPropsType>`
     ${(props) => props
     .size === 'medium'
     && css`
-      padding: 16px 24px;
+      padding: 16px 56px 16px 24px;
+    `}
+
+
+    ${(props) => props
+    .size === 'medium-submit'
+    && css`
+      padding: 16px 49px;
     `}
 
     ${(props) => props
     .size === 'large'
     && css`
+      line-height: 160%;
       padding: 12px 16px 12px 48px;
       font-size: 15px;
     `}
+
 
     ${(props) => props
     .iconRight === 'arrow'
@@ -112,13 +121,6 @@ const Button = styled.button<ButtonPropsType>`
         content: "";
       }
     `}
-
-  font-size: ${(props) => props.fontSize};
-  margin-top: ${(props) => props.marginTop};
-  margin-right: ${(props) => props.marginRight};
-  margin-bottom: ${(props) => props.marginBottom};
-  margin-left: ${(props) => props.marginLeft};
-  width: ${(props) => props.width};
 `;
 
-export default Button;
+export default StyledButton;

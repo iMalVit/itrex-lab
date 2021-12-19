@@ -5,7 +5,7 @@ import { colors } from '../../../components/common/theme';
 export const BackgroundWrapper = styled.div`
   display: flex;
   flex-direction: row-reverse;
-  background: url("../../../assets/images/bg.png");
+  background: url("../../../assets/images/bg.jpg");
   background-size: cover;
   height: 100vh;
   min-height: 680px;
@@ -14,7 +14,7 @@ export const BackgroundWrapper = styled.div`
     flex-direction: column;
     min-height: 800px;
 
-    background: url("../../../assets/images/bg-small.png");
+    background: url("../../../assets/images/bg-small.jpg");
     background-size: contain;
   }
 

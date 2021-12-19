@@ -16,7 +16,7 @@ import {
   FormDescription,
   Form,
 } from '../RestorePassword.style';
-import Button from '../../../../components/Button/Button.style';
+import Button from '../../../../components/Button/Button';
 import dictionary from '../../../../common/dictionary';
 
 const RestorePasswordForm = () => {
@@ -68,10 +68,9 @@ const RestorePasswordForm = () => {
           <FormButtonWrapper>
             <Button
               variant="primary"
-              width="214px"
               size="medium"
               iconRight="arrow"
-              disabled={!isValid && dirty}
+              disabled={!(isValid && dirty)}
               onClick={handleSubmit}
               type="submit"
             >
