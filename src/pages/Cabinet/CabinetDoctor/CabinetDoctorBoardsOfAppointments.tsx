@@ -23,7 +23,6 @@ const CabinetDoctorBoardsOfAppointments:React.FC<any> = (props) => (props.appoin
     date={new Date(appointment.visit_date)}
     time={new Date(appointment.visit_date).getHours()}
     imageSrc={appointment.patient.photo}
-    description={appointment.reason}
     status={appointment.status}
     key={appointment.id}
   />

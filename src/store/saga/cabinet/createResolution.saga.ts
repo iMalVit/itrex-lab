@@ -4,6 +4,7 @@ import { AxiosResponse } from 'axios';
 import { AsyncActionType, AnyFunction } from '../saga.types';
 import { AppointmentsResponseType } from '../../../api/auth/auth.types';
 import createResolution from '../../actions/createResolution.actions';
+import resolutions from '../../actions/resolutions.actions';
 import { errorNotify, successNotify } from '../../../utils/tosify.util';
 import { makeResolution } from '../../../api/resolutions/resolutions.api';
 
@@ -11,6 +12,7 @@ function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction
   try {
     const result = yield saga(pendingAction);
     yield put(action.success(result));
+    yield put(resolutions.pending({ offset: 0, limit: 100 }));
     successNotify('The resolution has been successfully added');
   } catch (error: any) {
     const errorSerialized = {

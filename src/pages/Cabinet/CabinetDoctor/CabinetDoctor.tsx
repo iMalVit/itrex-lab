@@ -12,7 +12,6 @@ import CabinetEmptyBoard from '../CabinetEmptyBoard/CabinetEmptyBoard';
 
 const CabinetDoctor = () => {
   const appointments = useAppSelector(selectAppointmentsAppointments);
-
   return (
     <Board>
       <ButtonsWrapper>

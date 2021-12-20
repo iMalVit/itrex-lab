@@ -4,6 +4,7 @@ import { AxiosResponse } from 'axios';
 import { AnyFunction, AsyncActionType } from '../saga.types';
 
 import deleteAppointment from '../../actions/deleteAppointment.actions';
+import resolutions from '../../actions/resolutions.actions';
 import { deleteAppointmentByDoctor } from '../../../api/appointments/appointments.api';
 import { successNotify, errorNotify } from '../../../utils/tosify.util';
 import appointments from '../../actions/appointments.actions';
@@ -17,6 +18,7 @@ function* runAsyncSaga(
     const result = yield saga(pendingAction);
     yield put(action.success(result));
     yield put(appointments.pending({ role_name: result.payload.role_name }));
+    yield put(resolutions.pending({ offset: 0, limit: 100 }));
     successNotify('The  appointment has been successfully deleted');
   } catch (error: any) {
     const errorSerialized = {

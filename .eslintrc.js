@@ -30,6 +30,7 @@ module.exports = {
     'react/no-array-index-key': 'off',
     'consistent-return': 'off',
     'react/jsx-no-bind': 'off',
+    'import/prefer-default-export': 'off',
     camelcase: 'off',
   },
 };

@@ -2,7 +2,7 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import { PayloadActionCreator } from '@reduxjs/toolkit/src/createAction';
 import { AxiosResponse } from 'axios';
 import login from '../../actions/login.actions';
-import { setToken } from '../../token';
+import { setAccessToken, setRefreshToken } from '../../token';
 import { LoginResponseType } from '../../../api/auth/auth.types';
 import { AnyFunction, AsyncActionType } from '../saga.types';
 import { signIn } from '../../../api/auth/auth';
@@ -35,9 +35,9 @@ function* loginPost(action: ReturnType<typeof login.pending>) {
   );
 
   const { data } = response;
-
-  if (data.access_token) {
-    setToken(data.access_token);
+  if (data.access_token && data.refresh_token) {
+    setAccessToken(data.access_token);
+    setRefreshToken(data.refresh_token);
   }
 
   return response.data;

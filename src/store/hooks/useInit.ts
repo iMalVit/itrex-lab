@@ -1,5 +1,5 @@
 import { useAppDispatch } from '../../hooks';
-import { getToken } from '../token';
+import { getAccessToken } from '../token';
 import profile from '../actions/profile.actions';
 import login from '../actions/login.actions';
 
@@ -13,7 +13,7 @@ const useInit = () => {
   };
 
   const start = () => {
-    if (getToken()) {
+    if (getAccessToken()) {
       dispatch(login.success(''));
       fetchProfile();
     }

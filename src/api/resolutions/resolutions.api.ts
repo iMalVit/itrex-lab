@@ -2,7 +2,7 @@ import { DEFAULT_LIMIT, DEFAULT_OFFSET } from '../../common/constants';
 import api from '../api';
 import ENDPOINTS from '../enpoints';
 
-const getAllDoctorsResolutions = (offset = DEFAULT_OFFSET, limit = DEFAULT_LIMIT) => api
+const fetchAllDoctorsResolutions = (offset = DEFAULT_OFFSET, limit = DEFAULT_LIMIT) => api
   .get(ENDPOINTS.resolutionsDoctorMe(), {
     params: {
       offset,
@@ -13,4 +13,4 @@ const getAllDoctorsResolutions = (offset = DEFAULT_OFFSET, limit = DEFAULT_LIMIT
 export const makeResolution = (data: any) => api
   .post(ENDPOINTS.resolutions(), data);
 
-export default getAllDoctorsResolutions;
+export default fetchAllDoctorsResolutions;

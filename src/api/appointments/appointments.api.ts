@@ -5,14 +5,14 @@ import {
   AppointmentsResponseType,
 } from './appointments.types';
 
-export const getAllPatientAppointments = (offset: number = DEFAULT_OFFSET, limit: number = DEFAULT_LIMIT) => api
+export const fetchAllPatientAppointments = (offset: number = DEFAULT_OFFSET, limit: number = DEFAULT_LIMIT) => api
   .get<AppointmentsResponseType>(ENDPOINTS.appointmentsPatientMe(), {
     params: {
       offset,
       limit,
     },
   });
-export const getAllDoctorAppointments = (offset: number = DEFAULT_OFFSET, limit: number = DEFAULT_LIMIT) => api
+export const fetchAllDoctorAppointments = (offset: number = DEFAULT_OFFSET, limit: number = DEFAULT_LIMIT) => api
   .get(ENDPOINTS.appointmentsDoctorMe(), {
     params: {
       offset,
@@ -21,12 +21,12 @@ export const getAllDoctorAppointments = (offset: number = DEFAULT_OFFSET, limit:
   });
 
 export const makeAppointment = (data: any) => api
-  .post('appointments', data, {});
+  .post(ENDPOINTS.appointments(''), data, {});
 
 export const deleteAppointmentByDoctor = (id: string) => api.delete(ENDPOINTS.appointments(id));
 
-export const getAvailableTime = (date: any, doctorId: any) => api
-  .get('appointments/time/free', {
+export const fetchAvailableTime = (date: any, doctorId: any) => api
+  .get(ENDPOINTS.appointmentsTimeFree(), {
     params: {
       date,
       doctorId,

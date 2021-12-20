@@ -29,7 +29,7 @@ const dictionary = {
     modalCloseButton: 'Close',
     modalSubmitButton: 'Submit',
     controlCommandCreate: 'Create a resolution',
-    controlCommandEdit: 'Edit an appointment',
+    controlCommandEdit: 'Edit a resolution',
     controlCommandDelete: 'Delete',
   },
   cabinetPatientPage: {
@@ -50,9 +50,6 @@ const dictionary = {
     labelNote: 'Note',
     chooseDayError: 'Choose a doctor first',
     chooseTimeError: 'Choose a doctor and a date first',
-  },
-  errorPage: {
-    errorMessage: '404 NOT FOUND',
   },
   makeAppointments: {
     step1Description: 'Select a doctor and define the reason of your visit',
@@ -95,6 +92,10 @@ const dictionary = {
     visitDate: 'Visit Date',
     nextVisit: 'Next Visit',
     actions: 'Actions',
+  },
+  errorPage404: {
+    title: 'Oops...',
+    text: 'We can’t seem to find the page you are looking for.',
   },
 };
 

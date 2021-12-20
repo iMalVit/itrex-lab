@@ -3,7 +3,7 @@ import { PayloadActionCreator } from '@reduxjs/toolkit/src/createAction';
 import { AxiosResponse } from 'axios';
 import { AsyncActionType, AnyFunction } from '../saga.types';
 import appointments from '../../actions/appointments.actions';
-import { getAllDoctorAppointments, getAllPatientAppointments } from '../../../api/appointments/appointments.api';
+import { fetchAllDoctorAppointments, fetchAllPatientAppointments } from '../../../api/appointments/appointments.api';
 import { AppointmentsResponseType } from '../../../api/auth/auth.types';
 import { ROLES } from '../../../common/constants';
 
@@ -23,10 +23,10 @@ function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction
 function* appointmentPost(action: ReturnType<typeof appointments.pending>) {
   const { role_name, offset, limit } = action.payload;
   if (role_name === ROLES[0]) {
-    const response: AxiosResponse<AppointmentsResponseType> = yield call(getAllPatientAppointments, offset, limit);
+    const response: AxiosResponse<AppointmentsResponseType> = yield call(fetchAllPatientAppointments, offset, limit);
     return response.data;
   } if (role_name === ROLES[1]) {
-    const response: AxiosResponse<AppointmentsResponseType> = yield call(getAllDoctorAppointments, offset, limit);
+    const response: AxiosResponse<AppointmentsResponseType> = yield call(fetchAllDoctorAppointments, offset, limit);
     return response.data;
   }
 }

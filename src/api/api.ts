@@ -1,13 +1,14 @@
 import axios from 'axios';
-import { getToken } from '../store/token';
+import { config } from '../config/config';
+import { getAccessToken } from '../store/token';
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_BASE_URL,
+  baseURL: config.api.basePath,
 });
 
 api.interceptors.request.use(async (request) => {
   request.headers = {
-    Authorization: `Bearer ${getToken()}`,
+    Authorization: `Bearer ${getAccessToken()}`,
   };
   return request;
 });

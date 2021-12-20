@@ -6,14 +6,19 @@ import { AnyFunction, AsyncActionType } from '../saga.types';
 import { ProfileResponseType } from '../../../api/auth/auth.types';
 
 import profile from '../../actions/profile.actions';
-import { getUserProfile } from '../../../api/auth/auth';
+import { fetchUserProfile } from '../../../api/auth/auth';
 import appointments from '../../actions/appointments.actions';
+import resolutions from '../../actions/resolutions.actions';
 import login from '../../actions/login.actions';
+import { ROLES } from '../../../common/constants';
 
 function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>): any {
   try {
     const result = yield saga(pendingAction);
     yield put(action.success(result));
+    if (result.role_name === ROLES[1]) {
+      yield put(resolutions.pending({ offset: 0, limit: 100 }));
+    }
     yield put(appointments.pending({ ...result }));
   } catch (error: any) {
     const errorSerialized = {
@@ -26,7 +31,7 @@ function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction
 }
 
 function* profilePost() {
-  const response: AxiosResponse<ProfileResponseType> = yield call(getUserProfile);
+  const response: AxiosResponse<ProfileResponseType> = yield call(fetchUserProfile);
 
   return response.data;
 }

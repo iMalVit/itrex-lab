@@ -121,6 +121,38 @@ const StyledButton = styled.button<ButtonPropsType>`
         content: "";
       }
     `}
+
+    ${(props) => props
+    .iconLeft === 'close'
+    && css`
+      text-align: end;
+      padding-right: 16px;
+      &:after {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        top: 12px;
+        left: 16px;
+        background: url(../../../assets/icons/close-icon.svg);
+        content: "";
+      }
+    `}
+
+    ${(props) => props
+    .iconLeft === 'board'
+    && css`
+      text-align: end;
+      padding-right: 16px;
+      &:after {
+        position: absolute;
+        width: 16px;
+        height: 20px;
+        top: 12px;
+        left: 16px;
+        background: url(../../../assets/icons/board-icon.svg);
+        content: "";
+      }
+    `}
 `;
 
 export default StyledButton;

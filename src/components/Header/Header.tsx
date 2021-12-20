@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import HeaderLogo from './HeaderLogo';
 import {
   HeaderWrapper,
@@ -10,6 +11,7 @@ import {
   LoggedPersonProfession,
   UserLogo,
 } from './Header.style';
+import PATH from '../../routes/routes';
 
 interface HeaderPropsType {
   userInfo: {
@@ -23,7 +25,9 @@ interface HeaderPropsType {
 
 const Header: React.FC<HeaderPropsType> = (props) => (
   <HeaderWrapper>
-    <HeaderLogo />
+    <Link to={PATH.CABINET}>
+      <HeaderLogo />
+    </Link>
     <LoggedPerson>
       <LoggedPersonDescription>
         <LoggedPersonName>

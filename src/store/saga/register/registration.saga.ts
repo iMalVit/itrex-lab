@@ -7,7 +7,7 @@ import { LoginResponseType } from '../../../api/auth/auth.types';
 import { AnyFunction, AsyncActionType } from '../saga.types';
 import { signUp } from '../../../api/auth/auth';
 import registration from '../../actions/registration.actions';
-import { setToken } from '../../token';
+import { setAccessToken, setRefreshToken } from '../../token';
 import profile from '../../actions/profile.actions';
 import login from '../../actions/login.actions';
 
@@ -36,8 +36,9 @@ function* registrationPost(action: ReturnType<typeof registration.pending>) {
 
   const { data } = response;
 
-  if (data.access_token) {
-    setToken(data.access_token);
+  if (data.access_token && data.refresh_token) {
+    setAccessToken(data.access_token);
+    setRefreshToken(data.refresh_token);
   }
 
   yield put(login.success({

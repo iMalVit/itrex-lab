@@ -1,5 +1,5 @@
 import createSagaActions from './main';
 
-const fetchAvailableTime = createSagaActions('fetchAvailableTime');
+const availableTime = createSagaActions('availableTime');
 
-export default fetchAvailableTime;
+export default availableTime;

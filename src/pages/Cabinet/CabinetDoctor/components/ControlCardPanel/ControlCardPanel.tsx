@@ -14,6 +14,7 @@ interface ControlCardPropsType {
     firstName: string
     lastName: string
     photo: string
+    resolution: string | undefined
   }
 }
 
@@ -40,14 +41,18 @@ const ControlCardPanel: React.FC<ControlCardPropsType> = (props) => {
       <SettingsButton onClick={() => setShowControlCardPanel(!showControlCardPanel)} />
       {showControlCardPanel && (
       <CommandsList>
-        <ControlCommand onClick={() => {
-          setIsModalOpen(true);
-          setShowControlCardPanel(false);
-        }}
-        >
-          {dictionary.cabinetDoctorPage.controlCommandCreate}
+        {!props.appointmentData.resolution ? (
+          <ControlCommand onClick={() => {
+            setIsModalOpen(true);
+            setShowControlCardPanel(false);
+          }}
+          >
+            {dictionary.cabinetDoctorPage.controlCommandCreate}
+          </ControlCommand>
+        ) : null }
+        <ControlCommand>
+          {dictionary.cabinetDoctorPage.controlCommandEdit}
         </ControlCommand>
-        <ControlCommand>{dictionary.cabinetDoctorPage.controlCommandEdit}</ControlCommand>
         <ControlCommand onClick={() => deleteAppointment({ id: props.appointmentData.id })}>{dictionary.cabinetDoctorPage.controlCommandDelete}</ControlCommand>
       </CommandsList>
       )}

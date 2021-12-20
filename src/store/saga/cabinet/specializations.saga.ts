@@ -5,7 +5,7 @@ import { AnyFunction, AsyncActionType } from '../saga.types';
 import { ProfileResponseType } from '../../../api/auth/auth.types';
 
 import specializations from '../../actions/specializations.actions';
-import { getDoctorsSpecializations } from '../../../api/specializations/specializations.api';
+import { fetchDoctorsSpecializations } from '../../../api/specializations/specializations.api';
 
 function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>): any {
   try {
@@ -21,7 +21,7 @@ function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction
 }
 
 function* specializationsPost() {
-  const response: AxiosResponse<ProfileResponseType> = yield call(getDoctorsSpecializations);
+  const response: AxiosResponse<ProfileResponseType> = yield call(fetchDoctorsSpecializations);
 
   return response.data;
 }

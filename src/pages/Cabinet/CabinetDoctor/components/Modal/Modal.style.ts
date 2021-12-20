@@ -19,7 +19,6 @@ export const ModalContent = styled.div`
   background-color: white;
   transition: .5s all;
   width: 560px;
-  min-height: 467px;
   `;
 
 export const ResolutionModalBody = styled.div`

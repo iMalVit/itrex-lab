@@ -3,7 +3,6 @@ import { useCallback } from 'react';
 import login from '../actions/login.actions';
 import registration from '../actions/registration.actions';
 
-// eslint-disable-next-line import/prefer-default-export
 export const useAuth = () => {
   const dispatch = useDispatch();
 

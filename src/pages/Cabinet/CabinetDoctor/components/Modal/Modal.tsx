@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import dictionary from '../../../../../common/dictionary';
+import Button from '../../../../../components/Button/Button';
 import { useAppDispatch } from '../../../../../hooks';
 import createResolution from '../../../../../store/actions/createResolution.actions';
 import {
-  ResolutionModalBody, ResolutionModalTextArea, ResolutionModalTitle, ResolutionTextareaTitle, SelectedPatientImage, SelectedPatientInfo, ModalContent, ModalWrapper,
+  ResolutionModalBody, ResolutionModalTextArea, ResolutionModalTitle, ResolutionTextareaTitle, SelectedPatientImage, SelectedPatientInfo, ModalContent, ModalWrapper, ResolutionModalFooter,
 } from './Modal.style';
 
 interface ModalPropsType {
@@ -39,9 +40,11 @@ const Modal: React.FC<ModalPropsType> = (props) => {
           </SelectedPatientInfo>
           <ResolutionTextareaTitle>{dictionary.cabinetDoctorPage.modalResolution}</ResolutionTextareaTitle>
           <ResolutionModalTextArea value={resolutionText} onChange={(event) => setResolutionText(event.target.value)} />
-          <button type="submit" onClick={props.onClose}>{dictionary.cabinetDoctorPage.modalCloseButton}</button>
-          <button type="submit" onClick={handlerSubmit}>{dictionary.cabinetDoctorPage.modalSubmitButton}</button>
         </ResolutionModalBody>
+        <ResolutionModalFooter>
+          <Button iconLeft="close" variant="secondary" size="large" type="submit" onClick={props.onClose}>{dictionary.cabinetDoctorPage.modalCloseButton}</Button>
+          <Button iconLeft="board" variant="primary" size="large" type="submit" onClick={handlerSubmit}>{dictionary.cabinetDoctorPage.modalSubmitButton}</Button>
+        </ResolutionModalFooter>
       </ModalContent>
     </ModalWrapper>,
     document.getElementById('modal-root') as Element,

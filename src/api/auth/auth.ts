@@ -10,5 +10,5 @@ export const signUp = (userData: RegisterDataType) => api
 export const signIn = (userData: LoginDataType) => api
   .post<LoginResponseType>(ENDPOINTS.authLogin(), userData);
 
-export const getUserProfile = () => api
+export const fetchUserProfile = () => api
   .get<ProfileResponseType>(ENDPOINTS.authProfile());
