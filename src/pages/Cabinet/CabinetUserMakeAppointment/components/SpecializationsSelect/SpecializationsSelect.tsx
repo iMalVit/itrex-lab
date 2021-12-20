@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useField } from 'formik';
 import { useAppDispatch, useAppSelector } from '../../../../../hooks';
-import specializations from '../../../../../store/actions/specializations.actions';
+import { specializations } from '../../../../../store/actions';
 
 import SelectStyled from '../SelectList/SelectList.style';
-import { selectSpecializationsSpecializations } from '../../../../../store/slices/specializations.slice';
+import { selectSpecializationsSpecializations } from '../../../../../store/slices';
 
 const SpecializationsSelect = ({
   id, options, handleReset, ...props

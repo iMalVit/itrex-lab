@@ -1,7 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useCallback } from 'react';
-import login from '../actions/login.actions';
-import registration from '../actions/registration.actions';
+import { login, registration } from '../actions';
 
 export const useAuth = () => {
   const dispatch = useDispatch();

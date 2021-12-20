@@ -5,14 +5,17 @@ import { AxiosResponse } from 'axios';
 import { AnyFunction, AsyncActionType } from '../saga.types';
 import { ProfileResponseType } from '../../../api/auth/auth.types';
 
-import profile from '../../actions/profile.actions';
-import { fetchUserProfile } from '../../../api/auth/auth';
-import appointments from '../../actions/appointments.actions';
-import resolutions from '../../actions/resolutions.actions';
-import login from '../../actions/login.actions';
+import {
+  profile, appointments, resolutions, login,
+} from '../../actions';
+import { fetchUserProfile } from '../../../api';
 import { ROLES } from '../../../common/constants';
 
-function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>): any {
+function* runAsyncSaga(
+  action: AsyncActionType,
+  saga: AnyFunction,
+  pendingAction?: PayloadActionCreator<any>,
+): any {
   try {
     const result = yield saga(pendingAction);
     yield put(action.success(result));
@@ -31,7 +34,9 @@ function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction
 }
 
 function* profilePost() {
-  const response: AxiosResponse<ProfileResponseType> = yield call(fetchUserProfile);
+  const response: AxiosResponse<ProfileResponseType> = yield call(
+    fetchUserProfile,
+  );
 
   return response.data;
 }

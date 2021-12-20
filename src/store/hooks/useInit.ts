@@ -1,7 +1,6 @@
 import { useAppDispatch } from '../../hooks';
 import { getAccessToken } from '../token';
-import profile from '../actions/profile.actions';
-import login from '../actions/login.actions';
+import { profile, login } from '../actions';
 
 const useInit = () => {
   const dispatch = useAppDispatch();

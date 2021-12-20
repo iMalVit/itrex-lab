@@ -3,11 +3,9 @@ import { PayloadActionCreator } from '@reduxjs/toolkit/src/createAction';
 import { AxiosResponse } from 'axios';
 import { AnyFunction, AsyncActionType } from '../saga.types';
 
-import deleteAppointment from '../../actions/deleteAppointment.actions';
-import resolutions from '../../actions/resolutions.actions';
-import { deleteAppointmentByDoctor } from '../../../api/appointments/appointments.api';
+import { deleteAppointment, resolutions, appointments } from '../../actions';
+import { deleteAppointmentByDoctor } from '../../../api';
 import { successNotify, errorNotify } from '../../../utils/tosify.util';
-import appointments from '../../actions/appointments.actions';
 
 function* runAsyncSaga(
   action: AsyncActionType,
@@ -30,14 +28,23 @@ function* runAsyncSaga(
   }
 }
 
-function* deleteAppointmentPost(action: ReturnType<typeof deleteAppointment.pending>) {
+function* deleteAppointmentPost(
+  action: ReturnType<typeof deleteAppointment.pending>,
+) {
   const { payload } = action;
-  const response: AxiosResponse = yield call(deleteAppointmentByDoctor, payload.id);
+  const response: AxiosResponse = yield call(
+    deleteAppointmentByDoctor,
+    payload.id,
+  );
 
   return { response, payload };
 }
 
-const deleteAppointmentPostSaga = runAsyncSaga.bind(null, deleteAppointment, deleteAppointmentPost);
+const deleteAppointmentPostSaga = runAsyncSaga.bind(
+  null,
+  deleteAppointment,
+  deleteAppointmentPost,
+);
 
 function* deleteAppointmentWatcher() {
   yield takeEvery(deleteAppointment.pending, deleteAppointmentPostSaga);

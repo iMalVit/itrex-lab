@@ -16,7 +16,7 @@ import {
   FormDescription,
   Form,
 } from '../RestorePassword.style';
-import Button from '../../../../components/Button/Button';
+import { Button } from '../../../../components';
 import dictionary from '../../../../common/dictionary';
 
 const RestorePasswordForm = () => {

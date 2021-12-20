@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import registration from '../actions/registration.actions';
+import { registration } from '../actions';
 import { Request } from './slices.types';
 
 const initialState: Request = {
@@ -26,5 +26,3 @@ export const registrationSlice = createSlice({
       });
   },
 });
-
-export default registrationSlice;

@@ -12,7 +12,7 @@ import {
   ShowPasswordIcon,
 } from '../../common/common.style';
 import { Form, FormTitle, QuestionLinkForgotWrapper } from '../SignIn.style';
-import Button from '../../../../components/Button/Button';
+import { Button } from '../../../../components';
 import { useAuth } from '../../../../store/hooks/useAuth';
 import { SignInSubmitValues } from '../../common/common.types';
 import dictionary from '../../../../common/dictionary';

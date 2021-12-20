@@ -1,6 +1,6 @@
 import React from 'react';
 import { useField } from 'formik';
-import Calendar from '../../../../../components/Calendar/Calendar';
+import { Calendar } from '../../../../../components';
 
 interface CalendarFormikPropsType {
   field: any

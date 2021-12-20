@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../../hooks';
-import { selectAppointmentsAppointments } from '../../../store/slices/appointments.slice';
+import { selectAppointmentsAppointments } from '../../../store/slices';
 import { Board, BoardTitle, BoardBox } from '../common/common.style';
-import Button from '../../../components/Button/Button';
+import { Button } from '../../../components';
 import CabinetDoctorBoardsOfAppointments from './CabinetDoctorBoardsOfAppointments';
 import ButtonsWrapper from './CabinetDoctor.style';
 import PATH from '../../../routes/routes';

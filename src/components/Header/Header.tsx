@@ -23,7 +23,7 @@ interface HeaderPropsType {
   }
 }
 
-const Header: React.FC<HeaderPropsType> = (props) => (
+export const Header: React.FC<HeaderPropsType> = (props) => (
   <HeaderWrapper>
     <Link to={PATH.CABINET}>
       <HeaderLogo />
@@ -44,5 +44,3 @@ const Header: React.FC<HeaderPropsType> = (props) => (
     </LoggedPerson>
   </HeaderWrapper>
 );
-
-export default Header;

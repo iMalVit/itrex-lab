@@ -1,21 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { SettingsButton } from '../AppointmentCard/AppointmentCard.style';
-import {
-  CommandsList,
-  ControlCommand,
-} from './ControlCardPanel.styles';
+import { CommandsList, ControlCommand } from './ControlCardPanel.styles';
 import Modal from '../Modal/Modal';
 import useAppointment from '../../../../../store/hooks/useAppointment';
 import dictionary from '../../../../../common/dictionary';
 
 interface ControlCardPropsType {
   appointmentData: {
-    id: string
-    firstName: string
-    lastName: string
-    photo: string
-    resolution: string | undefined
-  }
+    id: string;
+    firstName: string;
+    lastName: string;
+    photo: string;
+    resolution: string | undefined;
+  };
 }
 
 const ControlCardPanel: React.FC<ControlCardPropsType> = (props) => {
@@ -25,8 +22,12 @@ const ControlCardPanel: React.FC<ControlCardPropsType> = (props) => {
 
   const ref: React.MutableRefObject<any> = useRef();
   useEffect(() => {
-    const checkIfClickOutside = (event:any) => {
-      if (showControlCardPanel && ref.current && !ref.current.contains(event.target)) {
+    const checkIfClickOutside = (event: any) => {
+      if (
+        showControlCardPanel
+        && ref.current
+        && !ref.current.contains(event.target)
+      ) {
         setShowControlCardPanel(false);
       }
     };
@@ -38,25 +39,40 @@ const ControlCardPanel: React.FC<ControlCardPropsType> = (props) => {
 
   return (
     <div ref={ref}>
-      <SettingsButton onClick={() => setShowControlCardPanel(!showControlCardPanel)} />
+      <SettingsButton
+        onClick={() => setShowControlCardPanel(!showControlCardPanel)}
+      />
       {showControlCardPanel && (
-      <CommandsList>
-        {!props.appointmentData.resolution ? (
-          <ControlCommand onClick={() => {
-            setIsModalOpen(true);
-            setShowControlCardPanel(false);
-          }}
-          >
-            {dictionary.cabinetDoctorPage.controlCommandCreate}
+        <CommandsList>
+          {!props.appointmentData.resolution ? (
+            <ControlCommand
+              onClick={() => {
+                setIsModalOpen(true);
+                setShowControlCardPanel(false);
+              }}
+            >
+              {dictionary.cabinetDoctorPage.controlCommandCreate}
+            </ControlCommand>
+          ) : null}
+          <ControlCommand>
+            {dictionary.cabinetDoctorPage.controlCommandEdit}
           </ControlCommand>
-        ) : null }
-        <ControlCommand>
-          {dictionary.cabinetDoctorPage.controlCommandEdit}
-        </ControlCommand>
-        <ControlCommand onClick={() => deleteAppointment({ id: props.appointmentData.id })}>{dictionary.cabinetDoctorPage.controlCommandDelete}</ControlCommand>
-      </CommandsList>
+          <ControlCommand
+            onClick={() => deleteAppointment({ id: props.appointmentData.id })}
+          >
+            {dictionary.cabinetDoctorPage.controlCommandDelete}
+          </ControlCommand>
+        </CommandsList>
       )}
-      {isModalOpen && <Modal firstName={props.appointmentData.firstName} lastName={props.appointmentData.lastName} photo={props.appointmentData.photo} appointmentID={props.appointmentData.id} onClose={() => setIsModalOpen(false)} />}
+      {isModalOpen && (
+        <Modal
+          firstName={props.appointmentData.firstName}
+          lastName={props.appointmentData.lastName}
+          photo={props.appointmentData.photo}
+          appointmentID={props.appointmentData.id}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
     </div>
   );
 };

@@ -9,7 +9,7 @@ import {
 import { Content } from './SignIn.style';
 import dictionary from '../../../common/dictionary';
 
-const SignIn = () => (
+export const SignIn = () => (
   <BackgroundWrapper page="SignIn">
     <Content>
       <SignInForm />
@@ -20,5 +20,3 @@ const SignIn = () => (
     </Content>
   </BackgroundWrapper>
 );
-
-export default SignIn;

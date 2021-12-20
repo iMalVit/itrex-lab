@@ -1,5 +1,3 @@
 import createSagaActions from './main';
 
-const specializations = createSagaActions('specializations');
-
-export default specializations;
+export const specializations = createSagaActions('specializations');

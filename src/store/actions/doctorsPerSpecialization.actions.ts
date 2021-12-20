@@ -1,5 +1,3 @@
 import createSagaActions from './main';
 
-const doctorsPerSpecialization = createSagaActions('doctorsPerSpecialization');
-
-export default doctorsPerSpecialization;
+export const doctorsPerSpecialization = createSagaActions('doctorsPerSpecialization');

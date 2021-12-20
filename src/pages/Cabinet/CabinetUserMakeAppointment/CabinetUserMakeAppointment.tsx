@@ -1,6 +1,5 @@
 import React from 'react';
-import Header from '../../../components/Header/Header';
-import Footer from '../../../components/Footer/Footer';
+import { Header, Footer } from '../../../components';
 import { Content } from '../common/common.style';
 import {
   Navigation,
@@ -13,11 +12,11 @@ import {
 } from './CabinetUserMakeAppointment.style';
 import CabinetUserMakeAppointmentForm from './form/CabinetUserMakeAppointmentForm';
 import { useAppSelector } from '../../../hooks';
-import { selectProfileData } from '../../../store/slices/profile.slice';
+import { selectProfileData } from '../../../store/slices';
 import PATH from '../../../routes/routes';
 import dictionary from '../../../common/dictionary';
 
-const CabinetUserMakeAppointment = () => {
+export const CabinetUserMakeAppointment = () => {
   const userInfo = useAppSelector(selectProfileData);
   return (
     <Content>
@@ -37,5 +36,3 @@ const CabinetUserMakeAppointment = () => {
     </Content>
   );
 };
-
-export default CabinetUserMakeAppointment;

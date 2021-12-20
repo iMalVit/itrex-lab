@@ -5,13 +5,15 @@ import { PayloadActionCreator } from '@reduxjs/toolkit/src/createAction';
 
 import { LoginResponseType } from '../../../api/auth/auth.types';
 import { AnyFunction, AsyncActionType } from '../saga.types';
-import { signUp } from '../../../api/auth/auth';
-import registration from '../../actions/registration.actions';
+import { signUp } from '../../../api';
+import { registration, profile, login } from '../../actions';
 import { setAccessToken, setRefreshToken } from '../../token';
-import profile from '../../actions/profile.actions';
-import login from '../../actions/login.actions';
 
-function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>): any {
+function* runAsyncSaga(
+  action: AsyncActionType,
+  saga: AnyFunction,
+  pendingAction?: PayloadActionCreator<any>,
+): any {
   try {
     const result = yield saga(pendingAction);
     yield put(action.success(result));
@@ -41,15 +43,21 @@ function* registrationPost(action: ReturnType<typeof registration.pending>) {
     setRefreshToken(data.refresh_token);
   }
 
-  yield put(login.success({
-    access_token: '',
-    refresh_token: '',
-  }));
+  yield put(
+    login.success({
+      access_token: '',
+      refresh_token: '',
+    }),
+  );
 
   return response.data;
 }
 
-const registrationPostSaga = runAsyncSaga.bind(null, registration, registrationPost);
+const registrationPostSaga = runAsyncSaga.bind(
+  null,
+  registration,
+  registrationPost,
+);
 
 function* registerWatcher() {
   yield takeEvery(registration.pending, registrationPostSaga);

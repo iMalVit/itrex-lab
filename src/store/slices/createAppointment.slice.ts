@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import createAppointment from '../actions/createAppointment.actions';
+import { createAppointment } from '../actions';
 import { Request } from './slices.types';
 
 const initialState: Request = {
@@ -26,5 +26,3 @@ export const createAppointmentSlice = createSlice({
       });
   },
 });
-
-export default createAppointmentSlice;

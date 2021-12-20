@@ -1,9 +1,9 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 import { useAppSelector } from '../../../hooks';
-import { selectAppointmentsAppointments } from '../../../store/slices/appointments.slice';
+import { selectAppointmentsAppointments } from '../../../store/slices';
 import CabinetUserBoardsOfAppointments from './CabinetUserBoardsOfAppointments';
-import Button from '../../../components/Button/Button';
+import { Button } from '../../../components/Button/Button';
 
 import { Board, BoardTitle, BoardBox } from '../common/common.style';
 import { ButtonsWrapper, ToolBox } from './CabinetUser.style';

@@ -24,7 +24,6 @@ module.exports = {
     'jsx-a11y/aria-role': 'off',
     'no-plusplus': 'off',
     'no-shadow': 'off',
-    'max-len': 'off',
     'no-param-reassign': 'off',
     'no-undef': 'off',
     'react/no-array-index-key': 'off',

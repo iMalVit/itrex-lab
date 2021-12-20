@@ -17,7 +17,7 @@ import {
   ChooseTimeError,
   ButtonWrapper,
 } from '../CabinetUserMakeAppointment.style';
-import Button from '../../../../components/Button/Button';
+import { Button } from '../../../../components';
 import { InputErrorText } from '../../common/common.style';
 
 import TimeBoard from '../components/TimeBoard/TimeBoard';

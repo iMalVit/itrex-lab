@@ -13,7 +13,7 @@ import {
 } from './Calendar.style';
 import * as calendar from '../../utils/calendar.util';
 
-const Calendar = (props: any) => {
+export const Calendar = (props: any) => {
   const todayDate = new Date();
 
   const [date, setDate] = useState(todayDate);
@@ -99,5 +99,3 @@ const Calendar = (props: any) => {
     </CalendarContainer>
   );
 };
-
-export default Calendar;

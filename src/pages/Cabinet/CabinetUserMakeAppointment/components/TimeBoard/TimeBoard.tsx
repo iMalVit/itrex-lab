@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { FormikValues, useField, useFormikContext } from 'formik';
-import { TimeSlot, DateErrorText } from '../../CabinetUserMakeAppointment.style';
+import {
+  TimeSlot,
+  DateErrorText,
+} from '../../CabinetUserMakeAppointment.style';
 
 import { useAppDispatch, useAppSelector } from '../../../../../hooks';
-import fetchAvailableTime from '../../../../../store/actions/availableTime.actions';
-import { selectAvailableTimeTime } from '../../../../../store/slices/availableTime.slice';
+import { availableTime } from '../../../../../store/actions';
+import { selectAvailableTimeTime } from '../../../../../store/slices';
 import { timeBoardConvertTime } from '../../../../../utils/convertTime.util';
 import dictionary from '../../../../../common/dictionary';
 
@@ -27,17 +30,20 @@ const TimeBoard = (props: any) => {
   }, [selectedTime]);
 
   useEffect(() => {
-    dispatch(fetchAvailableTime.pending({
-      date: new Date(values.date.getTime() + TIME_DIFF),
-      doctorId: values.doctorName,
-    }));
+    dispatch(
+      availableTime.pending({
+        date: new Date(values.date.getTime() + TIME_DIFF),
+        doctorId: values.doctorName,
+      }),
+    );
     SetSelectedTime(null);
   }, [values.date]);
 
-  const availableTime = useAppSelector(selectAvailableTimeTime);
+  const availableTimeArray = useAppSelector(selectAvailableTimeTime);
   const convertAvailableTime = () => {
-    if (availableTime) {
-      return availableTime.map((backend: any) => timeBoardConvertTime(Number(new Date(backend).getHours())));
+    if (availableTimeArray) {
+      return availableTimeArray
+        .map((backend: any) => timeBoardConvertTime(Number(new Date(backend).getHours())));
     }
     return null;
   };

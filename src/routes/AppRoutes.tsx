@@ -2,17 +2,19 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PATH from './routes';
 
-import SignUp from '../pages/Authorization/SignUp/SignUp';
-import SignIn from '../pages/Authorization/SignIn/SignIn';
-import RestorePassword from '../pages/Authorization/RestorePassword/RestorePassword';
-import RestorePasswordSuccessed from '../pages/Authorization/RestorePasswordSuccessed/RestorePasswordSuccessed';
-import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
-import CabinetUserMakeAppointment from '../pages/Cabinet/CabinetUserMakeAppointment/CabinetUserMakeAppointment';
+import {
+  SignUp,
+  SignIn,
+  RestorePassword,
+  RestorePasswordSuccessed,
+} from '../pages/Authorization';
+import { NotFoundPage } from '../pages/NotFoundPage/NotFoundPage';
+import { CabinetUserMakeAppointment } from '../pages/Cabinet/CabinetUserMakeAppointment';
 import PrivateRoute from './PrivateRoute';
 import { useAppSelector } from '../hooks';
 import Cabinet from '../pages/Cabinet/Cabinet';
-import { selectLoginIsLogged } from '../store/slices/login.slice';
-import ResolutionsForDoctor from '../pages/Cabinet/ResolutionsForDoctor/ResolutionsForDoctor';
+import { selectLoginIsLogged } from '../store/slices';
+import { ResolutionsForDoctor } from '../pages/Cabinet/ResolutionsForDoctor/ResolutionsForDoctor';
 
 const AppRoutes = () => {
   const isAuth = useAppSelector(selectLoginIsLogged);

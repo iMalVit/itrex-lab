@@ -3,9 +3,8 @@ import CabinetUser from './CabinetUser/CabinetUser';
 import CabinetDoctor from './CabinetDoctor/CabinetDoctor';
 import { useAppSelector } from '../../hooks';
 import { Content } from './common/common.style';
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
-import { selectProfileData } from '../../store/slices/profile.slice';
+import { Header, Footer } from '../../components';
+import { selectProfileData } from '../../store/slices';
 import { ROLES } from '../../common/constants';
 
 const Cabinet = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppSelector } from '../../../../../hooks';
-import { selectResolutionsArray } from '../../../../../store/slices/resolutions.slice';
+import { selectResolutionsArray } from '../../../../../store/slices';
 import { renderTime } from '../../../../../utils/convertTime.util';
 import ControlCardPanel from '../ControlCardPanel/ControlCardPanel';
 import {
@@ -32,7 +32,8 @@ interface AppointmentCardPropsType {
 
 const AppointmentCard: React.FC<AppointmentCardPropsType> = (props) => {
   const resolutions = useAppSelector(selectResolutionsArray);
-  const resolutionNote = resolutions.find((resolution:any) => resolution.appointment_id === props.appointmentId);
+  const resolutionNote = resolutions
+    .find((resolution:any) => resolution.appointment_id === props.appointmentId);
   return (
     <PatientBox>
       <MainInfo>
@@ -49,7 +50,11 @@ const AppointmentCard: React.FC<AppointmentCardPropsType> = (props) => {
             <StatusText>{props.status}</StatusText>
           </Status>
           <ControlCardPanel appointmentData={{
-            firstName: props.firstName, lastName: props.lastName, id: props.appointmentId, photo: props.imageSrc, resolution: resolutionNote,
+            firstName: props.firstName,
+            lastName: props.lastName,
+            id: props.appointmentId,
+            photo: props.imageSrc,
+            resolution: resolutionNote,
           }}
           />
         </DescriptionBox>

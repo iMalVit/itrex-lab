@@ -4,10 +4,14 @@ import { AxiosResponse } from 'axios';
 import { AnyFunction, AsyncActionType } from '../saga.types';
 import { ProfileResponseType } from '../../../api/auth/auth.types';
 
-import { fetchAvailableTime } from '../../../api/appointments/appointments.api';
-import availableTime from '../../actions/availableTime.actions';
+import { fetchAvailableTime } from '../../../api';
+import { availableTime } from '../../actions';
 
-function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>): any {
+function* runAsyncSaga(
+  action: AsyncActionType,
+  saga: AnyFunction,
+  pendingAction?: PayloadActionCreator<any>,
+): any {
   try {
     const result = yield saga(pendingAction);
     yield put(action.success(result));
@@ -23,12 +27,20 @@ function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction
 
 function* availableTimePost(action: ReturnType<typeof availableTime.pending>) {
   const { payload } = action;
-  const response: AxiosResponse<ProfileResponseType> = yield call(fetchAvailableTime, payload.date, payload.doctorId);
+  const response: AxiosResponse<ProfileResponseType> = yield call(
+    fetchAvailableTime,
+    payload.date,
+    payload.doctorId,
+  );
 
   return response.data;
 }
 
-const specializationsPostSaga = runAsyncSaga.bind(null, availableTime, availableTimePost);
+const specializationsPostSaga = runAsyncSaga.bind(
+  null,
+  availableTime,
+  availableTimePost,
+);
 
 function* availableTimeWatcher() {
   yield takeEvery(availableTime.pending, specializationsPostSaga);

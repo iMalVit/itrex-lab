@@ -4,10 +4,14 @@ import { AxiosResponse } from 'axios';
 import { AnyFunction, AsyncActionType } from '../saga.types';
 import { ProfileResponseType } from '../../../api/auth/auth.types';
 
-import { fetchDoctorsBySpecialization } from '../../../api/doctors/doctors.api';
-import doctorsPerSpecialization from '../../actions/doctorsPerSpecialization.actions';
+import { fetchDoctorsBySpecialization } from '../../../api';
+import { doctorsPerSpecialization } from '../../actions';
 
-function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction?: PayloadActionCreator<any>): any {
+function* runAsyncSaga(
+  action: AsyncActionType,
+  saga: AnyFunction,
+  pendingAction?: PayloadActionCreator<any>,
+): any {
   try {
     const result = yield saga(pendingAction);
     yield put(action.success(result));
@@ -20,17 +24,29 @@ function* runAsyncSaga(action: AsyncActionType, saga: AnyFunction, pendingAction
   }
 }
 
-function* doctorsPerSpecializationPost(action: ReturnType<typeof doctorsPerSpecialization.pending>) {
+function* doctorsPerSpecializationPost(
+  action: ReturnType<typeof doctorsPerSpecialization.pending>,
+) {
   const { payload } = action;
-  const response: AxiosResponse<ProfileResponseType> = yield call(fetchDoctorsBySpecialization, payload);
+  const response: AxiosResponse<ProfileResponseType> = yield call(
+    fetchDoctorsBySpecialization,
+    payload,
+  );
 
   return response.data;
 }
 
-const doctorsPerSpecializationPostSaga = runAsyncSaga.bind(null, doctorsPerSpecialization, doctorsPerSpecializationPost);
+const doctorsPerSpecializationPostSaga = runAsyncSaga.bind(
+  null,
+  doctorsPerSpecialization,
+  doctorsPerSpecializationPost,
+);
 
 function* doctorsPerSpecializationWatcher() {
-  yield takeEvery(doctorsPerSpecialization.pending, doctorsPerSpecializationPostSaga);
+  yield takeEvery(
+    doctorsPerSpecialization.pending,
+    doctorsPerSpecializationPostSaga,
+  );
 }
 
 function* doctorsPerSpecializationSaga() {

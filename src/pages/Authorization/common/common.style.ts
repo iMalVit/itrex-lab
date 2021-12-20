@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Field } from 'formik';
 import {
-  BackgroundWrapperPropsType, QuestionLinkWrapperPropsType, InputErrorTextPropsType, ShowPasswordIconPropsType,
+  BackgroundWrapperPropsType,
+  QuestionLinkWrapperPropsType, InputErrorTextPropsType, ShowPasswordIconPropsType,
 } from './common.types';
 import { colors } from '../../../components/common/theme';
 

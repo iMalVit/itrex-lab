@@ -13,7 +13,7 @@ import { BackgroundWrapper } from '../common/common.style';
 import PATH from '../../../routes/routes';
 import dictionary from '../../../common/dictionary';
 
-const RestorePasswordSuccessed = () => (
+export const RestorePasswordSuccessed = () => (
   <BackgroundWrapper page="RestorePassword">
     <Content>
       <Form>
@@ -38,5 +38,3 @@ const RestorePasswordSuccessed = () => (
     </Content>
   </BackgroundWrapper>
 );
-
-export default RestorePasswordSuccessed;

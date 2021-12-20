@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useField, useFormikContext, FormikValues } from 'formik';
 import { useAppDispatch, useAppSelector } from '../../../../../hooks';
-import { selectDoctorsPerSpecializationDoctors } from '../../../../../store/slices/doctorsPerSpecialization.slice';
+import { selectDoctorsPerSpecializationDoctors } from '../../../../../store/slices';
 import SelectStyled from '../SelectList/SelectList.style';
-import doctorsPerSpecialization from '../../../../../store/actions/doctorsPerSpecialization.actions';
+import { doctorsPerSpecialization } from '../../../../../store/actions';
 
 const DoctorsSelect = ({
   id, options, handleReset, ...props

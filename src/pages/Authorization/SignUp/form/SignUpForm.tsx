@@ -14,7 +14,7 @@ import {
   ShowPasswordIcon,
 } from '../../common/common.style';
 import { Form, FormTitle } from '../SignUp.style';
-import Button from '../../../../components/Button/Button';
+import { Button } from '../../../../components/Button/Button';
 import { useAuth } from '../../../../store/hooks/useAuth';
 import { SignUpSubmitValues } from '../../common/common.types';
 import dictionary from '../../../../common/dictionary';

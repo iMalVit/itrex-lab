@@ -1,5 +1,5 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit';
-import login from '../actions/login.actions';
+import { login } from '../actions';
 import { RootStateType } from '../store';
 import { LoginState } from './slices.types';
 
@@ -34,4 +34,3 @@ export const loginSlice = createSlice({
 const getLoginState = (state: RootStateType) => state.login;
 export const selectLoginStatus = createSelector(getLoginState, (state) => state.status);
 export const selectLoginIsLogged = createSelector(getLoginState, (state) => state.isLogged);
-export default loginSlice;

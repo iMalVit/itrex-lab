@@ -1,5 +1,3 @@
 import createSagaActions from './main';
 
-const createResolution = createSagaActions('createResolution');
-
-export default createResolution;
+export const createResolution = createSagaActions('createResolution');
