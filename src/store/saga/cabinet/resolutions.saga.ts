@@ -1,9 +1,10 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { PayloadActionCreator } from '@reduxjs/toolkit/src/createAction';
+import { ROLES } from 'common/constants';
 import { AxiosResponse } from 'axios';
 import { AsyncActionType, AnyFunction } from '../saga.types';
 import { resolutions } from '../../actions';
-import { fetchAllDoctorsResolutions } from '../../../api';
+import { fetchAllDoctorsResolutions, fetchAllPatientsResolutions } from '../../../api';
 
 function* runAsyncSaga(
   action: AsyncActionType,
@@ -23,7 +24,23 @@ function* runAsyncSaga(
 }
 
 function* appointmentPost(action: ReturnType<typeof resolutions.pending>) {
-  const { offset, limit } = action.payload;
+  const { role_name, offset, limit } = action.payload;
+  if (role_name === ROLES[0]) {
+    const response: AxiosResponse = yield call(
+      fetchAllPatientsResolutions,
+      offset,
+      limit,
+    );
+    return response.data;
+  }
+  if (role_name === ROLES[1]) {
+    const response: AxiosResponse = yield call(
+      fetchAllDoctorsResolutions,
+      offset,
+      limit,
+    );
+    return response.data;
+  }
   const response: AxiosResponse = yield call(
     fetchAllDoctorsResolutions,
     offset,

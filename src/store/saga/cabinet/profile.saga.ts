@@ -9,7 +9,6 @@ import {
   profile, appointments, resolutions, login,
 } from '../../actions';
 import { fetchUserProfile } from '../../../api';
-import { ROLES } from '../../../common/constants';
 
 function* runAsyncSaga(
   action: AsyncActionType,
@@ -19,9 +18,7 @@ function* runAsyncSaga(
   try {
     const result = yield saga(pendingAction);
     yield put(action.success(result));
-    if (result.role_name === ROLES[1]) {
-      yield put(resolutions.pending({ offset: 0, limit: 100 }));
-    }
+    yield put(resolutions.pending({ role_name: result.role_name, offset: 0, limit: 100 }));
     yield put(appointments.pending({ ...result }));
   } catch (error: any) {
     const errorSerialized = {

@@ -5,7 +5,7 @@ It was created for ITRex Group.
 
 # Deploy
 
-You can try this project on [Netlify](https://awesome-lumiere-d84aaf.netlify.app/).
+You can try this project on [Netlify](https://jovial-mahavira-9270cd.netlify.app/).
 
 # Swagger
 

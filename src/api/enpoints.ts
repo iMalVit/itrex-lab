@@ -8,6 +8,7 @@ const ENDPOINTS = {
   appointmentsTimeFree: () => 'appointments/time/free',
   resolutions: () => '/resolutions',
   resolutionsDoctorMe: () => '/resolutions/doctor/me',
+  resolutionsPatientMe: () => '/resolutions/patient/me',
   doctorsSpecialization: (id: string) => `/doctors/specialization/${id}`,
   specializations: () => '/specializations',
 };

@@ -51,7 +51,7 @@ export const StatusText = styled.div`
 `;
 
 export const PatientDocumentText = styled.div`
-  margin-left: 24px;
+  margin-left: 20px;
   font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -66,7 +66,6 @@ export const PatientDocumentText = styled.div`
 
 export const PatientDocumentIcon = styled.img`
   position: relative;
-  left: 2px;
 `;
 
 export const PatientTimeText = styled.div`

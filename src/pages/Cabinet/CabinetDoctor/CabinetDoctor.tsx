@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../../hooks';
-import { selectAppointmentsAppointments } from '../../../store/slices';
+import { selectAppointmentsAppointments, selectAppointmentsStatus } from '../../../store/slices';
 import { Board, BoardTitle, BoardBox } from '../common/common.style';
-import { Button } from '../../../components';
+import { Button, SkeletonCards } from '../../../components';
 import CabinetDoctorBoardsOfAppointments from './CabinetDoctorBoardsOfAppointments';
 import ButtonsWrapper from './CabinetDoctor.style';
 import PATH from '../../../routes/routes';
@@ -12,6 +12,8 @@ import CabinetEmptyBoard from '../CabinetEmptyBoard/CabinetEmptyBoard';
 
 const CabinetDoctor = () => {
   const appointments = useAppSelector(selectAppointmentsAppointments);
+  const appointmentsStatus = useAppSelector(selectAppointmentsStatus);
+
   return (
     <Board>
       <ButtonsWrapper>
@@ -25,11 +27,12 @@ const CabinetDoctor = () => {
         </Link>
       </ButtonsWrapper>
       <BoardTitle>{dictionary.cabinetDoctorPage.patientsTitle}</BoardTitle>
-      {appointments.length > 0 ? (
+      {appointmentsStatus === 'success' ? (
         <BoardBox>
           <CabinetDoctorBoardsOfAppointments appointments={appointments} />
         </BoardBox>
-      ) : <CabinetEmptyBoard />}
+      ) : <SkeletonCards />}
+      {(appointments.length === 0 && appointmentsStatus === 'success') ? <CabinetEmptyBoard /> : null}
     </Board>
   );
 };

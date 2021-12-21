@@ -61,7 +61,7 @@ const AppointmentCard: React.FC<AppointmentCardPropsType> = (props) => {
       </MainInfo>
       <PatientInfo>
         <Wrapper>
-          <img src="/assets/icons/time.svg" alt="time icon" />
+          <img src="/assets/icons/time.svg" alt="time" />
           <PatientTimeText>
             {renderTime(props.date, props.time)}
           </PatientTimeText>
@@ -69,7 +69,7 @@ const AppointmentCard: React.FC<AppointmentCardPropsType> = (props) => {
         <DescriptionBoxDocument>
           <PatientDocumentIcon
             src="/assets/icons/document.svg"
-            alt="patient__document-icon"
+            alt="document"
           />
           <PatientDocumentText>{resolutionNote ? resolutionNote.resolution : ''}</PatientDocumentText>
         </DescriptionBoxDocument>

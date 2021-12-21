@@ -31,15 +31,15 @@ const AppointmentCard = (props: any) => (
     </MainInfo>
     <PatientInfo>
       <Wrapper>
-        <img src="/assets/icons/time.svg" alt="patients__time-icon" />
+        <img src="/assets/icons/time.svg" alt="time" />
         <PatientTimeText>
           {renderTime(props.date, props.time)}
         </PatientTimeText>
       </Wrapper>
       <DescriptionBoxDocument>
         <PatientDocumentIcon
-          src="/assets/icons/Illness.svg"
-          alt="patient__document-icon"
+          src="/assets/icons/reason.svg"
+          alt="reason"
         />
         <PatientDocumentText>{props.description}</PatientDocumentText>
       </DescriptionBoxDocument>

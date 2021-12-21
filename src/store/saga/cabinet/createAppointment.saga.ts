@@ -1,5 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { PayloadActionCreator } from '@reduxjs/toolkit/src/createAction';
+import { push } from 'connected-react-router';
+import PATH from 'routes/routes';
 import { AxiosResponse } from 'axios';
 import { AsyncActionType, AnyFunction } from '../saga.types';
 import { appointments, createAppointment } from '../../actions';
@@ -16,6 +18,7 @@ function* runAsyncSaga(
     const result = yield saga(pendingAction);
     yield put(action.success(result));
     yield put(appointments.pending({ role_name: result.payload.role_name }));
+    yield put(push(PATH.CABINET));
     successNotify('The appointment has been successfully added');
   } catch (error: any) {
     const errorSerialized = {

@@ -14,7 +14,8 @@ import PrivateRoute from './PrivateRoute';
 import { useAppSelector } from '../hooks';
 import Cabinet from '../pages/Cabinet/Cabinet';
 import { selectLoginIsLogged } from '../store/slices';
-import { ResolutionsForDoctor } from '../pages/Cabinet/ResolutionsForDoctor/ResolutionsForDoctor';
+import { ResolutionsForDoctor } from '../pages/Cabinet/ResolutionsForDoctor';
+import { ResolutionsForPatient } from '../pages/Cabinet/ResolutionsForPatient';
 
 const AppRoutes = () => {
   const isAuth = useAppSelector(selectLoginIsLogged);
@@ -34,6 +35,7 @@ const AppRoutes = () => {
         path={PATH.SIGN_UP}
         component={SignUp}
         redirectPath={PATH.CABINET}
+        exact
       />
 
       <PrivateRoute
@@ -41,6 +43,7 @@ const AppRoutes = () => {
         path={PATH.SIGN_IN}
         component={SignIn}
         redirectPath={PATH.CABINET}
+        exact
       />
 
       <PrivateRoute
@@ -48,6 +51,7 @@ const AppRoutes = () => {
         isAuth={!isAuth}
         component={RestorePassword}
         redirectPath={PATH.CABINET}
+        exact
       />
 
       <PrivateRoute
@@ -55,6 +59,7 @@ const AppRoutes = () => {
         path={PATH.RESTORE_PASSWORD_SUCCESSED}
         component={RestorePasswordSuccessed}
         redirectPath={PATH.CABINET}
+        exact
       />
 
       <PrivateRoute
@@ -62,6 +67,7 @@ const AppRoutes = () => {
         component={Cabinet}
         isAuth={isAuth}
         redirectPath={PATH.SIGN_IN}
+        exact
       />
 
       <PrivateRoute
@@ -69,6 +75,7 @@ const AppRoutes = () => {
         path={PATH.CABINET_USER_MAKE_AN_APPOINTMENT}
         component={CabinetUserMakeAppointment}
         redirectPath={PATH.CABINET}
+        exact
       />
 
       <PrivateRoute
@@ -76,6 +83,15 @@ const AppRoutes = () => {
         path={PATH.RESOLUTIONS_FOR_DOCTOR}
         component={ResolutionsForDoctor}
         redirectPath={PATH.CABINET}
+        exact
+      />
+
+      <PrivateRoute
+        isAuth={isAuth}
+        path={PATH.RESOLUTIONS_FOR_PATIENT}
+        component={ResolutionsForPatient}
+        redirectPath={PATH.CABINET}
+        exact
       />
 
       <Route path="*">

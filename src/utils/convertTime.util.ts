@@ -38,6 +38,11 @@ export const convertDate = (day: Date) => {
   } return day;
 };
 
-export const dateMakeAppointment = (date:any, time:any) => `${date.getFullYear()}-${date.getMonth() + 1}-${convertDate(
+const convertMonth = (month:number) => {
+  if (month >= 1 && month <= 9) return `0${month}`;
+  if (month >= 10 && month <= 12) return `${month}`;
+};
+
+export const dateMakeAppointment = (date:any, time:any) => `${date.getFullYear()}-${convertMonth(date.getMonth() + 1)}-${convertDate(
   date.getDate(),
 )}T${convertTime(time)}:00:00.000Z`;

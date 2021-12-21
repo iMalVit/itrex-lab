@@ -32,3 +32,7 @@ export const selectAppointmentsAppointments = createSelector(
   getAppointmentsState,
   (state) => state.appointments,
 );
+export const selectAppointmentsStatus = createSelector(
+  getAppointmentsState,
+  (state) => state.status,
+);

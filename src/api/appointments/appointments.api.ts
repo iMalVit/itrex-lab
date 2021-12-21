@@ -30,10 +30,10 @@ export const makeAppointment = (data: any) => api
 export const deleteAppointmentByDoctor = (id: string) => api
   .delete(ENDPOINTS.appointments(id));
 
-export const fetchAvailableTime = (date: any, doctorId: any) => api
+export const fetchAvailableTime = (date: any, doctorID: any) => api
   .get(ENDPOINTS.appointmentsTimeFree(), {
     params: {
       date,
-      doctorId,
+      doctorID,
     },
   });

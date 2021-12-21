@@ -10,5 +10,13 @@ export const fetchAllDoctorsResolutions = (offset = DEFAULT_OFFSET, limit = DEFA
     },
   });
 
+export const fetchAllPatientsResolutions = (offset = DEFAULT_OFFSET, limit = DEFAULT_LIMIT) => api
+  .get(ENDPOINTS.resolutionsPatientMe(), {
+    params: {
+      offset,
+      limit,
+    },
+  });
+
 export const makeResolution = (data: any) => api
   .post(ENDPOINTS.resolutions(), data);
