@@ -1,5 +1,5 @@
 import api from '../api';
-import ENDPOINTS from '../enpoints';
+import ENDPOINTS from '../endpoints';
 import {
   LoginDataType, LoginResponseType, ProfileResponseType, RegisterDataType,
 } from './auth.types';

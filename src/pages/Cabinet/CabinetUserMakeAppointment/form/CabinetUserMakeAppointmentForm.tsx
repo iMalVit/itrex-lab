@@ -147,7 +147,7 @@ const CabinetUserMakeAppointmentForm = () => {
                 size="medium-submit"
                 type="submit"
                 onClick={handleSubmit}
-                disabled={!isValid && dirty}
+                disabled={!(isValid && dirty)}
               >
                 {dictionary.cabinetPatientPage.buttonSubmit}
               </Button>

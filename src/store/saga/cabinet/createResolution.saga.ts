@@ -1,4 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
+import dictionary from 'common/dictionary';
 import { PayloadActionCreator } from '@reduxjs/toolkit/src/createAction';
 import { AxiosResponse } from 'axios';
 import { ROLES } from 'common/constants';
@@ -18,7 +19,7 @@ function* runAsyncSaga(
     yield put(action.success(result));
     yield put(resolutions.pending({ offset: 0, limit: 100 }));
     yield put(appointments.pending({ role_name: ROLES[1] }));
-    successNotify('The resolution has been successfully added');
+    successNotify(dictionary.notifyMessages.resolutionCreateSuccessMessage);
   } catch (error: any) {
     const errorSerialized = {
       message: error.message,

@@ -14,18 +14,18 @@ export interface ProfileStateType extends Request {
   },
 }
 export interface AppointmentsStateType extends Request {
-  appointments: any
+  appointments: any[]
 
 }
 export interface ResolutionsStateType extends Request {
-  resolutions: any
+  resolutions: any[]
 
 }
 export interface SpecializationsState extends Request {
   specializations: any[],
 }
 export interface DoctorsPerSpecializationState extends Request {
-  doctors: any,
+  doctors: any[],
 }
 export interface AvailableTimeState extends Request {
   time: any,

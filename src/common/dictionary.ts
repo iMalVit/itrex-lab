@@ -97,6 +97,12 @@ const dictionary = {
     title: 'Oops...',
     text: 'We can’t seem to find the page you are looking for.',
   },
+  notifyMessages: {
+    loginSuccessMessage: 'Login successful',
+    appointmentCreateSuccessMessage: 'The appointment has been successfully added',
+    appointmentDeleteSuccessMessage: 'The  appointment has been successfully deleted',
+    resolutionCreateSuccessMessage: 'The resolution has been successfully added',
+  },
 };
 
 export default dictionary;

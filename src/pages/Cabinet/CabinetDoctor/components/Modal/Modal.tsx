@@ -28,7 +28,7 @@ const Modal: React.FC<ModalPropsType> = (props) => {
   const [resolutionText, setResolutionText] = useState<string>('');
   const dispatch = useAppDispatch();
 
-  const handlerSubmit = () => {
+  const handleSubmit = () => {
     dispatch(
       createResolution.pending({
         resolution: resolutionText,
@@ -76,7 +76,7 @@ const Modal: React.FC<ModalPropsType> = (props) => {
             variant="primary"
             size="large"
             type="submit"
-            onClick={handlerSubmit}
+            onClick={handleSubmit}
           >
             {dictionary.cabinetDoctorPage.modalSubmitButton}
           </Button>

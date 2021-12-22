@@ -1,4 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
+import dictionary from 'common/dictionary';
 import { PayloadActionCreator } from '@reduxjs/toolkit/src/createAction';
 import { push } from 'connected-react-router';
 import PATH from 'routes/routes';
@@ -19,7 +20,7 @@ function* runAsyncSaga(
     yield put(action.success(result));
     yield put(appointments.pending({ role_name: result.payload.role_name }));
     yield put(push(PATH.CABINET));
-    successNotify('The appointment has been successfully added');
+    successNotify(dictionary.notifyMessages.appointmentCreateSuccessMessage);
   } catch (error: any) {
     const errorSerialized = {
       message: error.message,

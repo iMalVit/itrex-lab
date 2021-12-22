@@ -1,4 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
+import dictionary from 'common/dictionary';
 import { PayloadActionCreator } from '@reduxjs/toolkit/src/createAction';
 import { AxiosResponse } from 'axios';
 import { login, profile } from '../../actions';
@@ -17,7 +18,7 @@ function* runAsyncSaga(
     const result = yield saga(pendingAction);
     yield put(action.success(result));
     yield put(profile.pending(''));
-    successNotify('Login successful');
+    successNotify(dictionary.notifyMessages.loginSuccessMessage);
   } catch (error: any) {
     const errorSerialized = {
       message: error.message,

@@ -1,8 +1,8 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
+import dictionary from 'common/dictionary';
 import { PayloadActionCreator } from '@reduxjs/toolkit/src/createAction';
 import { AxiosResponse } from 'axios';
 import { AnyFunction, AsyncActionType } from '../saga.types';
-
 import { deleteAppointment, resolutions, appointments } from '../../actions';
 import { deleteAppointmentByDoctor } from '../../../api';
 import { successNotify, errorNotify } from '../../../utils/tosify.util';
@@ -17,7 +17,7 @@ function* runAsyncSaga(
     yield put(action.success(result));
     yield put(appointments.pending({ role_name: result.payload.role_name }));
     yield put(resolutions.pending({ offset: 0, limit: 100 }));
-    successNotify('The  appointment has been successfully deleted');
+    successNotify(dictionary.notifyMessages.appointmentDeleteSuccessMessage);
   } catch (error: any) {
     const errorSerialized = {
       message: error.message,

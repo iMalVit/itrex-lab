@@ -13,7 +13,11 @@ import {
 } from './Calendar.style';
 import * as calendar from '../../utils/calendar.util';
 
-export const Calendar = (props: any) => {
+interface CalendarPropsType {
+ // eslint-disable-next-line react/require-default-props
+  setValue?: Function
+}
+export const Calendar: React.FC<CalendarPropsType> = (props) => {
   const todayDate = new Date();
 
   const [date, setDate] = useState(todayDate);
